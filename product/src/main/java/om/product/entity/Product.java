@@ -9,9 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor @NoArgsConstructor @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Builder
-@Document
+@Document(value = "product")
 public class Product {
     @Id
     private String id;
