@@ -6,7 +6,7 @@ import om.product.dto.ProductResp;
 import java.util.List;
 
 public interface IProductService {
-    void addProduct(ProductReq productReq);
+    ProductResp addProduct(ProductReq productReq);
 
     List<ProductResp> getAllProducts();
 }

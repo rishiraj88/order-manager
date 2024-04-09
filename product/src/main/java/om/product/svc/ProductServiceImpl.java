@@ -18,7 +18,7 @@ public class ProductServiceImpl implements IProductService {
     private final ProductRepo productRepo;
 
     @Override
-    public void addProduct(ProductReq productReq) {
+    public ProductResp addProduct(ProductReq productReq) {
         Product newProduct = Product.builder()
                 .name(productReq.name())
                 .desc(productReq.desc())
@@ -27,6 +27,7 @@ public class ProductServiceImpl implements IProductService {
 
         productRepo.save(newProduct);
         log.info("New product has been added with id: {}", newProduct.getId());
+        return mapProductEntityToProductResp(newProduct);
     }
 
     @Override
