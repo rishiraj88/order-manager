@@ -1,4 +1,4 @@
-package om.order;
+package om.order.svc;
 
 import lombok.RequiredArgsConstructor;
 import om.order.dao.OrderRepo;
