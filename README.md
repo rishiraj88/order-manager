@@ -81,7 +81,44 @@ A number of test cases are already provided in the **Tests** class. For POST req
 ![Order module: automated testing](./assets/automated-testing-of-order.png)
 
 ## Inventroy Module
-will follow...
+This module is for checking whether there is enough quantity available in inventory stock in order to place a new item order.
+
+### API Base
+The inventory API has its base at "/api/inventory".
+
+### Database Details
+MySQL engine powers the inventory module. The data store is expected to be structured with infrequent field additions, modifications and removals. So, SQL database (RDBMS) technology is used for this.
+The database is deployed in a Docker container with a persistent volume to hold business data.
+
+### Project Setup with Dependencies
+The module for Product has been set up with the following dependencies, specified in Spring Init (<https://start.spring.io/>):
+- Lombok
+- Spring Web
+- Spring Data MySQL
+- Testcontainers
+- Rest-Assured
+
+![Spring Boot project dependencies](./assets/spring-init-for-inventory.png)
+
+### Testing
+
+#### Manual Testing
+
+For GET request to check the in-stock availability of an item, the following URL pattern can be prepared and hit:
+<pre>http://localhost:8082/api/inventory?skuCode=DE342GES34233125&quantityForQuery=200</pre>
+
+#### Positive Test Scenario
+![Inventory module: manual testing](./assets/manual-testing-of-inventory-01.png)
+
+#### Negative Test Scenario 01
+![Inventory module: manual testing](./assets/manual-testing-of-inventory-02.png)
+
+#### Negative Test Scenario 02
+![Inventory module: manual testing](./assets/manual-testing-of-inventory-03.png)
+
+#### Automated Testing
+
+![Inventory module: automated testing](./assets/automated-testing-of-inventory.png)
 
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
