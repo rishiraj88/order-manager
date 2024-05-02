@@ -1,5 +1,18 @@
 # Order Manager (order-manager)
-Order management APIs, built with Spring Boot
+Order management APIs-
+- built with Spring Boot,
+- tested with TestContainers!
+
+This application has three main components, exposing their services with RESTful Web Services:
+- Product
+- Order
+- Inventory
+
+More components, services, config and connectors are there as well- 
+- to integrate the three main actors (our "heroes"), and
+- to facilitate smooth communication among the services.
+
+The end result is: SMOOTHEST customer experience. :) 
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
@@ -48,7 +61,11 @@ A number of test cases are already provided in the **Tests** class. For POST req
 "pricePerItem":120.80
 }</pre>
 
-![Product module: automated testing](./assets/automated-testing-of-product.png)
+#### Testing Done on 11-Apr-2024
+![Product module: automated testing](./assets/automated-testing-of-product_20240411.png)
+
+#### Testing Done on 02-May-2024
+![Product module: automated testing](./assets/automated-testing-of-product_20240502.png)
 
 
 ## Order Module
@@ -85,7 +102,11 @@ A number of test cases are already provided in the **Tests** class. For POST req
 "quantity":2
 }</pre>
 
-![Order module: automated testing](./assets/automated-testing-of-order.png)
+#### Testing Done on 11-Apr-2024
+![Order module: automated testing](./assets/automated-testing-of-order_20240411.png)
+
+#### Testing Done on 02-May-2024
+![Order module: automated testing](./assets/automated-testing-of-order_20240502.png)
 
 ## Inventroy Module
 This module is for checking whether there is enough quantity available in inventory stock in order to place a new item order.
@@ -125,7 +146,8 @@ For GET request to check the in-stock availability of an item, the following URL
 
 #### Automated Testing
 
-![Inventory module: automated testing](./assets/automated-testing-of-inventory.png)
+#### Testing Done on 11-Apr-2024
+![Inventory module: automated testing](./assets/automated-testing-of-inventory_20240411.png)
 
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
