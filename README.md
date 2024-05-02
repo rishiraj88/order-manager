@@ -31,7 +31,7 @@ The end result is: SMOOTHEST customer experience. :)
 I enjoy the following approach for inception, enhancement and fortification of projects:
 1. Start in simple, lazy and less structured approach.
 2. Modularise, distribute and containerise various components as needed.
-3. Look out for fan-out scenarios and got for asynchronous messaging across services.
+3. Look out for fan-out scenarios and go for asynchronous messaging across services accordingly.
 Suggestions and feedback comments from readers are always welcomed with love.
 
 ## Modules
