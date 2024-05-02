@@ -14,6 +14,19 @@ More components, services, config and connectors are there as well-
 
 The end result is: SMOOTHEST customer experience. :) 
 
+## Tech Tools Used for Development
+- Spring Boot, with Spring Web
+- MongoDB (NoSQL Database)
+- Spring Data MongoDB (for Mongo Repository)
+- MySQL (Relational Database System)
+- Spring Data MySQL (for JPA Repository)
+- Flyway (for Database Migration)
+- Docker containerization
+- Testcontainers (for Test Automation with stubs)
+- Rest-Assured (for Testing)
+- Lombok (for boilerplate code injection)
+
+
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
 1. Start in simple, lazy and less structured approach.

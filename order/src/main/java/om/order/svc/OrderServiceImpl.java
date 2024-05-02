@@ -4,12 +4,11 @@ import lombok.RequiredArgsConstructor;
 import om.order.dao.OrderRepo;
 import om.order.dto.OrderReq;
 import om.order.entity.Order;
-import om.order.svc.IOrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Random;
 import java.util.UUID;
-
+@Transactional
 @Service @RequiredArgsConstructor
 public class OrderServiceImpl implements IOrderService {
     private final OrderRepo  orderRepo;
