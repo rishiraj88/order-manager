@@ -25,6 +25,7 @@ The end result is: SMOOTHEST customer experience. :)
 - Testcontainers (for Test Automation with stubs)
 - Rest-Assured (for Testing)
 - Lombok (for boilerplate code injection)
+- Spring OpenFeign
 
 
 ## General Note
@@ -96,8 +97,10 @@ The module for Product has been set up with the following dependencies, specifie
 - Lombok
 - Spring Web
 - Spring Data MySQL
+- Flyway
 - Testcontainers
 - Rest-Assured
+- Spring OpenFeign
 
 ![Spring Boot project dependencies](./assets/spring-init-for-order.png)
 
@@ -136,8 +139,10 @@ The module for Product has been set up with the following dependencies, specifie
 - Lombok
 - Spring Web
 - Spring Data MySQL
+- Flyway
 - Testcontainers
 - Rest-Assured
+- Spring OpenFeign
 
 ![Spring Boot project dependencies](./assets/spring-init-for-inventory.png)
 
