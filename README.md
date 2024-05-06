@@ -103,8 +103,10 @@ The module for Product has been set up with the following dependencies, specifie
 - Spring OpenFeign
 - WireMock for using stubs during automated API testing
 
+#### Spring Boot project dependencies (Intial Set)
 ![Spring Boot project dependencies](./assets/spring-init-for-order.png)
 
+#### Project dependency added for Wiremock
 ![Project dependency added for Wiremock](./assets/WireMock-dep.png)
 
 ### Testing
