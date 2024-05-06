@@ -101,8 +101,11 @@ The module for Product has been set up with the following dependencies, specifie
 - Testcontainers
 - Rest-Assured
 - Spring OpenFeign
+- WireMock for using stubs during automated API testing
 
 ![Spring Boot project dependencies](./assets/spring-init-for-order.png)
+
+![Project dependency added for Wiremock](./assets/WireMock-dep.png)
 
 ### Testing
 
@@ -123,6 +126,17 @@ A number of test cases are already provided in the **Tests** class. For POST req
 
 #### Testing Done on 02-May-2024
 ![Order module: automated testing](./assets/automated-testing-of-order_20240502.png)
+
+#### Testing Done on 06-May-2024 with WireMock
+
+- Before Stubbing: Order Request and Positive Scenario Response
+![Order module: automated API testing with stubbing](./assets/automated-testing-of-order_20240506-01Positive-OrderReq-with-Inventory-connected.png)
+
+- Before Stubbing: Order Request and Negative Scenario Response
+![Order module: automated API testing with stubbing](./assets/automated-testing-of-order_20240506-02Negative-OrderReq-with-Inventory-connected.png)
+
+- With Stubbing of Inventory API: Response
+![Order module: automated API testing with stubbing](./assets/automated-testing-of-order_20240506-03Positive-OrderReq-with-Inventory-mocked.png)
 
 ## Inventroy Module
 This module is for checking whether there is enough quantity available in inventory stock in order to place a new item order.

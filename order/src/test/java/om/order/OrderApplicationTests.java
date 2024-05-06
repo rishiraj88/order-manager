@@ -1,17 +1,20 @@
 package om.order;
 
 import io.restassured.RestAssured;
+import om.order.stub.InventoryClient;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.testcontainers.containers.MySQLContainer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWireMock(port = 0)
 class OrderApplicationTests {
 
     @ServiceConnection
@@ -35,11 +38,13 @@ class OrderApplicationTests {
         String submitOrderJson = """
                 {
                 "orderNumber":"DE3343INT432342342222",\s
-                "itemSkuCode":"'DE342GES34233111'",\s
+                "itemSkuCode":"DE342GES34233111",\s
                 "pricePerItem":130.20,
                 "quantity":3
                 }""";
 
+        // Mock the dependency on Inventory API for checking the available quantity in stock
+        InventoryClient.stubInventoryCheck("DE342GES34233111",3);
 
         var responseBodyString = RestAssured.given()
                 .contentType("application/json")
