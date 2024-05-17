@@ -36,22 +36,6 @@ class ProductApplicationTests {
                 "pricePerItem":120.80
                 }
                 """;
-        RestAssured.given()
-                .contentType("application/json")
-                .body(requestBody)
-                .when()
-                .post("/api/products")
-                .then()
-                .log().all()
-                .statusCode(201)
-                .body("id", Matchers.notNullValue())
-                .body("name", Matchers.equalTo("mobile"))
-                .body("desc", Matchers.equalTo("details"))
-                .body("pricePerItem", Matchers.is(120.80f));
+        RestAssured.given().contentType("application/json").body(requestBody).when().post("/api/products").then().log().all().statusCode(201).body("id", Matchers.notNullValue()).body("name", Matchers.equalTo("mobile")).body("desc", Matchers.equalTo("details")).body("pricePerItem", Matchers.is(120.80f));
     }
-
-    @Test
-    void contextLoads() {
-    }
-
 }
