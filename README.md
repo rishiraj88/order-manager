@@ -39,6 +39,7 @@ Suggestions and feedback comments from readers are always welcomed with love.
 - Product
 - Order
 - Inventory
+- Gateway (with redirection, and OAuth2 with Keycloak and Docker-Compose)
 - More may be added on need basis.
 
 ## Product Module
@@ -182,6 +183,34 @@ For GET request to check the in-stock availability of an item, the following URL
 
 #### Testing Done on 11-Apr-2024
 ![Inventory module: automated testing](./assets/automated-testing-of-inventory_20240411.png)
+
+## Gateway Module
+This module is for accepting the requests for external clients in first place and then redirecting them to appropriate microservices, such as:
+- _to Product_ to view product list and to add new product to data store;
+- _to Order_ to place an order for an item. It internally checks at Inventory service whether the requested quantity for the SKU is available in store (warehouse/shop);
+- _one "backend access"_ for development purpose.  
+
+### API Port
+The gateway API is served at port `9000` and comes into access when the following URL patterns are hit:
+- POST and GET at http://localhost:9000/api/products
+- POST at http://localhost:9000/api/orders
+- GET at http://localhost:9000/api/inventory?skuCode=DE342GES34233123&quantityForQuery=5
+
+<pre>Examplary values are shown the the inventory URL above.</pre>
+
+### Database Details
+MySQL engine powers the user-authorization-and-authentication database. The data store is not accessed by the gateway code directly nor from the wild outside without any authorization check. The open source tool Keycloak is in place to manage user Authz-n-Authn data and very low variation in the data dictionary is expected. So, SQL database (RDBMS) technology is used for this.
+Keykloak tool and the database are both deployed in Docker containers with a persistent volumes.
+
+### Project Setup with Dependencies
+The module for Product has been set up with the following dependencies, specified in Spring Init (<https://start.spring.io/>):
+- Gateway
+- OAuth2 Resource Server
+
+![Spring Boot project dependencies](./assets/gateway/01-spring-init.png)
+
+### Keycloak Config and Auth Testing
+Configuration and manual testing across service endpoint integration are detailed out in the separate Markdown file in gateway directory. 
 
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
