@@ -14,8 +14,13 @@ More components, services, config and connectors are there as well-
 
 The end result is: SMOOTHEST customer experience. :) 
 
+![realm-creation-success-in-keycloak-admin](./assets/gateway/08-realm-creation-success-in-keycloak-admin.png)
+
 ## Tech Tools Used for Development
 - Spring Boot, with Spring Web
+- Spring Cloud Config (for service integration)
+- Spring Security (for Authz-n-Authn)
+- Keycloak (for user account management)
 - MongoDB (NoSQL Database)
 - Spring Data MongoDB (for Mongo Repository)
 - MySQL (Relational Database System)
@@ -26,7 +31,6 @@ The end result is: SMOOTHEST customer experience. :)
 - Rest-Assured (for Testing)
 - Lombok (for boilerplate code injection)
 - Spring OpenFeign
-
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
