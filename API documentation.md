@@ -23,18 +23,7 @@ The documentation of Application Programming Interface of Order Manager is acces
 Setup for generating API documentation for Product module is illustrated below. Similar steps for Order and Inventory modules offer consistent results.
 
 - Add the following dependencies in `pom-xml` (or in respective format in `build.gradle.kts`/`build.gradle`):
-`
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-`
+![Dependencies for API Doc](./assets/doc/dependencies.png)
 
 - In `application.properties` under `src/main/resources`, add the following two resources (kea-value pairs):
 <pre>
