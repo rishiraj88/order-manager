@@ -229,4 +229,4 @@ Configuration and manual testing across service endpoint integration are detaile
 - **GitHub:** <https://github.com/rishiraj88>
 
 ## Credits and Gratitude
-I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming etc.
+I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming and more.
