@@ -90,4 +90,4 @@ It is the gateway to Order Manager, a distributed app built with Spring Cloud Co
 - **GitHub:** <https://github.com/rishiraj88>
 
 ## Credits and Gratitude
-I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming etc.
+I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming and more.

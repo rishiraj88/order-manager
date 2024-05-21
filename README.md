@@ -10,6 +10,8 @@ This application has three main components, exposing their services with RESTful
 
 More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
+- Gateway and User Authentication with Keykloak: <./gateway/README.md>
+- API Documentation with OpenAPI Specification (OAS)
 - to facilitate smooth communication among the services.
 
 The end result is: SMOOTHEST customer experience. :) 
@@ -26,11 +28,12 @@ The end result is: SMOOTHEST customer experience. :)
 - MySQL (Relational Database System)
 - Spring Data MySQL (for JPA Repository)
 - Flyway (for Database Migration)
-- Docker containerization
+- Docker-Compose (for containerization)
+- Swagger (for OpenAPI-based API documentation)
 - Testcontainers (for Test Automation with stubs)
 - Rest-Assured (for Testing)
 - Lombok (for boilerplate code injection)
-- Spring OpenFeign
+- Spring OpenFeign (for inter-service communication)
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
@@ -63,6 +66,7 @@ The module for Product has been set up with the following dependencies, specifie
 - Spring Data MongoDB
 - Testcontainers
 - Rest-Assured
+- Swagger (for OpenAPI-based API documentation)
 
 ![Spring Boot project dependencies](./assets/spring-init-for-product.png)
 
@@ -107,6 +111,7 @@ The module for Product has been set up with the following dependencies, specifie
 - Rest-Assured
 - Spring OpenFeign
 - WireMock for using stubs during automated API testing
+- Swagger (for OpenAPI-based API documentation)
 
 #### Spring Boot project dependencies (Intial Set)
 ![Spring Boot project dependencies](./assets/spring-init-for-order.png)
@@ -164,6 +169,7 @@ The module for Product has been set up with the following dependencies, specifie
 - Testcontainers
 - Rest-Assured
 - Spring OpenFeign
+- Swagger (for OpenAPI-based API documentation)
 
 ![Spring Boot project dependencies](./assets/spring-init-for-inventory.png)
 
@@ -214,7 +220,7 @@ The module for Product has been set up with the following dependencies, specifie
 ![Spring Boot project dependencies](./assets/gateway/01-spring-init.png)
 
 ### Keycloak Config and Auth Testing
-Configuration and manual testing across service endpoint integration are detailed out in the separate Markdown file in gateway directory. 
+Configuration and manual testing across service endpoint integration are detailed out in the separate Markdown file: - **gateway implementation with Keycloak.md**
 
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
@@ -223,4 +229,4 @@ Configuration and manual testing across service endpoint integration are detaile
 - **GitHub:** <https://github.com/rishiraj88>
 
 ## Credits and Gratitude
-I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming etc.
+I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming and more.
