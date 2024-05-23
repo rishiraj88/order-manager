@@ -33,7 +33,9 @@ The end result is: SMOOTHEST customer experience. :)
 - Testcontainers (for Test Automation with stubs)
 - Rest-Assured (for Testing)
 - Lombok (for boilerplate code injection)
-- Spring OpenFeign (for inter-service communication)
+- Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
+
+### More screeshots are waiting to be uploaded. By 25-May they will be in `main` branch.
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
