@@ -31,7 +31,7 @@ The end result is: SMOOTHEST customer experience. :)
 - Docker-Compose (for containerization)
 - Swagger (for OpenAPI-based API documentation)
 - Testcontainers (for Test Automation with stubs)
-- Rest-Assured (for Testing)
+- Rest-Assured (for Testing and Validation)
 - Lombok (for boilerplate code injection)
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
 
