@@ -1,9 +1,17 @@
 # Order Manager (order-manager)
-Order management APIs-
-- built with Spring Boot,
-- tested with TestContainers!
+This project essentially showcases how the implementations of numerous modern web technologies can be interwoven together and how they may work in tandem. Some of the technologies worth mentioning are:
+- Spring Boot 3.2
+- Keycloak for User Account Manager and Auth
+- Modern strategy implemented for Spring Security
+- Use of RestClient (Spring Boot 3.2) instead of FeignClient (Spring Boot 2.7 style)
+- Docker Compose (version 4)
+- Testcontainers
 
-This application has three main components, exposing their services with RESTful Web Services:
+Order management APIs-
+- built with Spring Boot 3,
+- tested with TestContainers and Rest-Assured!
+
+This application has three main business components, implemented as Microservices:
 - Product
 - Order
 - Inventory
