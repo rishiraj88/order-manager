@@ -20,4 +20,5 @@ public class Product {
     private String name;
     private String desc;
     private BigDecimal pricePerItem;
+    //vendors, variants
 }
