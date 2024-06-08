@@ -42,6 +42,7 @@ The end result is: SMOOTHEST customer experience. :)
 - Rest-Assured (for Testing and Validation)
 - Lombok (for boilerplate code injection)
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
+- Resilient4j v2 for Fault Tolerance
 
 ### More screeshots are waiting to be uploaded. By 25-May they will be in `main` branch.
 
