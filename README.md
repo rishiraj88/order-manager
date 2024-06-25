@@ -7,20 +7,21 @@ This project essentially showcases how the implementations of numerous modern we
 - Docker Compose (version 4)
 - Testcontainers
 
-Order management APIs-
+## Order management APIs-
 - built with Spring Boot 3,
 - tested with TestContainers and Rest-Assured!
 
-This application has three main business components, implemented as Microservices:
+## This application has three main business components, implemented as Microservices:
 - Product
 - Order
 - Inventory
 
-More components, services, config and connectors are there as well- 
+## More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
 - Gateway and User Authentication with Keykloak: <./gateway/README.md>
 - API Documentation with OpenAPI Specification (OAS)
 - to facilitate smooth communication among the services.
+
 
 The end result is: SMOOTHEST customer experience. :) 
 
