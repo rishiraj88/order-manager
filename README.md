@@ -1,27 +1,28 @@
 # Order Manager (order-manager)
 This project essentially showcases how the implementations of numerous modern web technologies can be interwoven together and how they may work in tandem. Some of the technologies worth mentioning are:
 - Spring Boot 3.2
-- Keycloak for User Account Manager and Auth
+- Keycloak for User Account Manager and Auth [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
 - Modern strategy implemented for Spring Security
 - Use of RestClient (Spring Boot 3.2) instead of FeignClient (Spring Boot 2.7 style)
 - Kafka for message queues (to be added on 24-Jun-2024)
 - Docker Compose
 - Testcontainers
 
-Order management APIs-
+## Order management APIs-
 - built with Spring Boot 3,
 - tested with TestContainers and Rest-Assured!
 
-This application has three main business components, implemented as Microservices:
+## This application has three main business components, implemented as Microservices:
 - Product
 - Order
 - Inventory
 
-More components, services, config and connectors are there as well- 
+## More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
 - Gateway and User Authentication with Keykloak: <./gateway/README.md>
 - API Documentation with OpenAPI Specification (OAS)
 - to facilitate smooth communication among the services.
+
 
 The end result is: SMOOTHEST customer experience. :) 
 

@@ -19,12 +19,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ProductResp addProduct(ProductReq productReq) {
-        Product newProduct = Product.builder()
-                .name(productReq.name())
-                .desc(productReq.desc())
-                .pricePerItem(productReq.pricePerItem())
-                .build();
-
+        Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItem(productReq.pricePerItem()).build();
         productRepo.save(newProduct);
         log.info("New product has been added with id: {}", newProduct.getId());
         return mapProductEntityToProductResp(newProduct);
@@ -33,17 +28,10 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public List<ProductResp> getAllProducts() {
         List<Product> productList = productRepo.findAll();
-        return productList.stream().map(
-                prod -> mapProductEntityToProductResp(prod)
-        ).collect(Collectors.toList());
+        return productList.stream().map(prod -> mapProductEntityToProductResp(prod)).collect(Collectors.toList());
     }
 
     private ProductResp mapProductEntityToProductResp(Product product) {
-        return ProductResp.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .desc(product.getDesc())
-                .pricePerItem(product.getPricePerItem())
-                .build();
+        return ProductResp.builder().id(product.getId()).name(product.getName()).desc(product.getDesc()).skuCode(product.getSkuCode()).pricePerItem(product.getPricePerItem()).build();
     }
 }
