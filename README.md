@@ -4,9 +4,10 @@ This project essentially showcases how the implementations of numerous modern we
 - Keycloak for User Account Manager and Auth [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
 - Modern strategy implemented for Spring Security
 - Use of RestClient (Spring Boot 3.2) instead of FeignClient (Spring Boot 2.7 style)
-- Kafka for message queues (to be added on 24-Jun-2024)
+- Kafka for message queues (development started on 24-Jun-2024, will be available by 05-Jul-2024)
 - Docker Compose
 - Testcontainers
+- Container orchestration with Kubernetes (planned)
 
 ## Order management APIs-
 - built with Spring Boot 3,
@@ -46,13 +47,16 @@ The end result is: SMOOTHEST customer experience. :)
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
 - Resilient4j v2 for Fault Tolerance
 
-### More screeshots are waiting to be uploaded. By 25-May they will be in `main` branch.
+### More screeshots with Kafka messaging are waiting to be uploaded over the 07-Jul-2024 weekend.
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
 1. Start in simple, lazy and less structured approach.
-2. Modularise, distribute and containerise various components as needed.
+2. Modularise, distribute and containerise various components, guided by relative prioritization.
 3. Look out for fan-out scenarios and go for asynchronous messaging across services accordingly.
+4. Alongside work, in gradual steps, towards making the deliverables (distributables) compact in file size and deploy them in replicas (clusters).
+
+
 Suggestions and feedback comments from readers are always welcomed with love.
 
 ## Modules
