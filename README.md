@@ -47,7 +47,7 @@ The end result is: SMOOTHEST customer experience. :)
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
 - Resilient4j v2 for Fault Tolerance
 
-### More screeshots with Kafka messaging are waiting to be uploaded over the 07-Jul-2024 weekend.
+### The Development work to resumes in full swing today. A long break until now had got inevitable.
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
