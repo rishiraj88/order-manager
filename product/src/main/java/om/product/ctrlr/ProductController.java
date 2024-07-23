@@ -16,7 +16,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/products") //TODO add API versioning
 public class ProductController {
     private final IProductService productService;
 
