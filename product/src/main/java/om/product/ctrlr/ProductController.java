@@ -34,7 +34,9 @@ public class ProductController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ProductResp> getAllProducts() {
-/* uncomment this code fragment to test timeout and retry with Resilience4j       try {
+    /*
+    //uncomment this code fragment to test timeout and retry with Resilience4j
+        try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
