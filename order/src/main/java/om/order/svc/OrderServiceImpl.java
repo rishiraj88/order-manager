@@ -16,6 +16,7 @@ import java.util.UUID;
 @Service @RequiredArgsConstructor @Slf4j
 public class OrderServiceImpl implements IOrderService {
     private final OrderRepo  orderRepo;
+
     private final InventoryClient inventoryClient;
     private final KafkaTemplate<String,OrderPlacedEvent> kafkaTemplate;
 
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements IOrderService {
             orderRepo.save(newOrder);
             // Send success message to Kafka topic
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(newOrder.getOrderNumber(),orderReq.userDetails().emailAddress());
-log.info("Sending the details of new order {} to 'order-placed' queue...",orderPlacedEvent);
+            log.info("Sending the details of new order {} to 'order-placed' queue...",orderPlacedEvent);
             kafkaTemplate.send("order-placed",orderPlacedEvent);
             log.info("Sent the details of new order {} to 'order-placed' queue.", orderPlacedEvent);
 
