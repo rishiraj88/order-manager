@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 
+/**
+ * to replicate the API of Inventory microservice
+ */
 @Slf4j
 public interface InventoryClient {
 
