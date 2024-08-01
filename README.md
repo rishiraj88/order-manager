@@ -4,7 +4,7 @@ This project essentially showcases how the implementations of numerous modern we
 - Keycloak for User Account Manager and Auth [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
 - Modern strategy implemented for Spring Security
 - Use of RestClient (Spring Boot 3.2) instead of FeignClient (Spring Boot 2.7 style)
-- Kafka for message queues (development started on 24-Jun-2024, will be available by 05-Jul-2024)
+- Kafka for message queues and notification service
 - Docker Compose
 - Testcontainers
 - Container orchestration with Kubernetes (planned)
