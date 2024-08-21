@@ -25,7 +25,7 @@ This project essentially showcases how the components of a distributed applicati
 - to facilitate smooth communication among the services.
 
 
-The end result is: SMOOTHEST customer experience. :) 
+And the result is: unmatched and flawless user experience. :) 
 
 ![realm-creation-success-in-keycloak-admin](./assets/gateway/08-realm-creation-success-in-keycloak-admin.png)
 
