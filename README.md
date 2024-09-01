@@ -7,7 +7,7 @@ This project essentially showcases how the components of a distributed applicati
 - Kafka for asynchronous communication (such as notification service) across web services using message queues
 - Docker Compose [To be replaced with Kubernetesfor auto-scaling]
 - Testcontainers for automated API testing and Contract testing with Rest-Assured
-- Container orchestration
+- Container orchestration (deployment descriptor for Kubernetes to add next)
 
 ## Order management APIs-
 - built with Spring Boot 3,
