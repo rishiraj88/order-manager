@@ -33,7 +33,7 @@ class InventoryApplicationTests {
 		void shouldReadInventory() {
 			var positiveResponse = RestAssured.given()
 					.when()
-					.get("api/inventory?skuCode=DE342GES34233125&quantityForQuery=20")
+					.get("api/v1/inventory?skuCode=DE342GES34233125&quantityForQuery=20")
 					.then()
 					.log().all()
 					.statusCode(200)
@@ -42,7 +42,7 @@ class InventoryApplicationTests {
 
 			var negativeResponse_01 = RestAssured.given()
 					.when()
-					.get("api/inventory?skuCode=DE342GES34233125&quantityForQuery=200")
+					.get("api/v1/inventory?skuCode=DE342GES34233125&quantityForQuery=200")
 					.then()
 					.log().all()
 					.statusCode(200)
@@ -50,7 +50,7 @@ class InventoryApplicationTests {
 			assertFalse(negativeResponse_01);
 			var negativeResponse_02 = RestAssured.given()
 					.when()
-					.get("api/inventory?skuCode=DE342GES34233123&quantityForQuery=20")
+					.get("api/v1/inventory?skuCode=DE342GES34233123&quantityForQuery=20")
 					.then()
 					.log().all()
 					.statusCode(200)
@@ -58,7 +58,7 @@ class InventoryApplicationTests {
 			assertFalse(negativeResponse_02);
 			var negativeResponse_03 = RestAssured.given()
 					.when()
-					.get("api/inventory?skuCode=PO342GES34233125&quantityForQuery=1")
+					.get("api/v1/inventory?skuCode=PO342GES34233125&quantityForQuery=1")
 					.then()
 					.log().all()
 					.statusCode(200)
