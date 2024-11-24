@@ -1,6 +1,7 @@
 package om.order;
 
 import io.restassured.RestAssured;
+import om.order.config.Constants;
 import om.order.stub.InventoryClient;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,14 +51,14 @@ class OrderApplicationTests {
                 .contentType("application/json")
                 .body(submitOrderJson)
                 .when()
-                .post("/api/orders")
+                .post("/api/v1/orders")
                 .then()
                 .log().all()
                 .statusCode(201)
                 .extract()
                 .body().asString();
 
-        assertThat(responseBodyString, Matchers.is("An order has been created and placed."));
+        assertThat(responseBodyString, Matchers.is(Constants.newOrderPlaced));
     }
 
     @Test
