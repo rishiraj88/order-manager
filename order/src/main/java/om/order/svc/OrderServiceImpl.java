@@ -3,6 +3,7 @@ package om.order.svc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import om.order.clients.InventoryClient;
+import om.order.config.Constants;
 import om.order.dao.OrderRepo;
 import om.order.dto.OrderReq;
 import om.order.entity.Order;
@@ -23,6 +24,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public void createOrder(OrderReq orderReq) {
         if(inventoryClient.isInStock(orderReq.itemSkuCode(),orderReq.quantity())) {
+            log.debug("The requested items are available in inventory.");
             Order newOrder = Order.builder()
                     .id(UUID.randomUUID().toString())
                     .orderNumber(orderReq.orderNumber())
@@ -31,10 +33,10 @@ public class OrderServiceImpl implements IOrderService {
                     .quantity(orderReq.quantity())
                     .build();
             orderRepo.save(newOrder);
-            // Send success message to Kafka topic
+            // Send success message to message queue (with Kafka tooling)
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(newOrder.getOrderNumber(),orderReq.userDetails().emailAddress());
             log.info("Sending the details of new order {} to 'order-placed' queue...",orderPlacedEvent);
-            kafkaTemplate.send("order-placed",orderPlacedEvent);
+            kafkaTemplate.send(Constants.orderPlacedQueueName,orderPlacedEvent);
             log.info("Sent the details of new order {} to 'order-placed' queue.", orderPlacedEvent);
 
         } else {

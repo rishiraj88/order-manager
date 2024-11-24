@@ -8,7 +8,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 // stub for remote service
 public class InventoryClient {
     public static void stubInventoryCheck(String skuCode, Integer quantityForQuery) {
-        stubFor(get(urlEqualTo("/api/inventory?skuCode=" + skuCode + "&quantityForQuery=" + quantityForQuery)).willReturn(aResponse()
+        stubFor(get(urlEqualTo("/api/v1/inventory?skuCode=" + skuCode + "&quantityForQuery=" + quantityForQuery)).willReturn(aResponse()
                 .withStatus(200)
                 .withHeader("Content-Type", "application/json")
                 .withBody("true")));
