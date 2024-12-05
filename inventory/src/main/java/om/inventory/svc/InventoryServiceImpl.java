@@ -14,7 +14,7 @@ public class InventoryServiceImpl implements IInventoryService {
         if (quantityToCheck > 0) {
             boolean available = inventoryRepo.existsByItemSkuCodeAndQuantityInStockIsGreaterThanEqual(itemSkuCode, quantityToCheck);
             if(available)
-                log.info("SUCCESS: The requested quantity of " + itemSkuCode + " is available for preparing an order.");
+                log.info("SUCCESS: The requested quantity of " + itemSkuCode + " is available for preparing the requested order.");
             else
                 log.info("FAILURE: The product SKU " + itemSkuCode + " is out of stock.");
             return available;
