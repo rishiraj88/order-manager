@@ -9,9 +9,9 @@ This project essentially showcases how the components of a distributed applicati
 - Testcontainers for automated API testing and Contract testing with Rest-Assured
 - Container orchestration (deployment YAML for Kubernetes to be added soon)
 
-## Order management APIs-
+## Order management APIs
 - built with Spring Boot 3,
-- tested with TestContainers and Rest-Assured!
+- tested with TestContainers and Rest-Assured.
 
 ## This application has three main business components, implemented as Microservices:
 - Product
