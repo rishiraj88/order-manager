@@ -31,11 +31,12 @@ class ProductApplicationTests {
     void shouldAddProduct() {
         String requestBody = """
                 {
-                "name":"mobile",\s
-                "desc":"details",\s
+                "name":"affordable mobile phone",\s
+                "desc":"technical details",\s
+                "skuCode":"DIGI1001MPHO",\s
                 "pricePerItem":120.80
                 }
                 """;
-        RestAssured.given().contentType("application/json").body(requestBody).when().post("/api/v1/products").then().log().all().statusCode(201).body("id", Matchers.notNullValue()).body("name", Matchers.equalTo("mobile")).body("desc", Matchers.equalTo("details")).body("pricePerItem", Matchers.is(120.80f));
+        RestAssured.given().contentType("application/json").body(requestBody).when().post("/api/v1/products").then().log().all().statusCode(201).body("id", Matchers.notNullValue()).body("name", Matchers.equalTo("affordable mobile phone")).body("desc", Matchers.equalTo("technical details")).body("pricePerItem", Matchers.is(120.80f));
     }
 }

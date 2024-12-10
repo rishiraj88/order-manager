@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static om.product.util.MapperUtil.mapProductEntityToProductResp;
+import static om.product.util.MapperUtil.mapToResponse;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -24,12 +24,12 @@ public class ProductServiceImpl implements IProductService {
         Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItem(productReq.pricePerItem()).build();
         productRepo.save(newProduct);
         log.info("New product has been added with id: {}", newProduct.getId());
-        return mapProductEntityToProductResp(newProduct);
+        return mapToResponse(newProduct);
     }
 
     @Override
     public List<ProductResp> getAllProducts() {
         List<Product> productList = productRepo.findAll();
-        return productList.stream().map(prod -> mapProductEntityToProductResp(prod)).collect(Collectors.toList());
+        return productList.stream().map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
 }

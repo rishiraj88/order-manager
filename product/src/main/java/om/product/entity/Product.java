@@ -19,7 +19,7 @@ public class Product {
     private String id;
     private String name;
     private String desc;
-    private String skuCode;
+    private String skuCode; // Category may be inferred out of SKU code
     private BigDecimal pricePerItem;
     //vendors, variants may be added optionally
 }
