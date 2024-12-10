@@ -21,5 +21,5 @@ public class Product {
     private String desc;
     private String skuCode;
     private BigDecimal pricePerItem;
-    //vendors, variants
+    //vendors, variants may be added optionally
 }

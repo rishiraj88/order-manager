@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static om.product.util.MapperUtil.mapProductEntityToProductResp;
+
 @RequiredArgsConstructor
 @Slf4j
 @Service
@@ -29,9 +31,5 @@ public class ProductServiceImpl implements IProductService {
     public List<ProductResp> getAllProducts() {
         List<Product> productList = productRepo.findAll();
         return productList.stream().map(prod -> mapProductEntityToProductResp(prod)).collect(Collectors.toList());
-    }
-
-    private ProductResp mapProductEntityToProductResp(Product product) {
-        return ProductResp.builder().id(product.getId()).name(product.getName()).desc(product.getDesc()).skuCode(product.getSkuCode()).pricePerItem(product.getPricePerItem()).build();
     }
 }

@@ -26,12 +26,14 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // Smarter way to add Status Code to Response
     public ProductResp addProduct(@RequestBody ProductReq productReq) {
+        /*
+        //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         try {
             Thread.sleep(6000);
         } catch (InterruptedException e) {
             log.debug(e.getMessage());
             throw new RuntimeException(e);
-        }
+        }*/
         return productService.addProduct(productReq);
     }
 
