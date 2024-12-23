@@ -34,6 +34,12 @@ public class OrderServiceImpl implements IOrderService {
                     .build();
             orderRepo.save(newOrder);
             // Send success message to message queue (with Kafka tooling)
+            /* The following services among others may consume the message out of the queue for respective processes:
+            :: Analytics service,
+            :: Dashboard service, and
+            :: Fraud detection service
+            :: Invoicing and Taxation service.
+            */
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(newOrder.getOrderNumber(),orderReq.userDetails().emailAddress());
             log.info("Sending the details of new order {} to 'order-placed' queue...",orderPlacedEvent);
             kafkaTemplate.send(Constants.orderPlacedQueueName,orderPlacedEvent);
