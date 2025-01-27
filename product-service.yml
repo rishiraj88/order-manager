@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product
+spec:
+  type: ClusterIP
+  ports:
+  - targetPort: 6379
+    port: 6379
+  selector:
+    app: product
+    end: backend

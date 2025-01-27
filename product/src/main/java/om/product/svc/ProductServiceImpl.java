@@ -6,6 +6,7 @@ import om.product.dao.ProductRepo;
 import om.product.dto.ProductReq;
 import om.product.dto.ProductResp;
 import om.product.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import static om.product.util.MapperUtil.mapToResponse;
 @Slf4j
 @Service
 public class ProductServiceImpl implements IProductService {
+    @Autowired
     private final ProductRepo productRepo;
 
     @Override

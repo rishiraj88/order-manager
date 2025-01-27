@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: product
+    end: backend
+spec:
+  containers:
+  - name: product-cnt
+    image: product
