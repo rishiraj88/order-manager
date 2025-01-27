@@ -1,0 +1,44 @@
+# Build
+FROM maven:3.6.3-jdk-8 AS BUILD
+WORKDIR /app
+COPY ./src .
+COPY ./pom.xml .
+RUN mvn clean package
+
+# Deploy
+FROM dvmarques/openjdk-17-jdk-alpine-with-timezone AS Deploy
+WORKDIR /app
+COPY --from=BUILD /app/target/product-0.0.1-SNAPSHOT.jar /app/
+EXPOSE 8080
+ENTRYPOINT [ "java", "-jar","target/product-0.0.1-SNAPSHOT.jar" ]
+
+#
+FROM mongo:7.0.5
+
+ENV	MONGO_INITDB_ROOT_USERNAME: root \
+	MONGO_INITDB_ROOT_PASSWORD: root \
+	MONGO_INITDB_DATABASE: productdb \
+	JAVA_HOME=/usr/lib/jvm/java-21-openjdk \
+	MAVEN_HOME=/usr/share/maven
+
+RUN apk add --no-cache openjdk21 maven
+ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+
+LABEL maintainer="Rishi Raj"
+LABEL version="1.0"
+LABEL description="Dockerfile for Order-Manager::Product with JDK 21 and MongoDB"
+ 
+RUN mkdir -p /home/product
+
+COPY ./target/product-0.0.1-SNAPSHOT.jar /home/product/
+
+WORKDIR /home/product/
+
+CMD ["java", "-jar","product-0.0.1-SNAPSHOT.jar"]
+
+#volumes:
+ #     - ./data:/data/db
+
+  #  ports:
+   #   - "8080:8080"
+
