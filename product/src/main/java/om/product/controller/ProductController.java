@@ -1,10 +1,10 @@
-package om.product.ctrlr;
+package om.product.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import om.product.dto.ProductReq;
 import om.product.dto.ProductResp;
-import om.product.svc.IProductService;
+import om.product.service.IProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

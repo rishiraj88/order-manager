@@ -20,6 +20,7 @@ public class Product {
     private String name;
     private String desc;
     private String skuCode; // Category may be inferred out of SKU code
+    private BigDecimal pricePerItem; //vendors, variants may be added optionally
 
     public String getId() {
         return id;
@@ -60,7 +61,4 @@ public class Product {
     public void setPricePerItem(BigDecimal pricePerItem) {
         this.pricePerItem = pricePerItem;
     }
-
-    private BigDecimal pricePerItem;
-    //vendors, variants may be added optionally
 }

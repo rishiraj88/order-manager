@@ -11,7 +11,7 @@ public class OpenApiSpecsConfig {
     @Bean
     public OpenAPI productOasApi() {
         return new OpenAPI().info(new Info().title("Product API documentation for Order Manager").description("""
-                This application has three main components, exposing their services as RESTful APIs:
+                This application has three main microservices, exposing their interfaces as RESTful APIs:
                                 
                 > Product
                                 
@@ -19,7 +19,7 @@ public class OpenApiSpecsConfig {
                                 
                 > Inventory
 
-                Product module is for adding, listing, modifying and removing products. Its API has the base URI: "/api/v1/products".
+                Product microservice is for adding, listing, modifying and removing products. Its API has the base URI: "/api/v1/products".
                 """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
     }
 }

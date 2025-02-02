@@ -1,4 +1,4 @@
-package om.order.svc;
+package om.order.service;
 
 import om.order.dto.OrderReq;
 

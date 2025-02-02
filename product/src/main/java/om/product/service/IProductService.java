@@ -1,4 +1,4 @@
-package om.product.svc;
+package om.product.service;
 
 import om.product.dto.ProductReq;
 import om.product.dto.ProductResp;

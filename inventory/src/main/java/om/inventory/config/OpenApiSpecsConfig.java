@@ -1,4 +1,4 @@
-package om.inventory;
+package om.inventory.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -11,7 +11,7 @@ public class OpenApiSpecsConfig {
     @Bean
     public OpenAPI InventoryOasApi() {
         return new OpenAPI().info(new Info().title("Inventory API documentation for Order Manager").description("""
-                This application has three main components, exposing their services with RESTful Web Services:
+                This application has three main microservices, exposing their interfaces as RESTful APIs:
                                 
                 > Product
                                 
@@ -19,7 +19,7 @@ public class OpenApiSpecsConfig {
                                 
                 > Inventory
 
-                Inventory module is for checking whether there is enough quantity available in inventory stock in order to place a new item order. Its API has its base URI as "/api/inventory".
+                Inventory microservice is for checking whether there is enough quantity available in inventory stock in order to place a new item order. Its API has its base URI as "/api/inventory".
                 """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
     }
 }
