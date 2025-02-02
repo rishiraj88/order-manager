@@ -1,10 +1,10 @@
-package om.order.ctrlr;
+package om.order.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import om.order.config.Constants;
 import om.order.dto.OrderReq;
-import om.order.svc.IOrderService;
+import om.order.service.IOrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

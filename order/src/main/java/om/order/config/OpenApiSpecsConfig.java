@@ -15,7 +15,7 @@ public class OpenApiSpecsConfig {
     @Bean
     public OpenAPI OrderOasApi() {
         return new OpenAPI().info(new Info().title("Order API documentation for Order Manager").description("""
-                The application Order Manager has three main components:
+                The application Order Manager has three main microservices, exposing their interfaces as RESTful APIs:
                                 
                 > Product
                                 
@@ -23,7 +23,7 @@ public class OpenApiSpecsConfig {
                                 
                 > Inventory
 
-                Order module is for creating, listing, modifying and removing orders and order details. Its API has the base URI as "/api/orders".
+                Order microservice is for creating, listing, modifying and removing orders and order details. Its API has the base URI as "/api/v1/orders".
                 """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
     }
 }

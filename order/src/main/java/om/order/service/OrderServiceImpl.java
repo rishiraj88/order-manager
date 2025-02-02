@@ -1,4 +1,4 @@
-package om.order.svc;
+package om.order.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

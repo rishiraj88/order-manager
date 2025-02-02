@@ -1,4 +1,4 @@
-package om.order.svc;
+package om.order.service;
 
 public class InventoryShortOfStockException extends RuntimeException {
     public InventoryShortOfStockException(String skuCode, Integer quantity) {

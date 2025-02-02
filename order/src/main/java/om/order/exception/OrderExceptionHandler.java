@@ -1,6 +1,6 @@
 package om.order.exception;
 
-import om.order.svc.InventoryShortOfStockException;
+import om.order.service.InventoryShortOfStockException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package om.product.svc;
+package om.product.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
