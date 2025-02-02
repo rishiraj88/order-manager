@@ -1,8 +1,8 @@
-# Order Module in E-Commerce App (order-manager)
+# Order Manager(E-Commerce App)
 This project essentially showcases how the components of a distributed application can be implementated using numerous web technologies of modern age, integrated together for asynchronous communication and for synchronous communications both, and how they work together to solve real-world business problems. Some of the technologies used in this project, which deserve special mention, include:
-- Spring Boot 3.2
+- Spring Boot 3.2, Java 21
 - Keycloak for User Account Manager, Authn and Authz [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
-- Modern strategy implemented for Spring Security
+- Modern strategy implemented for Spring Security (as in Spring Boot 3)
 - Use of RestClient (Spring Boot 3.2 implementation) instead of FeignClient (Spring Boot 2.7 style)
 - Kafka for asynchronous communication (such as notification service) across web services using message queues
 - Docker Compose [To be replaced with Kubernetesfor auto-scaling]
