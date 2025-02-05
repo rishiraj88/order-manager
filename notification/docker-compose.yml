@@ -1,0 +1,12 @@
+version: '4'
+services:
+  kafka-consumer:
+    #TODO to declare
+
+  notification:
+    build: ./notification
+    container_name: notification
+    ports:
+      - "9200:9200"
+    depends_on:
+      - kafka-consumer
