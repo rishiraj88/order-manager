@@ -62,3 +62,12 @@ services:
       KAFKA_CLUSTERS_BOOTSTRAPPSERVERS: broker:29092
       KAFKA_CLUSTERS_SCHEMAREGISTRY: http://schema-registry:8081
       DYNAMIC_CONFIG-ENABLED: 'true'
+
+  order:
+    build: .
+    container_name: order
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - scheme-registry

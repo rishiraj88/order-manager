@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: product
   labels:
     app: product
-    end: backend
+    subnet: backend
 spec:
   containers:
   - name: product-cnt

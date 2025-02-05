@@ -11,8 +11,9 @@ services:
       MONGO_INITDB_DATABASE: productdb
     volumes:
       - ./data:/data/db
+
   product:
-    image: .
+    build: .
     container_name: product
     ports:
       - "8080:8080"

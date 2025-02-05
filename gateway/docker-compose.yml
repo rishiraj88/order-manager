@@ -1,5 +1,16 @@
 version: '4'
 services:
+  auth-keycloak-mysql:
+    image: mysql:8.3.0
+    container_name: auth-keycloak-mysql
+    environment:
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data/auth_keycloak_mysql_data:/var/lib/mysql
+
   auth-keycloak:
     image: quay.io/keycloak/keycloak:24.0.1
     container_name: auth-keycloak
@@ -18,13 +29,11 @@ services:
       - ./docker/keycloak/realms/:/opt/keycloak/data/import/
     depends_on:
       - auth-keycloak-mysql
-  auth-keycloak-mysql:
-    image: mysql:8.3.0
-    container_name: auth-keycloak-mysql
-    environment:
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./data/auth_keycloak_mysql_data:/var/lib/mysql
+
+  gateway:
+    build: .
+    container_name: gateway
+    ports:
+      - "9000:9000"
+    depends_on:
+      - auth-keycloak

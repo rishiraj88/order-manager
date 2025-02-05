@@ -10,3 +10,11 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  inventory:
+    build: .
+    container_name: inventory
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
