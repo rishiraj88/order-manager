@@ -15,6 +15,7 @@
     <description>product module for order management APIs, built with Spring Boot</description>
     <properties>
         <java.version>21</java.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
     <dependencies>
         <dependency>
