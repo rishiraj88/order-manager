@@ -30,7 +30,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       shell: bash
-      working-directory: ./app
+      working-directory: ./order
       run: mvn clean install
       # run: mvn -B package --file pom.xml
 
