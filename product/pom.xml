@@ -10,7 +10,7 @@
     </parent>
     <groupId>om</groupId>
     <artifactId>product</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>product</name>
     <description>product module for order management APIs, built with Spring Boot</description>
     <properties>
@@ -70,7 +70,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!--version>1.18.36</version-->
             <scope>provided</scope>
         </dependency>
 
