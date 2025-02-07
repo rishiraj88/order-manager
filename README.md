@@ -1,5 +1,5 @@
-# Order Manager(E-Commerce App)
-- This project essentially showcases the real-world problems facing most of the businesses today can be simply attended to with a distributed system. Such a system is implementated using modern web technologies, integrated together with asynchronous and synchronous communication.
+# Order Manager (E-Commerce Platform)
+- This project essentially showcases the real-world problems facing most of the businesses today can be simply attended to with a distributed system. Such a system is implemented using modern web technologies, integrated together with asynchronous and synchronous communication.
 - Some of the technologies used in this project are:
 - Spring Boot 3.2, Java 21
 - Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
