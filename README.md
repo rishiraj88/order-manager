@@ -1,17 +1,19 @@
 # Order Manager(E-Commerce App)
-This project essentially showcases how the components of a distributed application can be implementated using numerous web technologies of modern age, integrated together for asynchronous communication and for synchronous communications both, and how they work together to solve real-world business problems. Some of the technologies used in this project, which deserve special mention, include:
+- This project essentially showcases the real-world problems facing most of the businesses today can be simply attended to with a distributed system. Such a system is implementated using modern web technologies, integrated together with asynchronous and synchronous communication.
+- Some of the technologies used in this project are:
 - Spring Boot 3.2, Java 21
-- Keycloak for User Account Manager, Authn and Authz [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
-- Modern strategy implemented for Spring Security (as in Spring Boot 3)
-- Use of RestClient (Spring Boot 3.2 implementation) instead of FeignClient (Spring Boot 2.7 style)
-- Kafka for asynchronous communication (such as notification service) across web services using message queues
-- Docker Compose [To be replaced with Kubernetesfor auto-scaling]
-- Testcontainers for automated API testing and Contract testing with Rest-Assured
-- Container orchestration (deployment YAML for Kubernetes to be added soon)
+- Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
+- Modern strategy for Spring Security implementation (as in Spring Boot 3, Spring 6)
+- Use of WebClient and RestClient (Spring Boot 3.2) and not of FeignClient (Spring Boot 2.7 style)
+- Kafka for asynchronous communication (as in Notification app) across web services using message queues (MQ)
+- Docker-Compose for containerization of individual apps
+- Kubernetes for clustering and auto-scaling
+- Testcontainers for automated API Testing and Contract Testing, with Rest-Assured
+- Container orchestration (WIP: adding Deployment YAML for Kubernetes)
 
-## Order management APIs
-- built with Spring Boot 3,
-- tested with TestContainers and Rest-Assured.
+## Salient Use of Technological Tools
+- Multi-stage Dockerfile for Product app
+- Declarations of YAML for Kubernetes cluster
 
 ## This application has three main business components, implemented as Microservices:
 - Product
@@ -27,7 +29,11 @@ This project essentially showcases how the components of a distributed applicati
 
 And the result is: unmatched and flawless user experience. :) 
 
+
 ![realm-creation-success-in-keycloak-admin](./assets/gateway/08-realm-creation-success-in-keycloak-admin.png)
+
+
+Screenshots will be updated for the year 2025. However, those out of 2024 are quite impressive and comprehensible!
 
 ## Tech Tools Used for Development
 - Spring Boot, with Spring Web
@@ -46,8 +52,6 @@ And the result is: unmatched and flawless user experience. :)
 - Lombok (for boilerplate code injection)
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
 - Resilient4j v2 for Fault Tolerance
-
-### The Development work to resumes in full swing today. A long break until now had got inevitable.
 
 ## General Note
 I enjoy the following approach for inception, enhancement and fortification of projects:
@@ -70,7 +74,7 @@ Suggestions and feedback comments from readers are always welcomed with love.
 This module is for adding, listing, modifying and removing products and product details.
 
 ### API Base
-The product API has its base at "/api/products".
+The product API has its base at "/api/v1/products".
 
 ### Database Details
 MongoDB engine powers the product module. The data store is well expected to be enriched with newer fields very frequently, so NoSQL database technology is used for this.
@@ -101,10 +105,10 @@ A number of test cases are already provided in the **Tests** class. For POST req
 "pricePerItem":120.80
 }</pre>
 
-#### Testing Done on 11-Apr-2024
+#### Testing Done in Apr-2024
 ![Product module: automated testing](./assets/automated-testing-of-product_20240411.png)
 
-#### Testing Done on 02-May-2024
+#### Testing Done in May-2024
 ![Product module: automated testing](./assets/automated-testing-of-product_20240502.png)
 
 
@@ -112,7 +116,7 @@ A number of test cases are already provided in the **Tests** class. For POST req
 This module is for creating, listing, modifying and removing orders and order details.
 
 ### API Base
-The order API has its base at "/api/orders".
+The order API has its base at "/api/v1/orders".
 
 ### Database Details
 MySQL engine powers the order module. The data store is expected to be structured with infrequent field additions, modifications and removals. So, SQL database (RDBMS) technology is used for this.
@@ -126,7 +130,7 @@ The module for Product has been set up with the following dependencies, specifie
 - Flyway
 - Testcontainers
 - Rest-Assured
-- Spring OpenFeign
+- RestClient (Spring Boot 3)
 - WireMock for using stubs during automated API testing
 - Swagger (for OpenAPI-based API documentation)
 
@@ -185,7 +189,7 @@ The module for Product has been set up with the following dependencies, specifie
 - Flyway
 - Testcontainers
 - Rest-Assured
-- Spring OpenFeign
+- RestClient (Spring Boot 3)
 - Swagger (for OpenAPI-based API documentation)
 
 ![Spring Boot project dependencies](./assets/spring-init-for-inventory.png)

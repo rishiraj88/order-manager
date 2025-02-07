@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/products") //TODO add API versioning
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private final IProductService productService;
 
