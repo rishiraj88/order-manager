@@ -1,4 +1,4 @@
 package om.inventory.svc;
 
-public interface IInventoryService {public boolean isInStock(String itemSkuCode,Integer quantityToCheck);
+public interface IInventoryService {public boolean isItemInStock(String itemSkuCode,Integer quantityToCheck);
 }

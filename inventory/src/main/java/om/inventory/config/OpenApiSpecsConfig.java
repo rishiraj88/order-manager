@@ -19,7 +19,7 @@ public class OpenApiSpecsConfig {
                                 
                 > Inventory
 
-                Inventory microservice is for checking whether there is enough quantity available in inventory stock in order to place a new item order. Its API has its base URI as "/api/inventory".
-                """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
+                Inventory microservice is for checking whether there is enough quantity of specified items available in inventory stock so as to fulfill a new order. Its API has the base URI as "/api/v1/inventory".
+                """).version("v1.0.1").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
     }
 }
