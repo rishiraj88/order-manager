@@ -13,12 +13,12 @@ RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
 LABEL version="1.0"
-LABEL description="Dockerfile for Order-Manager::Product with JDK 21 and MongoDB"
+LABEL description="Dockerfile for Order-Manager::Order with JDK 21, Confluent Kafka and MySQL"
 
-COPY --from=build /app/target/product-1.0.1-SNAPSHOT.jar /app/target/
+COPY --from=build /app/target/order-1.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080
-#ENTRYPOINT [ "java", "-jar","target/product-1.0.1-SNAPSHOT.jar" ]
-CMD [ "java", "-jar","target/product-1.0.1-SNAPSHOT.jar" ]
+#ENTRYPOINT [ "java", "-jar","target/order-1.0.1-SNAPSHOT.jar" ]
+CMD [ "java", "-jar","target/order-1.0.1-SNAPSHOT.jar" ]
 
-
-VOLUME ./data:/data/db
+VOLUME ./mysql:/var/lib/mysql
+VOLUME ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

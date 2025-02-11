@@ -10,11 +10,12 @@
     </parent>
     <groupId>om</groupId>
     <artifactId>inventory</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>inventory</name>
     <description>order module for order management APIs, built with Spring Boot</description>
     <properties>
         <java.version>21</java.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
     <dependencies>
         <dependency>
