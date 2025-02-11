@@ -14,7 +14,7 @@ public abstract class InventoryClient {
     @GetExchange("/api/inventory")
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallbackMethod")
     @Retry(name = "inventory")
-    public abstract boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery);
+    public abstract boolean isItemInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery);
 
      boolean fallbackMethod(String skuCode, Integer quantityForQuery, Throwable throwable) {
         log.info("Sufficient quantity of SKU {} not found in inventory. Reason: {}", skuCode, throwable.getMessage());
