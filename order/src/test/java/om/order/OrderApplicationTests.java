@@ -42,10 +42,9 @@ class OrderApplicationTests {
                 "itemSkuCode":"DE342GES34233111",\s
                 "pricePerItem":130.20,
                 "quantity":3,
-                "userDetails":
-                {                
-                "emailAddress":"rishiraj@emails.co",\s
-                "name":"Rishi Raj",\s
+                "userDetails":{           
+                "emailAddress":"rishiraj@emails.co",
+                "name":"Rishi Raj"
                 }
                 }""";
 
