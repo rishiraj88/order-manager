@@ -10,7 +10,7 @@ import org.springframework.web.service.annotation.GetExchange;
  * to replicate the API of Inventory microservice
  */
 public interface InventoryClient {
-    @GetExchange("/api/inventory")
+    @GetExchange("/api/v1/inventory")
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallbackMethod")
     @Retry(name = "inventory")
     public abstract boolean isItemInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery);
