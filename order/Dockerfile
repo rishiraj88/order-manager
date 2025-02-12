@@ -4,7 +4,7 @@ FROM maven:3.9.9-amazoncorretto-21-alpine AS build
 WORKDIR /app
 COPY ./src .
 COPY ./pom.xml .
-RUN mvn clean package
+RUN mvn package
 
 # Deploy
 FROM amazoncorretto:8-alpine3.21-jre AS deploy
