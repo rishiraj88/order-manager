@@ -20,6 +20,6 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.OK)
     public boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery) {
         log.info("Retrieving inventory stock details for the product SKU: "+ skuCode);
-        return inventoryService.isInStock(skuCode, quantityForQuery);
+        return inventoryService.isItemInStock(skuCode, quantityForQuery);
     }
 }

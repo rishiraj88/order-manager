@@ -17,7 +17,6 @@ LABEL description="Dockerfile for Order-Manager::Order with JDK 21, Confluent Ka
 
 COPY --from=build /app/target/order-1.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080
-#ENTRYPOINT [ "java", "-jar","target/order-1.0.1-SNAPSHOT.jar" ]
 CMD [ "java", "-jar","target/order-1.0.1-SNAPSHOT.jar" ]
 
 VOLUME ./mysql:/var/lib/mysql

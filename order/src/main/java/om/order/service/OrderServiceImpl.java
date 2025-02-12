@@ -23,8 +23,8 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public void createOrder(OrderReq orderReq) {
-        if(inventoryClient.isInStock(orderReq.itemSkuCode(),orderReq.quantity())) {
-            log.debug("The requested items are available in inventory.");
+        if(inventoryClient.isItemInStock(orderReq.itemSkuCode(),orderReq.quantity())) {
+            log.debug("The requested item quantity is available in inventory.");
             Order newOrder = Order.builder()
                     .id(UUID.randomUUID().toString())
                     .orderNumber(orderReq.orderNumber())
@@ -36,14 +36,14 @@ public class OrderServiceImpl implements IOrderService {
             // Send success message to message queue (with Kafka tooling)
             /* The following services among others may consume the message out of the queue for respective processes:
             :: Analytics service,
-            :: Dashboard service, and
-            :: Fraud detection service
-            :: Invoicing and Taxation service.
+            :: Dashboard service,
+            :: Fraud detection service,  and
+            :: Invoicing & Taxation service.
             */
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(newOrder.getOrderNumber(),orderReq.userDetails().emailAddress());
-            log.info("Sending the details of new order {} to 'order-placed' queue...",orderPlacedEvent);
+            log.info("Placing the details of new order {} into the queue: 'order-placed'...",orderPlacedEvent);
             kafkaTemplate.send(Constants.orderPlacedQueueName,orderPlacedEvent);
-            log.info("Sent the details of new order {} to 'order-placed' queue.", orderPlacedEvent);
+            log.info("Placed the details of new order {} into the queue: 'order-placed'.", orderPlacedEvent);
 
         } else {
             throw new InventoryShortOfStockException(orderReq.itemSkuCode(), orderReq.quantity());

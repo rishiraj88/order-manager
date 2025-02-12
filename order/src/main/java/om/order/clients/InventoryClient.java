@@ -9,15 +9,13 @@ import org.springframework.web.service.annotation.GetExchange;
 /**
  * to replicate the API of Inventory microservice
  */
-@Slf4j
-public abstract class InventoryClient {
-    @GetExchange("/api/inventory")
+public interface InventoryClient {
+    @GetExchange("/api/v1/inventory")
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallbackMethod")
     @Retry(name = "inventory")
-    public abstract boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery);
+    public abstract boolean isItemInStock(@RequestParam String skuCode, @RequestParam Integer quantityForQuery);
 
-     boolean fallbackMethod(String skuCode, Integer quantityForQuery, Throwable throwable) {
-        log.info("Sufficient quantity of SKU {} not found in inventory. Reason: {}", skuCode, throwable.getMessage());
+    default boolean fallbackMethod(String skuCode, Integer quantityForQuery, Throwable throwable) {
         return false;
     }
 }

@@ -17,7 +17,6 @@ LABEL description="Dockerfile for Order-Manager::Inventory with JDK 21 and MySQL
 
 COPY --from=build /app/target/inventory-1.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080
-#ENTRYPOINT [ "java", "-jar","target/inventory-1.0.1-SNAPSHOT.jar" ]
 CMD [ "java", "-jar","target/inventory-1.0.1-SNAPSHOT.jar" ]
 
 VOLUME ./mysql:/var/lib/mysql
