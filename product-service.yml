@@ -7,7 +7,7 @@ spec:
   ports:
   - targetPort: 8080
     port: 8080 #port for API, with 'name' of service
-    NodePort: 8080 #only for NodePort service type
+    nodePort: 32080 #only for NodePort service type
   selector: #pod definition
     app: om-product
     subnet: backend
