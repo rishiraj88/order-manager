@@ -61,7 +61,18 @@ I enjoy the following approach for inception, enhancement and fortification of p
 4. Alongside work, in gradual steps, towards making the deliverables (distributables) compact in file size and deploy them in replicas (clusters).
 
 
-Suggestions and feedback comments from readers are always welcomed with love.
+Suggestions and feedback comments from readers are always welcomed with love. Some screenshots from one session on cluster management and orchestration are here:
+- ![01-kubectl-pods-created](./assets/upload20250215/01-kubectl-pods-created.png)
+- ![02-docker-gui-pods](./assets/upload20250215/02-docker-gui-pods.png)
+- ![03-replicas-in-replicaset](./assets/upload20250215/03-replicas-in-replicaset.png)
+- ![04-docker-gui-scaled-replicaset](./assets/upload20250215/04-docker-gui-scaled-replicaset.png)
+- ![05-kubectl-scaling-replicaset](./assets/upload20250215/05-kubectl-scaling-replicaset.png)
+- ![06-kubectl-deployment-created](./assets/upload20250215/06-kubectl-deployment-created.png)
+- ![07-kubectl-service-created](./assets/upload20250215/07-kubectl-service-created.png)
+- ![08-kubectl-other-deployment-created](./assets/upload20250215/08-kubectl-other-deployment-created.png)
+- ![09-kubectl-experimentation](./assets/upload20250215/09-kubectl-experimentation.png)
+- ![10-docker-gui-after-cleanup](./assets/upload20250215/10-docker-gui-after-cleanup.png)
+
 
 ## Modules
 - Product
