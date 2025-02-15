@@ -1,21 +1,26 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name:
+  name: om-product-rs
   labels:
-    app: product
-    end: backend
+    app: om-product
+    subnet: backend
 spec:
   template:
     metadata:
-      name: nginx
+      name: product
       labels:
         app: product
-        end: backend
+        subnet: backend
     spec:
       containers:
-      - name: product-cnt
-        image: product
-  replicas: 3
-  matchLabels:
-    end: backend
+      - name: mongodb
+        image: mongo:7.0.5
+      - name: product
+        image: i50729/om-product
+  replicas: 1
+  selector:
+    matchLabels:
+          subnet: backend
+#kubectl create -f product-replicaset.yml
+#kubectl get replicasets
