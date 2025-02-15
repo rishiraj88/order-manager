@@ -13,11 +13,8 @@ RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
 LABEL version="1.0"
-LABEL description="Dockerfile for Order-Manager::Order with JDK 21, Confluent Kafka and MySQL"
+LABEL description="Dockerfile for Order-Manager::Gateway with JDK 21 and keycloak"
 
-COPY --from=build /app/target/order-1.0.1-SNAPSHOT.jar /app/target/
-EXPOSE 8080
-CMD [ "java", "-jar","target/order-1.0.1-SNAPSHOT.jar" ]
-
-VOLUME ./mysql:/var/lib/mysql
-VOLUME ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+COPY --from=build /app/target/gateway-1.0.1-SNAPSHOT.jar /app/target/
+EXPOSE 9000
+CMD [ "java", "-jar","target/gateway-1.0.1-SNAPSHOT.jar" ]

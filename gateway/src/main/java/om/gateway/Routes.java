@@ -18,47 +18,59 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> productServiceRoute() {
         return GatewayRouterFunctions.route("product_msvc")
-                .route(RequestPredicates.path("/api/products"), HandlerFunctions.http("http://localhost:8080"))
-                .filter(CircuitBreakerFilterFunctions.circuitBreaker("productMsvcCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .build();
+                .route(RequestPredicates.path("/api/v1/products")
+                        , HandlerFunctions.http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("productMsvcCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute"))).build();
     }
     @Bean
     public RouterFunction<ServerResponse> orderServiceRoute() {
-        return GatewayRouterFunctions.route("order_msvc").route(RequestPredicates.path("/api/orders"), HandlerFunctions.http("http://localhost:8081"))    .filter(CircuitBreakerFilterFunctions.circuitBreaker("orderMsvcCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .build();
+        return GatewayRouterFunctions.route("order_msvc")
+                .route(RequestPredicates.path("/api/v1/orders")
+                        , HandlerFunctions.http("http://localhost:8081"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("orderMsvcCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute"))).build();
     }
     @Bean
     public RouterFunction<ServerResponse> inventoryServiceRoute() {
-        return GatewayRouterFunctions.route("inventory_msvc").route(RequestPredicates.path("/api/inventory"), HandlerFunctions.http("http://localhost:8082"))    .filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryMsvcCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .build();
+        return GatewayRouterFunctions.route("inventory_msvc")
+                .route(RequestPredicates.path("/api/v1/inventory")
+                        , HandlerFunctions.http("http://localhost:8082"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryMsvcCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute"))).build();
     }
 
     @Bean
     public RouterFunction<ServerResponse> productDocumentationRoute() {
         return GatewayRouterFunctions.route("product-doc")
-                .route(RequestPredicates.path("/gw/product/v1/doc"),HandlerFunctions.http("http://localhost:8080"))    .filter(CircuitBreakerFilterFunctions.circuitBreaker("productDocCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .filter(FilterFunctions.setPath("/doc/json"))
-                .build();
+                .route(RequestPredicates.path("/gw/product/v1/doc")
+                        ,HandlerFunctions.http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("productDocCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute")))
+                .filter(FilterFunctions.setPath("/doc/json")).build();
     }
 
     @Bean
     public RouterFunction<ServerResponse> orderDocumentationRoute() {
         return GatewayRouterFunctions.route("order-doc")
-                .route(RequestPredicates.path("/gw/order/v1/doc"),HandlerFunctions.http("http://localhost:8081"))    .filter(CircuitBreakerFilterFunctions.circuitBreaker("orderDocCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .filter(FilterFunctions.setPath("/doc/json"))
-                .build();
+                .route(RequestPredicates.path("/gw/order/v1/doc")
+                        ,HandlerFunctions.http("http://localhost:8081")).filter(CircuitBreakerFilterFunctions.circuitBreaker("orderDocCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute")))
+                .filter(FilterFunctions.setPath("/doc/json")).build();
     }
 
     @Bean
     public RouterFunction<ServerResponse> inventoryDocumentationRoute() {
         return GatewayRouterFunctions.route("inventory-doc")
-                .route(RequestPredicates.path("/gw/inventory/v1/doc"),HandlerFunctions.http("http://localhost:8082"))    .filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryDocCircuitBreaker", URI.create("forward:/fallbackRoute")))
-                .filter(FilterFunctions.setPath("/doc/json"))
-                .build();
+                .route(RequestPredicates.path("/gw/inventory/v1/doc")
+                        ,HandlerFunctions.http("http://localhost:8082")).filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryDocCircuitBreaker"
+                        , URI.create("forward:/fallbackRoute")))
+                .filter(FilterFunctions.setPath("/doc/json")).build();
     }
     @Bean
     public RouterFunction<ServerResponse> fallbackRoute(){
         return GatewayRouterFunctions.route("fallbackRoute")
-                .GET("fallbackRoute",request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE).body("Service unavailable right now. Please try again later.")).build();
+                .GET("fallbackRoute",request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
+                        .body("Service unavailable right now. Please try again later.")).build();
     }
 }
