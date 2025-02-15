@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: om-product-depl #shown in listing, also specified in scale command
+  name: om-product-rs #shown in listing, also specified in scale command
   labels:
     app: om-product
     subnet: backend
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo:7.0.5
+        image: mongo:7.0.5        
       - name: om-product
         image: i50729/om-product
   replicas: 1
@@ -31,4 +31,4 @@ spec:
 ##kubectl apply -f depl-desc.yml -- after changing container name or image tag
 ##kubectl set image deployment/prod-depl-name mongodb=mongo:8.0.1
 
-#kubectl delete replicaset rs-name
+#kubectl delete deployment depl-name
