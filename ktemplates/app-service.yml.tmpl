@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: om-product-svc #hostname for API, with 'port'
 spec:
-  type: NodePort # for internal-only service, use ClusterIP
+  type: ClusterIP #NodePort elsewise with NodePort under ports
   ports:
   - targetPort: 8080
     port: 8080 #port for API, with 'name' of service
-    NodePort: 8080 #only for NodePort service type
   selector: #pod definition
     app: om-product
     subnet: backend

@@ -8,20 +8,20 @@ metadata:
 spec:
   template:
     metadata:
-      name: om-product
+      name: product
       labels:
-        app: om-product
+        app: product
         subnet: backend
     spec:
       containers:
       - name: mongodb
         image: mongo:7.0.5
-      - name: om-product
+      - name: product
         image: i50729/om-product
   replicas: 1
   selector:
     matchLabels:
-      subnet: backend
+          subnet: backend
 #kubectl create -f product-deployment.yml
 #kubectl get deployments
 #kubectl get replicasets
