@@ -95,7 +95,7 @@ services:
       - scheme-registry
 
 #Inventory app
-  mysql:
+  mysqldb:
     image: mysql:8.3.0
     container_name: mysql-inv
     environment:
@@ -112,7 +112,7 @@ services:
     ports:
       - "8082:8082"
     depends_on:
-      - mysql
+      - mysqldb
 
 #Notification app
   kafka-consumer:
