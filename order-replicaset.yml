@@ -8,16 +8,22 @@ metadata:
 spec:
   template:
     metadata:
-      name: om-order
+      name: om-order-pod
       labels:
         app: om-order
         subnet: backend
     spec:
       containers:
-      - name: mongodb
-        image: mongo:7.0.5
+      - name: mysql
+        image: mysql:8.3.0
+        env:
+          - MYSQL_ROOT_PASSWORD: mysql
+        ports:
+          - "3306:3306"
+        #volume/claim
       - name: om-order
         image: i50729/om-order
+
   replicas: 1
   selector:
     matchLabels:
