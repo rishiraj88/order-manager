@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-order-rs #shown in listing, also specified in scale command
+  labels:
+    app: om-order
+    subnet: backend
+spec:
+  template:
+    metadata:
+      name: om-order
+      labels:
+        app: om-order
+        subnet: backend
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:7.0.5        
+      - name: om-order
+        image: i50729/om-order
+  replicas: 1
+  selector:
+    matchLabels:
+      subnet: backend
+#kubectl create -f order-deployment.yml
+#kubectl get deployments
+#kubectl get replicasets
+#kubectl get pods
+
+# to update container sepcs
+##kubectl apply -f depl-desc.yml -- after changing container name or image tag
+##kubectl set image deployment/ord-depl-name mongodb=mongo:8.0.1
+
+#kubectl delete deployment depl-name

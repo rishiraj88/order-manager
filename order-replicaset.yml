@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: om-order-rs #shown in listing, also specified in scale command
+  labels:
+    app: om-order
+    subnet: backend
+spec:
+  template:
+    metadata:
+      name: om-order
+      labels:
+        app: om-order
+        subnet: backend
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:7.0.5
+      - name: om-order
+        image: i50729/om-order
+  replicas: 1
+  selector:
+    matchLabels:
+      subnet: backend
+#kubectl create -f order-replicaset.yml
+#kubectl get replicasets
+
+# to update replica count
+##kubectl replace -f rs-desc.yml -- after changing replicas value in file
+##kubectl scale --replicas=2 -f rs-desc.yml
+##kubectl scale --replicas=1 replicaset om-order-rs
+
+#kubectl delete replicaset rs-name
