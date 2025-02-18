@@ -7,7 +7,7 @@ COPY ./pom.xml .
 RUN mvn package
 
 # Deploy
-FROM amazoncorretto:8-alpine3.21-jre AS deploy
+FROM amazoncorretto:21-alpine3.21 AS deploy
 WORKDIR /app
 RUN mkdir target
 

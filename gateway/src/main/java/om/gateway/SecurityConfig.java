@@ -13,6 +13,7 @@ import java.util.List;
 
 @EnableWebSecurity
 public class SecurityConfig {
+    // list the URLs which should be allowed access without any need for authentication
     private final String[] openUrls = {
       "/doc/webui","/doc/json/**","/gw/**","/doc/swagger-ui/index.html","/doc/swagger-ui/**"
     };
