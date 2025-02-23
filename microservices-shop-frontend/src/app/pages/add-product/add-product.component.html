@@ -14,7 +14,7 @@
       />
       <div *ngIf="skuCode?.invalid && (skuCode?.dirty || skuCode?.touched)" class="text-red-500">
         <div *ngIf="skuCode?.errors?.['required']">SKU Code is required.</div>
-        <div *ngIf="skuCode?.errors?.['minlength']">SKU Code must be at least 3 characters long.</div>
+        <div *ngIf="skuCode?.errors?.['minlength']">SKU Code must be at least 8 characters long.</div>
       </div>
     </div>
 
