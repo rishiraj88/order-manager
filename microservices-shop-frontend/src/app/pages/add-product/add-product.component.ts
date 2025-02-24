@@ -14,11 +14,11 @@ import {NgIf} from "@angular/common";
 export class AddProductComponent {
   addProductForm: FormGroup;
   private readonly productService = inject(ProductService);
-  productCreated = false;
+  productAdded = false;
 
   constructor(private fb: FormBuilder) {
     this.addProductForm = this.fb.group({
-      skuCode: ['', [Validators.required]],
+      skuCode: ['', [Validators.required, Validators.minLength(8)]],
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       price: [0, [Validators.required]]
@@ -34,11 +34,11 @@ export class AddProductComponent {
         price: this.addProductForm.get('price')?.value
       }
       this.productService.createProduct(product).subscribe(product => {
-        this.productCreated = true;
+        this.productAdded = true;
         this.addProductForm.reset();
       })
     } else {
-      console.log('Form is not valid');
+      console.log('For.m inputs are invalid.');
     }
   }
 
