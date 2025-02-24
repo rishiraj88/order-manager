@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: om-order-pod
+  labels:
+    app: om-order
+    subnet: backend
+spec:
+  containers:
+  - name: mysql
+    image: mysql:8.3.0
+    env:
+      - MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    #volume/claim
+    
+  - name: om-order
+    image: i50729/om-order
+
+#kubectl apply -f order-pod.yml
+#kubectl get pods

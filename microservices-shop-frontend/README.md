@@ -16,8 +16,3 @@ Home Page
 Add Product page
 
 ![img_1.png](screenshots/img_1.png)
-
-Refer to the detailed guide to setup the application along with Keycloak - https://programmingtechie.com/2024/06/09/spring-boot-microservices-tutorial-part-7/
-
-## Acknowledgement
-🙇I did not created this application. Gratitude to my friend and mentor for the big help here.🙏

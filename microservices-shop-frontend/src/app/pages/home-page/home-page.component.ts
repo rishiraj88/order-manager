@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
     )
   }
 
-  goToCreateProductPage() {
+  goToAddProductPage() {
     this.router.navigateByUrl('/add-product');
   }
 

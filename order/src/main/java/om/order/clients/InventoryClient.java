@@ -8,6 +8,7 @@ import org.springframework.web.service.annotation.GetExchange;
 
 /**
  * to replicate the API of Inventory microservice
+ * @GetExchange("/api/v1/inventory") from Spring 6 is used here, which is an alias to @HttpExchange(method = "GET")
  */
 public interface InventoryClient {
     @GetExchange("/api/v1/inventory")

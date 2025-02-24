@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-order-rs #shown in listing, also specified in scale command
+  labels:
+    app: om-order
+    subnet: backend
+spec:
+  template:
+    metadata:
+      name: om-order-pod
+      labels:
+        app: om-order
+        subnet: backend
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.3.0
+        env:
+          - MYSQL_ROOT_PASSWORD: mysql
+        ports:
+          - "3306:3306"
+        #volume/claim
+      - name: om-order
+        image: i50729/om-order
+
+  replicas: 1
+  selector:
+    matchLabels:
+      subnet: backend
+#kubectl create -f order-deployment.yml
+#kubectl get deployments
+#kubectl get replicasets
+#kubectl get pods
+
+# to update container sepcs
+##kubectl apply -f depl-desc.yml -- after changing container name or image tag
+##kubectl set image deployment/ord-depl-name mongodb=mongo:8.0.1
+
+#kubectl delete deployment depl-name

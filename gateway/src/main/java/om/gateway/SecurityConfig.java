@@ -13,6 +13,7 @@ import java.util.List;
 
 @EnableWebSecurity
 public class SecurityConfig {
+    // list the URLs which should be allowed access without any need for authentication
     private final String[] openUrls = {
       "/doc/webui","/doc/json/**","/gw/**","/doc/swagger-ui/index.html","/doc/swagger-ui/**"
     };
@@ -29,7 +30,7 @@ public class SecurityConfig {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        /* // Kept for temporary development purpose. Will be removed later on.
+        /* // Kept for development purpose. Will be removed later on.
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));

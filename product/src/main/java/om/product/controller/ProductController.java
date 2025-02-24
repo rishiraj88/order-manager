@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,26 +27,28 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // Smarter way to add Status Code to Response
     public ProductResp addProduct(@RequestBody ProductReq productReq) {
-        /*
-        //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            log.debug(e.getMessage());
-            throw new RuntimeException(e);
-        }*/
+        //Developer Note: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
+        if (0 == new Random().nextInt(2)) {
+            try {
+                Thread.sleep(6000);
+            } catch (InterruptedException e) {
+                log.debug(e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
         return productService.addProduct(productReq);
     }
 
     @GetMapping
     public ResponseEntity<List<ProductResp>> getAllProducts() {
-    /* for development and debugging
-    //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }*/
+        //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
+        if (0 == new Random().nextInt(2)) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         // Traditional way to add Status Code Response
         return ResponseEntity.ok(productService.getAllProducts());
     }

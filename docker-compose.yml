@@ -115,7 +115,7 @@ services:
       - mysqldb
 
 #Notification app
-  kafka-consumer:
+#  kafka-consumer:
     #TODO to declare
 
   notification:
