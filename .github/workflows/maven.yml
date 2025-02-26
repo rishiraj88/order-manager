@@ -33,11 +33,10 @@ jobs:
       working-directory: ./inventory
       run: mvn install
       # run: mvn -B package --file pom.xml
-    - name: Build with Maven the app Order
-      shell: bash
-      working-directory: ./order
-      run: mvn install
-      # run: mvn -B package --file pom.xml
+    #- name: Build with Maven the app Order
+     # shell: bash
+     # working-directory: ./order
+      #run: mvn install
     - name: Build with Maven the app Product
       shell: bash
       working-directory: ./product
