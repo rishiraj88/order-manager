@@ -6,12 +6,16 @@ import om.order.clients.InventoryClient;
 import om.order.config.Constants;
 import om.order.dao.OrderRepo;
 import om.order.dto.OrderReq;
+import om.order.dto.OrderResp;
 import om.order.entity.Order;
 import om.order.event.OrderPlacedEvent;
+import org.springframework.data.domain.Pageable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 @Transactional
 @Service @RequiredArgsConstructor @Slf4j
@@ -49,4 +53,8 @@ public class OrderServiceImpl implements IOrderService {
             throw new InventoryShortOfStockException(orderReq.itemSkuCode(), orderReq.quantity());
         }
     }
+
+    @Override
+    public List<OrderResp> getOrders(Pageable pageable){return new ArrayList<>();}
+
 }
