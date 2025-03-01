@@ -36,7 +36,7 @@ public class OrderController {
         return Constants.newOrderPlaced;
     }
 
-    //TODO add getOrders()
+    // getOrders()
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<OrderResp> getOrders(
@@ -49,7 +49,7 @@ public class OrderController {
 
     //TODO add getOrderByOrderNumber()
 
-    //TODO add getOrderByUserEmail()
+    //TODO add getOrdersByUserEmail()
 
-    //TODO add getOrderByUserName()
+    //TODO add getOrdersByUserName()
 }

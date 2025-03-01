@@ -37,6 +37,7 @@ public class OrderServiceImpl implements IOrderService {
                     .quantity(orderReq.quantity())
                     .build();
             orderRepo.save(newOrder);
+
             // Send success message to message queue (with Kafka tooling)
             /* The following services among others may consume the message out of the queue for respective processes:
             :: Analytics service,

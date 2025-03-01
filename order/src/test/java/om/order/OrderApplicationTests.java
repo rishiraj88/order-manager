@@ -66,10 +66,22 @@ class OrderApplicationTests {
     }
 
     @Test
-    void shouldReturnOrders() {
+    void shouldReturnAllOrders() {
 
     }
 
+    @Test
+    void shouldReturnOrdersByUserEmail() {
+
+    }
+    @Test
+    void shouldReturnOrdersByUserEmail() {
+
+    }
+    @Test
+    void shouldReturnOrderByOrderNumber() {
+
+    }
     @Test
     void contextLoads() {
     }
