@@ -20,7 +20,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/products") // one scheme of API versioning is here. Another scheme is in Order app.
 public class ProductController {
     private final IProductService productService;
 

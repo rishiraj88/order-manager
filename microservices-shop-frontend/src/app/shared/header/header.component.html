@@ -2,7 +2,7 @@
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-        Spring Boot Microservices Shop
+        Order Manager -- Demonstration of Spring Cloud, OAuth, Angular and Kubernetes capabilities together.
       </span>
         </a>
 
@@ -10,8 +10,7 @@
             <button
                     id="menu-toggle"
                     type="button"
-                    class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-            >
+                    class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden" >
                 <span class="sr-only">Open main menu</span>
                 <!-- Hamburger icon -->
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,8 +26,7 @@
 
         <div
                 class="w-full md:block md:w-auto hidden"
-                id="mobile-menu"
-        >
+                id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 <li>
                     @if (isAuthenticated) {

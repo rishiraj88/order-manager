@@ -1,3 +1,5 @@
+import { UserDetails } from "./userDetails";
+
 export interface Order {
   id?: number;
   orderNumber?: string;
@@ -7,8 +9,3 @@ export interface Order {
   userDetails: UserDetails
 }
 
-export interface UserDetails {
-  email: string;
-  firstName: string;
-  lastName: string;
-}

@@ -75,7 +75,7 @@ class OrderApplicationTests {
 
     }
     @Test
-    void shouldReturnOrdersByUserEmail() {
+    void shouldReturnOrdersByUserName() {
 
     }
     @Test

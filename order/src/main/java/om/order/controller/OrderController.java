@@ -22,8 +22,8 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController @Slf4j
-@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1")
-
+//@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1") // A different scheme of API versioning
+@RequestMapping(value = "/api/v1/orders")
 public class OrderController {
     private final IOrderService orderService;
 
