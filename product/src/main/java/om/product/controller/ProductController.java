@@ -28,6 +28,11 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED) // Smarter way to add Status Code to Response
     public ProductResp addProduct(@RequestBody ProductReq productReq) {
         //Developer Note: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
+        /*
+        See the following property in Gateway:
+        # idle wait time before switching from 'open' to 'half-open'
+        resilience4j.circuitbreaker.configs.default.waitDurationInOpenState
+        */
         if (0 == new Random().nextInt(2)) {
             try {
                 Thread.sleep(6000);
