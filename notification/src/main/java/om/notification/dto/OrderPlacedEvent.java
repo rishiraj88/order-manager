@@ -1,5 +1,3 @@
 package om.notification.dto;
 
-public record OrderPlacedEvent(String orderNumber, String emailAddress) {
-
-}
+public record OrderPlacedEvent(String orderNumber, String emailAddress) {}
