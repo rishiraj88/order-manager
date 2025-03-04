@@ -1,4 +1,4 @@
-package om.notification.service;
+package om.notification.dto;
 
 public record OrderPlacedEvent(String orderNumber, String emailAddress) {
 

@@ -32,8 +32,8 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED) // 201
     public String createOrder(@Valid @RequestBody OrderReq orderReq) {
         orderService.createOrder(orderReq);
-        log.debug(Constants.newOrderPlaced);
-        return Constants.newOrderPlaced;
+        log.debug(Constants.NEW_ORDER_PLACED_MSG);
+        return Constants.NEW_ORDER_PLACED_MSG;
     }
 
     // getOrders()

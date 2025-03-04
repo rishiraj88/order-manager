@@ -62,7 +62,7 @@ class OrderApplicationTests {
                 .extract()
                 .body().asString();
 
-        assertThat(responseBodyString, Matchers.is(Constants.newOrderPlaced));
+        assertThat(responseBodyString, Matchers.is(Constants.NEW_ORDER_PLACED_MSG));
     }
 
     @Test

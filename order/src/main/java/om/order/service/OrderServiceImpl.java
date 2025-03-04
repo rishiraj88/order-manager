@@ -21,7 +21,6 @@ import java.util.UUID;
 @Service @RequiredArgsConstructor @Slf4j
 public class OrderServiceImpl implements IOrderService {
     private final OrderRepo  orderRepo;
-
     private final InventoryClient inventoryClient;
     private final KafkaTemplate<String,OrderPlacedEvent> kafkaTemplate;
 
@@ -38,8 +37,9 @@ public class OrderServiceImpl implements IOrderService {
                     .build();
             orderRepo.save(newOrder);
 
-            // Send success message to message queue (with Kafka tooling)
-            /* The following services among others may consume the message out of the queue for respective processes:
+            // Send success message to message queue (with Kafka broker)
+            /*
+            The following services among others may consume the message out of the queue for processing for respective goals:
             :: Analytics service,
             :: Dashboard service,
             :: Fraud detection service,  and
@@ -47,7 +47,7 @@ public class OrderServiceImpl implements IOrderService {
             */
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(newOrder.getOrderNumber(),orderReq.userDetails().emailAddress());
             log.info("Placing the details of new order {} into the queue: 'order-placed'...",orderPlacedEvent);
-            kafkaTemplate.send(Constants.orderPlacedQueueName,orderPlacedEvent);
+            kafkaTemplate.send(Constants.ORDER_PLACED_QUEUE_NAME,orderPlacedEvent);
             log.info("Placed the details of new order {} into the queue: 'order-placed'.", orderPlacedEvent);
 
         } else {
