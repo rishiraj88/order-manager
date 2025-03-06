@@ -27,8 +27,8 @@ public class NotificationServiceImpl implements INotificationService {
         MimeMessagePreparator messageChef = mimeMessage -> {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
             helper.setFrom("rrshop@emailde.de");
-            helper.setTo(orderPlacedEvent.emailAddress().toString());
-            helper.setSubject(String.format("SUCCESS: The order # %s has been placed.", orderPlacedEvent.orderNumber()));
+            helper.setTo(orderPlacedEvent.getEmailAddress().toString());
+            helper.setSubject(String.format("SUCCESS: The order # %s has been placed.", orderPlacedEvent.getOrderNumber()));
             helper.setText(String.format("""
                     Dear %s,
                     
@@ -40,8 +40,8 @@ public class NotificationServiceImpl implements INotificationService {
                     RR Shop
                     DE Branch
                     """
-                    ,orderPlacedEvent.emailAddress().toString() // Smart method of placing comma. TypeScript/JavaScript coders should adopt this.
-                    ,orderPlacedEvent.orderNumber()
+                    ,orderPlacedEvent.getEmailAddress().toString() // Smart method of placing comma. TypeScript/JavaScript coders should adopt this.
+                    ,orderPlacedEvent.getOrderNumber()
             ));
         };
         //Cook email message and MIME fields -- Done
@@ -50,8 +50,8 @@ public class NotificationServiceImpl implements INotificationService {
             mailSender.send(messageChef);
             log.info("SUCCESS: An email for new order placement is sent.");
         }catch (MailException e) {
-            log.error("Something went wrong while sending the email notification for the order # {}.",orderPlacedEvent.orderNumber());
-            throw new RuntimeException(String.format("Something went wrong while sending the email notification for the order # {}.",orderPlacedEvent.orderNumber()));
+            log.error("Something went wrong while sending the email notification for the order # {}.",orderPlacedEvent.getOrderNumber());
+            throw new RuntimeException(String.format("Something went wrong while sending the email notification for the order # {}.",orderPlacedEvent.getOrderNumber()));
         }
         //send email to customer -- Done
 
