@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface IOrderService {
+public interface OrderService {
 
     public void createOrder(OrderReq orderReq);
 
@@ -20,5 +20,5 @@ public interface IOrderService {
     * 4. Confirm and proceed to checkout stage.
     * 5. A notification email should be received by me (customer).
      */
-    //checkout functionality may be added separately in Cart microservice
+    //Checkout functionality may be added separately in Cart microservice
 }

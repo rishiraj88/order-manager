@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Documentation about the API of Order module
- * using OpenAPI Specifications (OAS)
+ * Documentation of the API of Order module (microservice) using OpenAPI Specifications (OAS)
  */
 @Configuration
 public class OpenApiSpecsConfig {

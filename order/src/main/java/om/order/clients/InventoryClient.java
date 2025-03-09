@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 
 /**
- * to replicate the API of Inventory microservice
+ * to replicate the API signature of Inventory module
  * @GetExchange("/api/v1/inventory") from Spring 6 is used here, which is an alias to @HttpExchange(method = "GET")
  */
 public interface InventoryClient {

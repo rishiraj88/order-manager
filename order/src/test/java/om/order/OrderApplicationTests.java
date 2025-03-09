@@ -15,7 +15,7 @@ import org.testcontainers.containers.MySQLContainer;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWireMock(port = 0) // binds its actual value to wiremock.server.port for the remote service stubbed
+@AutoConfigureWireMock(port = 0) // binds its auto-assigned value to 'wiremock.server.port' for the remote service stubbed
 class OrderApplicationTests {
 
     @ServiceConnection

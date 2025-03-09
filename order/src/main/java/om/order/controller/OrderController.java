@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import om.order.config.Constants;
 import om.order.dto.OrderReq;
 import om.order.dto.OrderResp;
-import om.order.service.IOrderService;
+import om.order.service.OrderService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,9 +25,10 @@ import java.util.List;
 //@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1") // A different scheme of API versioning
 @RequestMapping(value = "/api/v1/orders")
 public class OrderController {
-    private final IOrderService orderService;
+    private final OrderService orderService;
 
-    // modern way to write Controller Endpoints. Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts()
+    // @ResponseStatus(HttpStatus.CREATED): the modern way to write Controller Endpoints.
+    // Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts() endpoint.
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // 201
     public String createOrder(@Valid @RequestBody OrderReq orderReq) {
