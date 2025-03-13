@@ -2,28 +2,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>om</groupId>
-        <artifactId>order-manager</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
     </parent>
+
     <groupId>om</groupId>
-    <artifactId>order</artifactId>
+    <artifactId>order-manager</artifactId>
     <version>1.0.1-SNAPSHOT</version>
-    <name>order</name>
-    <description>order module for order management APIs</description>
+    <packaging>pom</packaging>
+    <name>Order Manager</name>
+    <description>order management of e-commerce or online marketplace to showcase Observability with APIs, DevOps and Kubernetes tooling</description>
+    
     <properties>
         <java.version>21</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
+    
     <repositories>
         <repository>
             <id>confluent</id>
             <url>https://packages.confluent.io/maven/</url>
         </repository>
     </repositories>
+   
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -132,6 +138,7 @@
             <version>1.12.0</version>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -143,7 +150,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <modules>
+    <module>order</module>
+    <module>notification</module>
+    <module>gateway</module>
+    <module>inventory</module>
+    <module>product</module>
+    </modules>
+
     <build>
+<pluginManagement>
+<plugins>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <source>21</source>
+    <target>21</target>
+    </configuration>
+</plugin>
+</plugins>
+</pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
