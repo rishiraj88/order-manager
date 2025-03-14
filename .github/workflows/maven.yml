@@ -45,10 +45,10 @@ jobs:
       # working-directory: ./order
       # run: mvn install
       
-    - name: Build with Maven the app Gateway
-      shell: bash
-      working-directory: ./gateway
-      run: mvn install
+    #- name: Build with Maven the app Gateway
+     # shell: bash
+      #working-directory: ./gateway
+      #run: mvn install
       
     - name: Build with Maven the app Notification
       shell: bash
