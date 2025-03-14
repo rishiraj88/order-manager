@@ -28,30 +28,32 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    
+    #- name: Build with Maven the app Product
+     # shell: bash
+      #working-directory: ./product
+      #run: mvn install
+      
     - name: Build with Maven the app Inventory
       shell: bash
       working-directory: ./inventory
       run: mvn install
       # run: mvn -B package --file pom.xml
-    #- name: Build with Maven the app Order
+      
+      #- name: Build with Maven the app Order
+      # shell: bash
+      # working-directory: ./order
+      # run: mvn install
+      
+    #- name: Build with Maven the app Gateway
      # shell: bash
-     # working-directory: ./order
+      #working-directory: ./gateway
       #run: mvn install
-    - name: Build with Maven the app Product
-      shell: bash
-      working-directory: ./product
-      run: mvn install
-      # run: mvn -B package --file pom.xml
-    - name: Build with Maven the app Gateway
-      shell: bash
-      working-directory: ./gateway
-      run: mvn install
-      # run: mvn -B package --file pom.xml
+      
     - name: Build with Maven the app Notification
       shell: bash
       working-directory: ./notification
       run: mvn install
-      # run: mvn -B package --file pom.xml
     
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
