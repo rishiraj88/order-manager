@@ -1,10 +1,16 @@
 package om.order.service;
 
 import om.order.dto.OrderReq;
+import om.order.dto.OrderResp;
+import org.springframework.data.domain.Pageable;
 
-public interface IOrderService {
+import java.util.List;
+
+public interface OrderService {
 
     public void createOrder(OrderReq orderReq);
+
+    public List<OrderResp> getOrders(Pageable pageable);
 
     /*
     ** To check items from shopping card out **
@@ -14,5 +20,5 @@ public interface IOrderService {
     * 4. Confirm and proceed to checkout stage.
     * 5. A notification email should be received by me (customer).
      */
-    //checkout functionality may be added separately in Cart microservice
+    //Checkout functionality may be added separately in Cart microservice
 }

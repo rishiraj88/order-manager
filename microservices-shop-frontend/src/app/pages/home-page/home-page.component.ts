@@ -36,8 +36,8 @@ export class HomePageComponent implements OnInit {
         this.isAuthenticated = isAuthenticated;
         this.productService.getProducts()
           .pipe()
-          .subscribe(product => {
-            this.products = product;
+          .subscribe(olderProducts => {
+            this.products = olderProducts;
           })
       }
     )
@@ -52,8 +52,7 @@ export class HomePageComponent implements OnInit {
     this.oidcSecurityService.userData$.subscribe(result => {
       const userDetails = {
         email: result.userData.email,
-        firstName: result.userData.firstName,
-        lastName: result.userData.lastName
+        name: result.userData.firstName + result.userData.lastName
       };
 
       if(!quantity) {

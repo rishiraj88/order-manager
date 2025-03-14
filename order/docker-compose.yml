@@ -11,6 +11,7 @@ services:
       - ./mysql:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+# In latest version of Kafka, KRaft takes care of clusters, hence external tool zookeeper is not required.
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper

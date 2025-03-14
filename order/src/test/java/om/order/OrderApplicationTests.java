@@ -15,7 +15,7 @@ import org.testcontainers.containers.MySQLContainer;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWireMock(port = 0) // binds its actual value to wiremock.server.port for the remote service stubbed
+@AutoConfigureWireMock(port = 0) // binds its auto-assigned value to 'wiremock.server.port' for the remote service stubbed
 class OrderApplicationTests {
 
     @ServiceConnection
@@ -62,9 +62,26 @@ class OrderApplicationTests {
                 .extract()
                 .body().asString();
 
-        assertThat(responseBodyString, Matchers.is(Constants.newOrderPlaced));
+        assertThat(responseBodyString, Matchers.is(Constants.NEW_ORDER_PLACED_MSG));
     }
 
+    @Test
+    void shouldReturnAllOrders() {
+
+    }
+
+    @Test
+    void shouldReturnOrdersByUserEmail() {
+
+    }
+    @Test
+    void shouldReturnOrdersByUserName() {
+
+    }
+    @Test
+    void shouldReturnOrderByOrderNumber() {
+
+    }
     @Test
     void contextLoads() {
     }

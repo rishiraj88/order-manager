@@ -1,0 +1,10 @@
+{
+"type":"record",
+"name":"OrderPlacedEvent",
+"namespace":"om.notification.dto",
+"fields": [
+{"name":"orderNumber","type":"string"},
+{"name":"emailAddress","type":"string"},
+{"name":"name","type":"string"}
+]
+}
