@@ -28,6 +28,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    
+    #- name: Build with Maven the app Product
+     # shell: bash
+      #working-directory: ./product
+      #run: mvn install
+      
     - name: Build with Maven the app Inventory
       shell: bash
       working-directory: ./inventory
@@ -38,11 +44,6 @@ jobs:
       # shell: bash
       # working-directory: ./order
       # run: mvn install
-      
-    - name: Build with Maven the app Product
-      shell: bash
-      working-directory: ./product
-      run: mvn install
       
     - name: Build with Maven the app Gateway
       shell: bash
