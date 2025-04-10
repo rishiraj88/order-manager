@@ -8,14 +8,14 @@ import om.order.config.Constants;
 import om.order.dao.OrderRepo;
 import om.order.dto.OrderReq;
 import om.order.dto.OrderResp;
+import om.order.dto.UserDetails;
 import om.order.entity.Order;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 @Transactional
 @Service @RequiredArgsConstructor @Slf4j
@@ -58,6 +58,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResp> getOrders(Pageable pageable){return new ArrayList<>();}
+    public Page<OrderResp> getOrders(Pageable pageable){return orderRepo.findAll(pageable).map(order -> new OrderResp(order.getId(), order.getOrderNumber(),order.getItemSkuCode(),order.getPricePerItem(),order.getQuantity(),new UserDetails("emailAddress@domain.docom"," name")));}
 
 }

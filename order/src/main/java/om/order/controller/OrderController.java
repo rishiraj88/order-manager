@@ -7,6 +7,7 @@ import om.order.config.Constants;
 import om.order.dto.OrderReq;
 import om.order.dto.OrderResp;
 import om.order.service.OrderService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class OrderController {
     // getOrders()
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderResp> getOrders(
+    public Page<OrderResp> getOrders(
             @RequestParam(defaultValue = "0") int pageNumber,
             @RequestParam(defaultValue = "5") int pageSize
     ) {

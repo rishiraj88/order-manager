@@ -29,7 +29,7 @@ extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	//implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -38,9 +38,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	//implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
 	//implementation("org.springframework.kafka:spring-kafka")
-	compileOnly("org.projectlombok:lombok")
-	runtimeOnly("com.mysql:mysql-connector-j")
-	annotationProcessor("org.projectlombok:lombok")
+	//compileOnly("org.projectlombok:lombok")
+	//runtimeOnly("com.mysql:mysql-connector-j")
+	//annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
