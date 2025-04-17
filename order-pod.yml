@@ -4,7 +4,7 @@ metadata:
   name: om-order-pod
   labels:
     app: om-order
-    subnet: backend
+    side: backend
 spec:
   containers:
   - name: mysql
@@ -16,7 +16,17 @@ spec:
     #volume/claim
     
   - name: om-order
-    image: i50729/om-order
+    #image: i50729/om-order
+    image: order
 
+
+## create pod
 #kubectl apply -f order-pod.yml
+
+## view pods
 #kubectl get pods
+
+## view pod details
+#kubectl describe pod om-order-pod
+
+#1
