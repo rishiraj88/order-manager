@@ -2,12 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   name: om-order-svc #hostname for API, with 'port'
+  labels:
+    app: om-order
+    side: backend
+
 spec:
-  type: NodePort # for internal-only service, use ClusterIP
+  type: NodePort # elsewise for internal-only service, must use ClusterIP
   ports:
-  - targetPort: 8081 #internal app port
-    port: 8081 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
-    nodePort: 32081 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
+  - targetPort: 8080 #internal app port
+    port: 8080 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
+    nodePort: 32080 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
   selector: #from pod definition
     app: om-order
     side: backend
@@ -20,3 +24,4 @@ spec:
 ###NAME     TYPE    CLUSTER-IP  EXTERNAL-IP PORT(S) AGE headers are listed
 
 #4
+#2
