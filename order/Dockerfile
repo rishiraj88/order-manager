@@ -13,7 +13,7 @@ RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
 LABEL version="1.0"
-LABEL description="Dockerfile for Order-Manager::Order with JDK 21, Confluent Kafka and MySQL"
+LABEL description="Dockerfile for Order-Manager::Order with JDK 21, Kafka and MySQL"
 
 COPY --from=build /app/target/order-1.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080

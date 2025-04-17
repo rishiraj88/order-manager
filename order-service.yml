@@ -5,16 +5,18 @@ metadata:
 spec:
   type: NodePort # for internal-only service, use ClusterIP
   ports:
-  - targetPort: 8081
-    port: 8081 #port for API, with 'name' of service
-    nodePort: 32081 #only for NodePort service type
-  selector: #pod definition
+  - targetPort: 8081 #internal app port
+    port: 8081 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
+    nodePort: 32081 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
+  selector: #from pod definition
     app: om-order
-    subnet: backend
+    side: backend
 
+## to create a service
 #kubectl create -f order-service.yml
-#kubectl get services
-##kubenetes
-##om-order
 
-# NodePort is the externally accessible port to access API etc., in the range of 30000 to 32767
+## to check the service status
+#kubectl get services
+###NAME     TYPE    CLUSTER-IP  EXTERNAL-IP PORT(S) AGE headers are listed
+
+#4
