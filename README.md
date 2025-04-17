@@ -1,5 +1,7 @@
-# Order Manager (E-Commerce Platform)
-- This project essentially showcases the real-world problems facing most of the businesses today can be simply attended to with a distributed system. Such a system is implemented using modern web technologies, integrated together with asynchronous and synchronous communication.
+# Order Manager (Order Module of E-Commerce Platform)
+- This project essentially showcases that the real-world problems faced by most of the businesses today can be simply attended to with a distributed approach. Such a system is implemented using modern web technologies, knitted with asynchronous and synchronous communications.
+
+
 - Some of the technologies used in this project are:
 - Spring Boot 3.2, Java 21
 - Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
@@ -7,13 +9,14 @@
 - Use of WebClient and RestClient (Spring Boot 3.2) and not of FeignClient (Spring Boot 2.7 style)
 - Kafka for asynchronous communication (as in Notification app) across web services using message queues (MQ)
 - Docker-Compose for containerization of individual apps
-- Kubernetes for clustering and auto-scaling
 - Testcontainers for automated API Testing and Contract Testing, with Rest-Assured
-- Container orchestration (WIP: adding Deployment YAML for Kubernetes)
+- Container orchestration, clustering and auto-scaling with Deployment YAML for Kubernetes.
+- Port exposure with Service kind of Kubernetes descriptors
 
-## Salient Use of Technological Tools
+## Highlights of technological tools
 - Multi-stage Dockerfile for Product app
-- Declarations of YAML for Kubernetes cluster
+- Declarations of YAML for Kubernetes cluster deployment
+- Gateway implementation as a microservice to connect the backend APIs to external clients
 
 ## This application has three main business components, implemented as Microservices:
 - Product
@@ -29,11 +32,39 @@
 
 And the result is: unmatched and flawless user experience. :) 
 
+## To view and test-run the web app
+
+### When without Deployment
+- to list pods and services
+<pre>$ kubectl get pods,svc</pre>
+
+- to get the URL of Order app.
+<pre>$ minikube service om-order-svc --url</pre>
+
+
+### When with Deployment
+- to list deployments and services
+<pre>$ kubectl get deployments,svc</pre>
+
+- to get the URL of Order app.
+<pre>$ minikube service om-order-svc --url</pre>
+
+### Similar steps for Product app with Deployment
+- to list deployments and services
+<pre>$ kubectl get deployments,svc</pre>
+
+- to get the URL of Product app.
+<pre>$ minikube service om-product-svc --url</pre>
+
+## Scale the services
+<pre>kubectl scale deployment om-order-depl --replicas=2</pre>
+<pre>kubectl scale deployment om-product-depl --replicas=2</pre>
+
 
 ![realm-creation-success-in-keycloak-admin](./assets/gateway/08-realm-creation-success-in-keycloak-admin.png)
 
 
-Screenshots will be updated for the year 2025. However, those out of 2024 are quite impressive and comprehensible!
+Documentation is being updated for the year 2025. However, the screenshots of the year 2024 are quite convincing and "in context".
 
 ## Tech Tools Used for Development
 - Spring Boot, with Spring Web
@@ -53,7 +84,7 @@ Screenshots will be updated for the year 2025. However, those out of 2024 are qu
 - Spring RestClient (Spring Boot 3.2 offering. It replaces the older option Spring OpenFeign (for inter-service communication))
 - Resilient4j v2 for Fault Tolerance
 
-## General Note
+## General Note on Development Style
 I enjoy the following approach for inception, enhancement and fortification of projects:
 1. Start in simple, lazy and less structured approach.
 2. Modularise, distribute and containerise various components, guided by relative prioritization.

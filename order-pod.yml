@@ -5,19 +5,26 @@ metadata:
   labels:
     app: om-order
     side: backend
+
 spec:
   containers:
   - name: mysql
     image: mysql:8.3.0
     env:
-      - MYSQL_ROOT_PASSWORD: mysql
+      - name: MYSQL_ROOT_PASSWORD
+        value: mysql
+        #value: ${DB_PASSWORD}
+
     ports:
-      - "3306:3306"
+      #- "3306:3306"
+      - containerPort: 3306
     #volume/claim
     
   - name: om-order
     #image: i50729/om-order
     image: order
+    ports:
+      - containerPort: 8080
 
 
 ## create pod
@@ -29,4 +36,5 @@ spec:
 ## view pod details
 #kubectl describe pod om-order-pod
 
+#1
 #1
