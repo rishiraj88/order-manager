@@ -19,9 +19,9 @@
 - Gateway implementation as a microservice to connect the backend APIs to external clients
 
 ## This application has three main business components, implemented as Microservices:
-- Product
-- Order
-- Inventory
+- Product (Kotlin app, Spring Boot)
+- Order (Java app, Spring Boot)
+- Inventory (Java app, Spring Boot)
 
 ## More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
@@ -77,6 +77,7 @@ Documentation is being updated for the year 2025. However, the screenshots of th
 - Spring Data MySQL (for JPA Repository)
 - Flyway (for Database Migration)
 - Docker-Compose (for containerization)
+- Local container repo registry (registry image from Docker Hub)
 - Swagger (for OpenAPI-based API documentation)
 - Testcontainers (for Test Automation with stubs)
 - Rest-Assured (for Testing and Validation)
@@ -164,17 +165,18 @@ The order API has its base at "/api/v1/orders".
 MySQL engine powers the order module. The data store is expected to be structured with infrequent field additions, modifications and removals. So, SQL database (RDBMS) technology is used for this.
 The database is deployed in a Docker container with a persistent volume to hold business data.
 
-### Project Setup with Dependencies
-The module for Product has been set up with the following dependencies, specified in Spring Init:
-- Lombok
-- Spring Web
-- Spring Data MySQL
-- Flyway
-- Testcontainers
-- Rest-Assured
-- RestClient (Spring Boot 3)
-- WireMock for using stubs during automated API testing
-- Swagger (for OpenAPI-based API documentation)
+### Steps to set local image repository registry up
+
+- Create the registry for local image repositories:
+docker run -d -p 5000:5000 --restart=always --name registry registry:3.0.0
+
+Build app images with customer labels:
+docker build . -t localhost:5000/om-order
+
+Push the images to the local repository:
+docker push localhost:5000/om-order
+
+
 
 #### Spring Boot project dependencies (Intial Set)
 ![Spring Boot project dependencies](./assets/spring-init-for-order.png)

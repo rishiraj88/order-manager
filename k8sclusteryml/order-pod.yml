@@ -14,17 +14,17 @@ spec:
       - name: MYSQL_ROOT_PASSWORD
         value: mysql
         #value: ${DB_PASSWORD}
-
     ports:
-      #- "3306:3306"
       - containerPort: 3306
     #volume/claim
     
   - name: om-order
     #image: i50729/om-order
-    image: order
+    image: localhost:5000/om-order
+    imagePullPolicy: Never
+
     ports:
-      - containerPort: 8080
+      - containerPort: 8081
 
 
 ## create pod

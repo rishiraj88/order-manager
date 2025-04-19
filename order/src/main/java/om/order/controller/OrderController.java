@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RequiredArgsConstructor
-@RestController @Slf4j
+//@RequiredArgsConstructor
+@RestController// @Slf4j
 //@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1") // A different scheme of API versioning
 @RequestMapping(value = "/api/v1/orders")
 public class OrderController {
     private final OrderService orderService;
+public OrderController(OrderService orderService) {this.orderService = orderService;}
+
 
     // @ResponseStatus(HttpStatus.CREATED): the modern way to write Controller Endpoints.
     // Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts() endpoint.
@@ -34,7 +34,7 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED) // 201
     public String createOrder(@Valid @RequestBody OrderReq orderReq) {
         orderService.createOrder(orderReq);
-        log.debug(Constants.NEW_ORDER_PLACED_MSG);
+        //log.debug(Constants.NEW_ORDER_PLACED_MSG);
         return Constants.NEW_ORDER_PLACED_MSG;
     }
 

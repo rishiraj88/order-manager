@@ -49,9 +49,10 @@ dependencies {
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:kafka")
 	testImplementation("org.testcontainers:mongodb")
-	testImplementation("org.testcontainers:mysql")
+	//testImplementation("org.testcontainers:mysql")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
+	implementation("io.rest-assured:rest-assured")
+	}
 
 dependencyManagement {
 	imports {
