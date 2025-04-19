@@ -24,7 +24,7 @@ spec:
         #volume/claim
       - name: om-order
         #image: i50729/om-order
-        image: order
+        image: localhost:5000/om-order
         ports:
           - containerPort: 8081
   replicas: 1
