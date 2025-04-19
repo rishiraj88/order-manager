@@ -1,0 +1,19 @@
+services:
+  sqldb:
+    image: mysql:8.3.0
+    container_name: sqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  order:
+    build: .
+    container_name: order
+    ports:
+      - "8081:8081"
+    depends_on:
+      - sqldb
