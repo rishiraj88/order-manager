@@ -13,11 +13,10 @@ RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
 LABEL version="1.0"
-LABEL description="Dockerfile for Order-Manager::Order with Kotlin 1.9 (JDK 21), Kafka and MySQL"
+LABEL description="Dockerfile for Order-Manager::Product with Kotlin 1.9 (JDK 21) and MongoDB"
 
 COPY --from=build /app/build/libs/app-0.0.1-SNAPSHOT.jar /app/target/
-EXPOSE 8081
+EXPOSE 8080
 CMD [ "java", "-jar","target/app-0.0.1-SNAPSHOT.jar" ]
 
-VOLUME ./mysql:/var/lib/mysql
-VOLUME ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+VOLUME ./data:/data/db

@@ -5,7 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("plugin.jpa") version "1.9.25"
 	application // enabling the plugin here
-			}
+}
 
 group = "om"
 version = "0.0.1-SNAPSHOT"

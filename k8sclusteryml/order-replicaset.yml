@@ -25,7 +25,7 @@ spec:
 
       - name: om-order
         #image: i50729/om-order
-        image: order
+        image: localhost:5000/om-order
 
   replicas: 1
   selector:
