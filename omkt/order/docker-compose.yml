@@ -10,9 +10,9 @@ services:
       - ./mysql:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  order:
+  om-order:
     build: .
-    container_name: order
+    container_name: om-order
     ports:
       - "8081:8081"
     depends_on:
