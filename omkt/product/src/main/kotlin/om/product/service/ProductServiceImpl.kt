@@ -5,6 +5,7 @@ import om.product.dto.ProductResp
 import om.product.entity.Product
 import om.product.repo.ProductRepository
 import org.springframework.stereotype.Service
+import kotlin.jvm.optionals.getOrNull
 
 @Service
 class ProductServiceImpl(val productRepository: ProductRepository): ProductService {
@@ -14,5 +15,9 @@ class ProductServiceImpl(val productRepository: ProductRepository): ProductServi
 
     override fun addProduct(productReq: ProductReq):ProductResp {
         return productRepository.save(Product.fromReq(productReq)).toResp()
+    }
+
+    override fun getProduct(id: String): ProductResp? {
+        return productRepository.findById(id).getOrNull()?.toResp()
     }
 }

@@ -6,4 +6,5 @@ import om.product.dto.ProductResp
 interface ProductService {
     fun getAllProducts():Iterable<ProductResp>
     fun addProduct(productReq: ProductReq):ProductResp
+    fun getProduct(id: String): ProductResp?
 }
