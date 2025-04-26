@@ -9,17 +9,20 @@ import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
-@RestController("/api/v2/products")
+@RestController
+@RequestMapping("/api/v2/products/")
 class ProductController(val productService: ProductService) {
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllProducts(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "20") size: Int,
-        @RequestParam(required = false) sortBy: String
-    ): Iterable<ProductResp> {
-
-        return if (null == sortBy) productService.getAllProducts(page, size) else productService.getAllProducts(sortBy)
+        @RequestParam(required = false) sortBy: String?
+    ): ResponseEntity<Iterable<ProductResp>> {
+        return if (null == sortBy) ResponseEntity.ok(productService.getAllProducts(page, size)) else ResponseEntity.ok(
+            productService.getAllProducts(sortBy)
+        )
     }
 
     @PostMapping()
@@ -38,7 +41,6 @@ class ProductController(val productService: ProductService) {
     @GetMapping("{id}")
     fun getProduct(@PathVariable id: String): ResponseEntity<ProductResp> {
         val product = productService.getProduct(id)
-
         return if (null == product) ResponseEntity.notFound().build() else ResponseEntity.ok(product)
     }
 }

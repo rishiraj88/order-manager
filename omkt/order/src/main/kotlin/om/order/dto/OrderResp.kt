@@ -1,7 +1,6 @@
 package om.order.dto
 
-import java.util.*
-
+import java.util.UUID
 
 data class OrderResp(
     val id: UUID, val orderNumber: String,

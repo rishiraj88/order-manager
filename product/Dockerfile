@@ -20,3 +20,4 @@ EXPOSE 8080
 CMD [ "java", "-jar","target/app-0.0.1-SNAPSHOT.jar" ]
 
 VOLUME ./data:/data/db
+VOLUME ./initdb:/docker-entrypoint-initdb.d

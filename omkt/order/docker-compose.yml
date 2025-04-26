@@ -1,11 +1,13 @@
 services:
-  sqldb:
+  orderdb:
     image: mysql:8.3.0
-    container_name: sqldb
+    container_name: orderdb
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: orderdb
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./mysql:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -16,4 +18,4 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - sqldb
+      - orderdb
