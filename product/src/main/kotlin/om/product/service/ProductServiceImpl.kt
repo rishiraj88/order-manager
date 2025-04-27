@@ -16,7 +16,7 @@ class ProductServiceImpl(val productRepository: ProductRepository) : ProductServ
         return productRepository.findAll(pageable).map { it.toResp() }
     }
 
-    override fun getAllProducts(sortBy: String): Iterable<ProductResp> {
+    override fun getAllProducts(sortBy: String?): Iterable<ProductResp> {
         return if (null == sortBy) productRepository.findAll().map { it.toResp() } else productRepository.findAll()
             .map { it.toResp() }
     }
