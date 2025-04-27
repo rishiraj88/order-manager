@@ -4,18 +4,20 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.Table
 import om.order.dto.OrderReq
 import om.order.dto.OrderResp
-import java.util.UUID
+import org.hibernate.annotations.UuidGenerator
 
-@Entity
+@Entity @Table(name = "orders")
 data class Order(val orderNumber: String,
                  val skuCode: String,
                  val itemRate: Number,
                  val itemQuantity: Number) {
-    @Id
+
+    @Id @UuidGenerator
     @GeneratedValue(strategy = GenerationType.UUID)
-    lateinit var id: UUID
+    lateinit var id: String
 
     fun toResp() = OrderResp(id, orderNumber,
          skuCode,

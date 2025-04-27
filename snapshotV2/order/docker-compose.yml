@@ -1,21 +1,20 @@
 services:
-  orderdb:
+  mysql:
     image: mysql:8.3.0
-    container_name: orderdb
+    container_name: mysql
     environment:
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: orderdb
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./odb:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  om-order:
-    build: .
-    container_name: om-order
-    ports:
-      - "8081:8081"
-    depends_on:
-      - orderdb
+#  om-order:
+ #   build: .
+  #  container_name: om-order
+   # ports:
+    #  - "8081:8081"
+    #depends_on:
+     # - orderdb

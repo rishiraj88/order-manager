@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
     <changeSet id="1" author="rraj">
         <createTable tableName="orders">
-            <column name="id" type="uuid">
+            <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="orderNumber" type="varchar(54)">
@@ -14,10 +14,10 @@
             <column name="skuCode" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="itemRate" type="number">
+            <column name="itemRate" type="float">
                 <constraints nullable="false"/>
             </column>
-            <column name="itemQuantity" type="number">
+            <column name="itemQuantity" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>

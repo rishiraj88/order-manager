@@ -7,10 +7,12 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
-@RestController("/api/v2/orders")
+@RestController
+@RequestMapping("/api/v2/orders")
 class OrderController(val orderService: OrderService) {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

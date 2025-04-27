@@ -44,8 +44,6 @@ class ProductApplicationTests() {
             .body("name",Matchers.equalTo("product one"))
             .body("desc",Matchers.equalTo("description one"))
             .body("skuCode",Matchers.equalTo("STAT0001"))
-
-
     }
 
     @BeforeEach
