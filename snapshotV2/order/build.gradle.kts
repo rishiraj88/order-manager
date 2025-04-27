@@ -39,6 +39,7 @@ dependencies {
 	testImplementation("org.testcontainers:mysql")
 	testImplementation("org.testcontainers:postgresql")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("io.rest-assured:rest-assured")
 }
 
 kotlin {
