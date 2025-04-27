@@ -2,8 +2,7 @@
 # https://github.com/carlossg/docker-maven/blob/8cfe24baffa5b250f7bb2d31ce233fc28f3c4f20/amazoncorretto-21/Dockerfile
 FROM gradle:jdk21-corretto-al2023 AS build
 WORKDIR /app
-COPY ./src .
-COPY ./build.gradle.kts .
+COPY ./src ./build.gradle.kts ./
 RUN gradle bootJar
 
 # Deploy

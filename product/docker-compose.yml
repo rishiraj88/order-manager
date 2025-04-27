@@ -5,16 +5,18 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
-      MONGO_INITDB_DATABASE: productdb
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: product-db
     volumes:
-      - ./data:/data/db
+      - ./db:/data/db
 
-  product:
-    build: .
-    container_name: product
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongodb
+#  mongo-express:
+  #  image: mongo-express
+  #  ports:
+ #     - 8081:8081
+  #  environment:
+    #  ME_CONFIG_MONGODB_ADMINUSERNAME: root
+     # ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  #    ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+   #   ME_CONFIG_BASICAUTH: false

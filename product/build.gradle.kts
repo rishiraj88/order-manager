@@ -4,7 +4,7 @@ plugins {
 	id("org.springframework.boot") version "3.4.4"
 	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("plugin.jpa") version "1.9.25"
-	application // enabling the plugin here
+	application
 }
 
 group = "om"
@@ -30,17 +30,13 @@ extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	//implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	//implementation("org.flywaydb:flyway-core")
-	//implementation("org.flywaydb:flyway-mysql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	//implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
 	//implementation("org.springframework.kafka:spring-kafka")
 	//compileOnly("org.projectlombok:lombok")
-	//runtimeOnly("com.mysql:mysql-connector-j")
 	//annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
@@ -50,7 +46,6 @@ dependencies {
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:kafka")
 	testImplementation("org.testcontainers:mongodb")
-	//testImplementation("org.testcontainers:mysql")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("io.rest-assured:rest-assured")
 	}

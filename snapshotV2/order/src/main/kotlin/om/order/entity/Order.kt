@@ -3,9 +3,9 @@ package om.order.entity
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import om.order.dto.OrderReq
 import om.order.dto.OrderResp
-import org.springframework.data.annotation.Id
 import java.util.UUID
 
 @Entity

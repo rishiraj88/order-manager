@@ -2,7 +2,9 @@ package om.product.repo
 
 import om.order.entity.Order
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
+@Repository
 interface OrderRepository : JpaRepository<Order, String> {
     fun findBySkuCodeIgnoreCase(skuCode: String?): List<Order?>?
 

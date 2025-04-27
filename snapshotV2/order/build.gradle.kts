@@ -4,7 +4,7 @@ plugins {
 	id("org.springframework.boot") version "3.4.4"
 	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("plugin.jpa") version "1.9.25"
-	application // enabling the plugin here
+	application
 }
 
 group = "om"
@@ -56,14 +56,6 @@ allOpen {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
-//bootJar {
-//	enabled = false
-//}
-
-//jar {
-//	enabled = true
-//}
-// Other configuration here
 
 application {
 	mainClass.set("om.order.OrderApplication")
