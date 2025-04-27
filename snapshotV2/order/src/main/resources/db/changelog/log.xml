@@ -11,7 +11,7 @@
             <column name="orderNumber" type="varchar(54)">
                 <constraints nullable="false"/>
             </column>
-            <column name="skuCode" type="varchar(10)">
+            <column name="skuCode" type="varchar(35)">
                 <constraints nullable="false"/>
             </column>
             <column name="itemRate" type="float">

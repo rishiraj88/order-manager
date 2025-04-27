@@ -12,8 +12,8 @@ import org.hibernate.annotations.UuidGenerator
 @Entity @Table(name = "orders")
 data class Order(val orderNumber: String,
                  val skuCode: String,
-                 val itemRate: Number,
-                 val itemQuantity: Number) {
+                 val itemRate: Float,
+                 val itemQuantity: Int) {
 
     @Id @UuidGenerator
     @GeneratedValue(strategy = GenerationType.UUID)
