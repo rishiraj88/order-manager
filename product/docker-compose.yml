@@ -18,7 +18,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - productdb
+      - mongodb
 
   mongo-express:
     image: mongo-express
@@ -30,4 +30,4 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://${DB_USER}:${DB_PASSWORD}@localhost:27017/
       ME_CONFIG_BASICAUTH: true
     depends_on:
-      - productdb
+      - mongodb
