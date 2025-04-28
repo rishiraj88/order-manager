@@ -9,3 +9,4 @@ product/.gradle/
 product/HELP.md
 product/build/
 snapshotV2/order/odb/
+snapshotV2/inventory/invdb/
