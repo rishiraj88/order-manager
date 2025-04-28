@@ -3,10 +3,10 @@
 
 
 - Some of the technologies used in this project are:
-- Spring Boot 3.2, Java 21
+- Spring Boot 3.4, Java 21
 - Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
 - Modern strategy for Spring Security implementation (as in Spring Boot 3, Spring 6)
-- Use of WebClient and RestClient (Spring Boot 3.2) and not of FeignClient (Spring Boot 2.7 style)
+- Use of WebClient and RestClient (Spring Boot 3) and not of FeignClient (Spring Boot 2.7 style)
 - Kafka for asynchronous communication (as in Notification app) across web services using message queues (MQ)
 - Docker-Compose for containerization of individual apps
 - Testcontainers for automated API Testing and Contract Testing, with Rest-Assured
@@ -20,14 +20,14 @@
 
 ## This application has three main business components, implemented as Microservices:
 - Product (Kotlin app, Spring Boot)
-- Order (Java app, Spring Boot)
+- Order (ready as Java app, Spring Boot; in dev works as Kotlin app, Spring Boot)
 - Inventory (Java app, Spring Boot)
 
 ## More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
-- Gateway and User Authentication with Keykloak: <./gateway/README.md>
-- API Documentation with OpenAPI Specification (OAS)
-- to facilitate smooth communication among the services.
+- Gateway and User Authentication with OpenID Connect (Keykloak: <./gateway/README.md>)
+- API Documentation with OpenAPI Specification (OAS): Swagger
+- in order to facilitate smooth communication among the services.
 
 
 And the result is: unmatched and flawless user experience. :) 
@@ -137,8 +137,16 @@ The module for Product has been set up with the following dependencies, specifie
 ### Testing
 
 ### Manual Testing
+#### Product
+![Product module: manual testing](./assets/omkt/product/getAllProducts-manual-testing.png)
 
 ![Product module: manual testing](./assets/manual-testing-of-product.png)
+
+#### Order
+![Order module: manual testing](./assets/omkt/order/getAllOrders-manual-testing.png)
+
+![Order module: manual testing](./assets/omkt/order/createOneNewOrder-manual-testing.png)
+
 
 #### Automated Testing
 A number of test cases are already provided in the **Tests** class. For POST request to add one new product, the following JSON-formatted data can be used to formulate request body:
@@ -147,6 +155,13 @@ A number of test cases are already provided in the **Tests** class. For POST req
 "desc":"details", 
 "pricePerItem":120.80
 }</pre>
+
+#### Product testing in Apr-2025
+![Product module: automated testing](./assets/omkt/product/addProduct-automated-testing.png)
+
+
+#### Order testing in Apr-2025
+![Order module: automated testing](./assets/omkt/order/createOrder-automated-testing.png)
 
 #### Testing Done in Apr-2024
 ![Product module: automated testing](./assets/automated-testing-of-product_20240411.png)
