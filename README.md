@@ -124,15 +124,14 @@ MongoDB engine powers the product module. The data store is well expected to be 
 The database is deployed in a Docker container with a persistent volume to hold business data.
 
 ### Project Setup with Dependencies
-The module for Product has been set up with the following dependencies, specified in Spring Init:
-- Lombok
+The module for Product (Kotlin variant) has been set up with the following dependencies, specified in Spring Init:
 - Spring Web
 - Spring Data MongoDB
 - Testcontainers
 - Rest-Assured
 - Swagger (for OpenAPI-based API documentation)
 
-![Spring Boot project dependencies](./assets/spring-init-for-product.png)
+![Spring Boot project dependencies](./assets/omkt/product/spring-init-for-Product.png)
 
 ### Testing
 
@@ -146,6 +145,12 @@ The module for Product has been set up with the following dependencies, specifie
 ![Order module: manual testing](./assets/omkt/order/getAllOrders-manual-testing.png)
 
 ![Order module: manual testing](./assets/omkt/order/createOneNewOrder-manual-testing.png)
+
+
+#### Inventory
+![Inventory module: manual testing](./assets/omkt/inventory/checkStock-true.png)
+
+![Inventory module: manual testing](./assets/omkt/inventory/checkStock-false.png)
 
 
 #### Automated Testing
