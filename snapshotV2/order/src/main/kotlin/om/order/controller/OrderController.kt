@@ -23,9 +23,8 @@ class OrderController(val orderService: OrderService) {
         @RequestParam(defaultValue = "20") size: Int,
         @RequestParam(required = false) sortBy: String?
     ): ResponseEntity<Iterable<OrderResp>> {
-        return if (null == sortBy) ResponseEntity.ok(orderService.getAllOrders(page, size)) else ResponseEntity.ok(
-                orderService.getAllOrders(sortBy)
-        )
+        return if (null == sortBy) ResponseEntity.ok(orderService.getAllOrders(page, size))
+                else ResponseEntity.ok(orderService.getAllOrders(sortBy))
     }
 
     @PostMapping()
