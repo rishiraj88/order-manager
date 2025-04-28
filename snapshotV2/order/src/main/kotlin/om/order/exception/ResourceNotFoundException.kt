@@ -1,3 +1,3 @@
-package om.product.exception
+package om.order.exception
 
 class ResourceNotFoundException(message: String) : Exception(message)

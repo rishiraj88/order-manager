@@ -2,6 +2,7 @@ package om.product.controller
 
 import om.product.dto.ProductReq
 import om.product.dto.ProductResp
+import om.product.exception.ResourceNotFoundException
 import om.product.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,7 +22,6 @@ import org.springframework.web.util.UriComponentsBuilder
 class ProductController(val productService: ProductService) {
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     fun getAllProducts(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "20") size: Int,
