@@ -137,9 +137,9 @@ The module for Product (Kotlin variant) has been set up with the following depen
 
 ### Manual Testing
 #### Product
-![Product module: manual testing](./assets/omkt/product/getAllProducts-manual-testing.png)
-
 ![Product module: manual testing](./assets/manual-testing-of-product.png)
+![Product module: manual testing](./assets/omkt/product/addOneProduct-manual-testing.png)
+![Product module: manual testing](./assets/omkt/product/getAllProducts-manual-testing.png)
 
 #### Order
 ![Order module: manual testing](./assets/omkt/order/getAllOrders-manual-testing.png)
