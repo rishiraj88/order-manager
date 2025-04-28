@@ -26,7 +26,7 @@ class OrderApplicationTests() {
     }
 
     @Test
-    fun shouldCreateOneNewOrder() {
+    fun shouldCreateOneNewOrder_1() {
         var requestBody = """
                 {
                 "orderNumber":"DE3343INT432342342222", 
@@ -50,12 +50,60 @@ class OrderApplicationTests() {
             .body("itemQuantity", Matchers.equalTo(3))
     }
 
+    @Test
+    fun shouldCreateOneNewOrder_2() {
+        var requestBody = """
+                {
+                "orderNumber":"DE3343INT432342342223", 
+                "skuCode":"DE342GES34233112", 
+                "itemRate":280.40,
+                "itemQuantity":1
+                }
+                """.trimIndent()
+        RestAssured.given()
+            .contentType("application/json")
+            .body(requestBody)
+            .`when`()
+            .post("/api/v2/orders")
+            .then()
+            .statusCode(HttpStatus.CREATED.value())
+            //testing the values of response
+            .body("id", Matchers.notNullValue())
+            .body("orderNumber", Matchers.equalTo("DE3343INT432342342223"))
+            .body("skuCode", Matchers.equalTo("DE342GES34233112"))
+            .body("itemRate", Matchers.equalTo(280.40f))
+            .body("itemQuantity", Matchers.equalTo(1))
+    }
     @BeforeEach
     fun setup() {
         RestAssured.baseURI = "http://localhost"
         RestAssured.port = applicationPort as Int
     }
 
+    @Test
+    fun shouldCreateOneNewOrder_3() {
+        var requestBody = """
+                {
+                "orderNumber":"DE3343INT432342342224", 
+                "skuCode":"DE342GES34233113", 
+                "itemRate":180.40,
+                "itemQuantity":2
+                }
+                """.trimIndent()
+        RestAssured.given()
+            .contentType("application/json")
+            .body(requestBody)
+            .`when`()
+            .post("/api/v2/orders")
+            .then()
+            .statusCode(HttpStatus.CREATED.value())
+            //testing the values of response
+            .body("id", Matchers.notNullValue())
+            .body("orderNumber", Matchers.equalTo("DE3343INT432342342224"))
+            .body("skuCode", Matchers.equalTo("DE342GES34233113"))
+            .body("itemRate", Matchers.equalTo(180.40f))
+            .body("itemQuantity", Matchers.equalTo(2))
+    }
 
     @Test
     fun shouldReturnAllOrders() {
