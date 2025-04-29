@@ -142,6 +142,16 @@ The module for Product (Kotlin variant) has been set up with the following depen
 ![Product module: manual testing](./assets/omkt/product/getAllProducts-manual-testing.png)
 
 #### Order
+
+
+![Order module: getting no orders available](./assets/omkt/order/no-orders-found20250429.png)
+
+![Order module: creating a new order](./assets/omkt/order/new-order-created20250429.png)
+
+![Order module: getting orders listed](./assets/omkt/order/orders-found20250429.png)
+
+
+
 ![Order module: manual testing](./assets/omkt/order/getAllOrders-manual-testing.png)
 
 ![Order module: manual testing](./assets/omkt/order/createOneNewOrder-manual-testing.png)

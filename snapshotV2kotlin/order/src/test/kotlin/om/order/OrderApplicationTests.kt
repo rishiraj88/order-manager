@@ -25,6 +25,12 @@ class OrderApplicationTests() {
         mysqlContainer.start()
     }
 
+    @BeforeEach
+    fun setup() {
+        RestAssured.baseURI = "http://localhost"
+        RestAssured.port = applicationPort as Int
+    }
+
     @Test
     fun shouldCreateOneNewOrder_1() {
         var requestBody = """
@@ -50,6 +56,7 @@ class OrderApplicationTests() {
             .body("itemQuantity", Matchers.equalTo(3))
     }
 
+    // TODO paramaterize the tests
     @Test
     fun shouldCreateOneNewOrder_2() {
         var requestBody = """
@@ -74,11 +81,7 @@ class OrderApplicationTests() {
             .body("itemRate", Matchers.equalTo(280.40f))
             .body("itemQuantity", Matchers.equalTo(1))
     }
-    @BeforeEach
-    fun setup() {
-        RestAssured.baseURI = "http://localhost"
-        RestAssured.port = applicationPort as Int
-    }
+
 
     @Test
     fun shouldCreateOneNewOrder_3() {
@@ -105,6 +108,7 @@ class OrderApplicationTests() {
             .body("itemQuantity", Matchers.equalTo(2))
     }
 
+    //TODO
     @Test
     fun shouldReturnAllOrders() {
     }

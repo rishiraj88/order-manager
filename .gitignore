@@ -8,5 +8,6 @@ product/db/
 product/.gradle/
 product/HELP.md
 product/build/
-snapshotV2kotlin/order/odb/
+snapshotV2kotlin/order/orderdb/
 snapshotV2kotlin/inventory/invdb/
+snapshotV2kotlin/tmp/

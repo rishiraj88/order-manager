@@ -16,7 +16,7 @@ class TestcontainersConfiguration {
 		return MySQLContainer(DockerImageName.parse("mysql:8.3.0"))
 	}
 
-	/*@Bean
+	/*@Bean //to use in later stages of development and maintenance
 	@ServiceConnection
 	fun postgresContainer(): PostgreSQLContainer<*> {
 		return PostgreSQLContainer(DockerImageName.parse("postgres:latest"))
