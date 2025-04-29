@@ -2,7 +2,6 @@ package om.product.controller
 
 import om.product.dto.ProductReq
 import om.product.dto.ProductResp
-import om.product.exception.ResourceNotFoundException
 import om.product.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
