@@ -137,11 +137,25 @@ The module for Product (Kotlin variant) has been set up with the following depen
 
 ### Manual Testing
 #### Product
+![Product module: adding first product for this day](./assets/omkt/product/addOneProductadd-product1-20250429.png)
+![Product module: adding second product for this day](./assets/omkt/product/addOneProductadd-product2-20250429.png)
+![Product module: listing the available products](./assets/omkt/product/get-products-20250429.png)
+
 ![Product module: manual testing](./assets/manual-testing-of-product.png)
 ![Product module: manual testing](./assets/omkt/product/addOneProduct-manual-testing.png)
 ![Product module: manual testing](./assets/omkt/product/getAllProducts-manual-testing.png)
 
 #### Order
+
+
+![Order module: getting no orders available](./assets/omkt/order/no-orders-found20250429.png)
+
+![Order module: creating a new order](./assets/omkt/order/new-order-created20250429.png)
+
+![Order module: getting orders listed](./assets/omkt/order/orders-found20250429.png)
+
+
+
 ![Order module: manual testing](./assets/omkt/order/getAllOrders-manual-testing.png)
 
 ![Order module: manual testing](./assets/omkt/order/createOneNewOrder-manual-testing.png)

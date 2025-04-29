@@ -4,9 +4,7 @@ tmp/
 data/
 omkt/desktop.ini
 snapshotV2kotlin/*.zip
-product/db/
-product/.gradle/
-product/HELP.md
-product/build/
-snapshotV2kotlin/order/odb/
+snapshotV2kotlin/order/orderdb/
 snapshotV2kotlin/inventory/invdb/
+snapshotV2kotlin/tmp/
+snapshotV2kotlin/product/productdb/
