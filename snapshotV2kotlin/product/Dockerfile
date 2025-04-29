@@ -6,7 +6,7 @@
 FROM gradle:jdk21-corretto-al2023 AS build
 WORKDIR /app
 COPY ./src ./build.gradle.kts ./
-RUN gradle bootJar
+RUN gradle build
 
 ##########
 # Deploy #
@@ -17,12 +17,11 @@ WORKDIR /app
 RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
-LABEL version="1.0"
+LABEL version="2.0"
 LABEL description="Dockerfile for Order-Manager::Product with Kotlin 1.9 (JDK 21) and MongoDB"
 
 COPY --from=build /app/build/libs/app-0.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080
-CMD [ "java","-jar","target/app-0.0.1-SNAPSHOT.jar" ]
+CMD [ "java", "-jar", "target/app-0.0.1-SNAPSHOT.jar" ]
 
-VOLUME ./data:/data/db
-VOLUME ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+VOLUME ./productdb:/data/db
