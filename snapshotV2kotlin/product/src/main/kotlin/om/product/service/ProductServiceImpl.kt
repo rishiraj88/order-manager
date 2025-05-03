@@ -39,7 +39,7 @@ class ProductServiceImpl(val productRepository: ProductRepository) : ProductServ
 
     override fun getProduct(id: String): ProductResp? {
         val matchingProduct = productRepository.findById(id).getOrNull()?.toResp()
-        if (null == matchingProduct) throw ResourceNotFoundException("No matching products found.")
+            ?: throw ResourceNotFoundException("No matching products found.")
         return matchingProduct
     }
 }

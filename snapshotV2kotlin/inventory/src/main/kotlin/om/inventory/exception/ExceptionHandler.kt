@@ -14,4 +14,5 @@ class ExceptionHandler {
         response.put("EXCEPTION", exception.message ?: "")
         return ResponseEntity.status(HttpStatus.OK).body(response)
     }
+
 }

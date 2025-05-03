@@ -67,11 +67,10 @@ allOpen {
 	annotation("jakarta.persistence.MappedSuperclass")
 	annotation("jakarta.persistence.Embeddable")
 }
+application {
+	mainClass.set("om.product.ProductApplication")
+}
 
 tasks.withType<Test> {
 	useJUnitPlatform()
-}
-
-application {
-	mainClass.set("om.product.ProductApplication")
 }

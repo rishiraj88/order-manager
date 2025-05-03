@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class InventoryServiceImpl(val inventoryRepository: InventoryRepository):InventoryService {
+
     override fun isItemInStock(skuCode: String, quantityToCheck: Int):Boolean {
         if( quantityToCheck>0){
             return inventoryRepository.existsBySkuCodeAndQuantityInStockIsGreaterThanEqual(skuCode,quantityToCheck)
