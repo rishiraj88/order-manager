@@ -2,9 +2,10 @@
 *.zip
 tmp/
 data/
-omkt/desktop.ini
+*/desktop.ini
 snapshotV2kotlin/*.zip
 snapshotV2kotlin/order/orderdb/
 snapshotV2kotlin/inventory/invdb/
 snapshotV2kotlin/tmp/
 snapshotV2kotlin/product/productdb/
+archiV1java/gateway/docker/tempo/tempo-data/

@@ -321,6 +321,14 @@ The module for Product has been set up with the following dependencies, specifie
 ### Keycloak Config and Auth Testing
 Configuration and manual testing across service endpoint integration are detailed out in the separate Markdown file: - **gateway implementation with Keycloak.md**
 
+### Gists & Developer Notes
+- to view tables in mysql database:
+<pre>mysql -uusernameyourwish -ppasswordyourwish
+show databases;
+use leasedb;
+show tables;
+</pre>
+
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
 - **X:** <https://twitter.com/RishiRajDevOps>
