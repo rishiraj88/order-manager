@@ -8,6 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class SecurityConfig {
     // list the URLs which should be allowed access without any need for authentication
     private final String[] openUrls = {
-      "/doc/webui","/doc/json/**","/gw/**","/doc/swagger-ui/index.html","/doc/swagger-ui/**"
+      "/doc/webui","/doc/json/**","/gw/**","/doc/swagger-ui/index.html","/doc/swagger-ui/**","/actuator/prometheus"
     };
 
     @Bean
@@ -28,8 +29,8 @@ public class SecurityConfig {
         ).build();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
+  //  @Bean
+   // CorsConfigurationSource corsConfigurationSource() {
         /* // Kept for development purpose. Will be removed later on.
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
@@ -38,12 +39,20 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
         */
+    /*
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-        return source;
+        return source;*/
+  //  }
+
+   public void addCorsMappings(CorsRegistry registry ) {
+        registry.addMapping("/**")
+                .allowedMethods("*")
+                .allowedOrigins("*")
+                .allowedHeaders("*");
     }
 }

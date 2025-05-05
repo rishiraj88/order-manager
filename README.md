@@ -1,36 +1,62 @@
 # Order Manager (Order Module of E-Commerce Platform)
-- This project essentially showcases that the real-world problems faced by most of the businesses today can be simply attended to with a distributed approach. Such a system is implemented using modern web technologies, knitted with asynchronous and synchronous communications.
+- This project essentially showcases that the real-world problems faced by most of the businesses today can be simply managed with a "distributed app" approach. Such a system is implemented using modern web technologies, knitted with asynchronous and synchronous communications and further empowered with Observability. Thanks for Prometheus-Grafana stack, which consists of loggging tools (Loki), Distributed Tracing tools (micrometer) and Dashboarding powerhouse (Grafana).
 
 
-- Some of the technologies used in this project are:
-- Spring Boot 3.4, Java 21
+- Some of the technologies and developer tools used in this project are:
+- Spring Boot 3.4, Java 21+ (Java 24)
 - Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
+- Prometheus-Grafana stack for Observability (Prometheus, Loki, micrometer and Grafana  Dashboard)
 - Modern strategy for Spring Security implementation (as in Spring Boot 3, Spring 6)
 - Use of WebClient and RestClient (Spring Boot 3) and not of FeignClient (Spring Boot 2.7 style)
-- Kafka for asynchronous communication (as in Notification app) across web services using message queues (MQ)
-- Docker-Compose for containerization of individual apps
-- Testcontainers for automated API Testing and Contract Testing, with Rest-Assured
+- Apache Kafka for for message queues (MQ), which provide for asynchronous communication (as in Notification) across web services
+- Docker-Compose for containerization of apps
+- Testcontainers for automated API Testing and wiremock for Contract Testing, along with Rest-Assured
 - Container orchestration, clustering and auto-scaling with Deployment YAML for Kubernetes.
-- Port exposure with Service kind of Kubernetes descriptors
+- Port exposure with Service kind of descriptors (Kubernetes)
 
 ## Highlights of technological tools
-- Multi-stage Dockerfile for Product app
-- Declarations of YAML for Kubernetes cluster deployment
-- Gateway implementation as a microservice to connect the backend APIs to external clients
+- Prometheus-Grafana stack for Observability (Prometheus, Grafa-Loki, micrometer)
+- Multi-stage Dockerfile for smaller container sizes and enhanced security of business apps
+- Declarations of YAML for Kubernetes-based cluster deployment
+- Gateway implementation as a microservice to secure and connect the backend APIs to external clients
+
+## Development Style for the Big Distributed Platform:
+The distributed platform, a technological giant, is being developed and enhanced continuously in two main streams:
+- `archiV1java`: using Java/Jakarta with Spring Boot 3 as main development toolset. It gets the first chance and higher priority to try more and newer technological frameworks, libraries and performance enhancers out. Think of Fedora and Rocky Linux here.
+- `snapshotV2kotlin`: using Kotlin with Spring Boot 3 as main development stack. It inherits the tried-and-tested tooling from *archiV1java* stream.
 
 ## This application has three main business components, implemented as Microservices:
-- Product (Kotlin app, Spring Boot)
-- Order (ready as Java app, Spring Boot; in dev works as Kotlin app, Spring Boot)
-- Inventory (Java app, Spring Boot)
+- Product
+- Order
+- Inventory
 
 ## More components, services, config and connectors are there as well- 
 - to integrate the three main actors (our "heroes"), and
 - Gateway and User Authentication with OpenID Connect (Keykloak: <./gateway/README.md>)
 - API Documentation with OpenAPI Specification (OAS): Swagger
-- in order to facilitate smooth communication among the services.
+- Message queues in order to facilitate smooth communication among the services.
 
 
 And the result is: unmatched and flawless user experience. :) 
+
+## A few exciting screenshots (updated in May 2025)
+
+![to list products via API access (using Postman)](./assets/observability/list-products-in-Postman-20250505.png)
+
+![Welcome landing view in Prometheus-Grafana portal (local setup)](./assets/observability/grafana-welcome-page-20250505.png)
+
+![viewing distributed traces with Tempo](./assets/observability/traces-in-tempo-20250505.png)
+
+![applying filters for log monitoring with Prometheus-Grafana](./assets/observability/filters-in-prometheus-20250505.png)
+
+![to add new product record via API access](./assets/observability/add-new-product-in-Postman-20250505.png)
+
+![viewing the logs of Product application in real time with Grafana stack](./assets/observability/product-app-logs-in-prometheus-20250505.png)
+
+![Grafana Dashboard graphs 1st capture](./assets/observability/Prometheus-Grafana-dashboard-1-20250505.png)
+
+![Grafana Dashboard graphs 2nd capture](./assets/observability/Prometheus-Grafana-dashboard-2-20250505.png)
+
 
 ## To view and test-run the web app
 
@@ -321,11 +347,19 @@ The module for Product has been set up with the following dependencies, specifie
 ### Keycloak Config and Auth Testing
 Configuration and manual testing across service endpoint integration are detailed out in the separate Markdown file: - **gateway implementation with Keycloak.md**
 
+### Gists & Developer Notes
+- to view tables in mysql database:
+<pre>mysql -uusernameyourwish -ppasswordyourwish
+show databases;
+use leasedb;
+show tables;
+</pre>
+
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
+- **GitHub:** <https://github.com/rishiraj88>
 - **X:** <https://twitter.com/RishiRajDevOps>
 - **Start Page:** <https://bio.link/rishiraj49de>
-- **GitHub:** <https://github.com/rishiraj88>
 
 ## Credits and Gratitude
 I thank all who have mentored, taught and guided me. Also, I appreciate who have supported my work with pair programming and more.
