@@ -12,11 +12,12 @@ spec:
     image: mysql:8.3.0
     env:
       - name: MYSQL_ROOT_PASSWORD
-        value: mysql
-        #value: ${DB_PASSWORD}
+        value: bXlzcWwK
     ports:
       - containerPort: 3306
-    #volume/claim
+    volumeMounts:
+      - name: orderdb
+        mountPath: /data/orderdb
     
   - name: om-order
     #image: i50729/om-order
@@ -38,3 +39,4 @@ spec:
 
 #1
 #1
+#ms

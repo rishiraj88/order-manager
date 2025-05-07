@@ -18,10 +18,12 @@ spec:
       - name: mysql
         image: mysql:8.3.0
         env:
-          - MYSQL_ROOT_PASSWORD: mysql
+          - MYSQL_ROOT_PASSWORD: bXlzcWwK
         ports:
           - containerPort: 3306
-        #volume/claim
+        volumeMounts:
+          - name: orderdb
+          mountPath: /data/orderdb
       - name: om-order
         #image: i50729/om-order
         image: localhost:5000/om-order
@@ -57,3 +59,4 @@ spec:
 #kubectl delete deployment om-order-depl
 
 #3
+# ms

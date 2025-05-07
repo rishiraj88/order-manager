@@ -18,10 +18,12 @@ spec:
       - name: mysql
         image: mysql:8.3.0
         env:
-          - MYSQL_ROOT_PASSWORD: mysql
+          - MYSQL_ROOT_PASSWORD: bXlzcWwK
         ports:
           - "3306:3306"
-        #volume/claim
+        volumeMounts:
+          - name: orderdb
+          mountPath: /data/orderdb
 
       - name: om-order
         #image: i50729/om-order
@@ -30,6 +32,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
+      app: om-order
       side: backend
 
 ## create replica set
