@@ -34,7 +34,7 @@ services:
     build: .
     container_name: gateway
     ports:
-      - "9000:9000"
+      - "8181:8181"
     depends_on:
       - auth-keycloak
 

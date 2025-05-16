@@ -16,5 +16,5 @@ LABEL version="1.0"
 LABEL description="Dockerfile for Order-Manager::Gateway with JDK 21 and keycloak"
 
 COPY --from=build /app/target/gateway-1.0.1-SNAPSHOT.jar /app/target/
-EXPOSE 9000
+EXPOSE 8181
 CMD [ "java", "-jar","target/gateway-1.0.1-SNAPSHOT.jar" ]
