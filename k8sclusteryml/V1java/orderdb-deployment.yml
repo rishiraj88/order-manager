@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: om-order-depl #shown in listing, also specified in scale command
+  name: om-orderdb-depl #shown in listing, also specified in scale command
   labels:
     app: om
-    name: om-order-depl
+    name: om-orderdb-depl
     side: backend
 
 spec:
@@ -12,23 +12,30 @@ spec:
   selector:
     matchLabels:
       app: om
-      name: om-order-pod
+      name: om-orderdb-pod
       side: backend
   template:
     metadata:
-      name: om-order-pod
+      name: om-orderdb-pod
       labels:
         app: om
-        name: om-order-pod
+        name: om-orderdb-pod
         side: backend
     spec:
       containers:
-        - name: om-order
-          #image: i50729/om-order
-          image: localhost:5000/om-order
-          ports:
-            - containerPort: 8081
-            
+      - name: mysql
+        image: mysql:8.3.0
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: bXlzcWwK
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: orderdb
+            mountPath: /data/orderdb
+      
+
+
 ## to create a Deployment
 #kubectl create -f order-deployment.yml
 
