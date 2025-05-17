@@ -3,40 +3,31 @@ kind: Pod
 metadata:
   name: om-order-pod
   labels:
-    app: om-order
+    app: om
+    name: om-order-pod
     side: backend
 
 spec:
   containers:
-  - name: mysql
-    image: mysql:8.3.0
-    env:
-      - name: MYSQL_ROOT_PASSWORD
-        value: bXlzcWwK
-    ports:
-      - containerPort: 3306
-    volumeMounts:
-      - name: orderdb
-        mountPath: /data/orderdb
-    
-  - name: om-order
-    #image: i50729/om-order
-    image: localhost:5000/om-order
-    imagePullPolicy: Never
-
-    ports:
-      - containerPort: 8081
-
-
+    - name: om-order
+      #image: i50729/om-order
+      image: localhost:5000/om-order
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8081
+        
 ## create pod
-#kubectl apply -f order-pod.yml
+# kubectl apply -f order-pod.yml
 
 ## view pods
-#kubectl get pods
+# kubectl get pods
 
 ## view pod details
-#kubectl describe pod om-order-pod
+# kubectl describe pod om-order-pod
 
 #1
 #1
 #ms
+
+#20250517
+#1

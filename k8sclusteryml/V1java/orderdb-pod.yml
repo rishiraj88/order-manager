@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: om-orderdb-pod
+  labels:
+    app: om
+    name: om-orderdb-pod
+    side: backend
+
+spec:
+  containers:
+    - name: orderdb
+      image: mysql:8.3.0
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: bXlzcWwK
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - mountPath: /data/orderdb
+          name: orderdb
+          
+          
+## create pod
+# kubectl apply -f order-pod.yml
+
+## view pods
+# kubectl get pods
+
+## view pod details
+# kubectl describe pod om-order-pod
+
+#1
+#1
+#ms
+
+
+#20250517
+#3
