@@ -6,7 +6,6 @@ metadata:
     app: om
     name: om-order-rs
     side: backend
-
 spec:
   template:
     metadata:
@@ -50,14 +49,14 @@ spec:
 ## to update replica count:
 #
 ### after changing replicas count in file
-#kubectl replace -f rs-desc.yml
+#kubectl replace -f order-replicaset.yml
 #
 ### directly from command line, without changing replicas count in file
-#kubectl scale --replicas=2 -f rs-desc.yml
+#kubectl scale --replicas=2 -f order-replicaset.yml
 #kubectl scale --replicas=1 replicaset om-order-rs # replicaset is type, om-order-rs is name
 #
 ## to reload replicaset declaration from file
-#kubectl replace -f replicaset-definition.yaml
+#kubectl replace -f order-replicaset.yml
 
 ## delete replica set
 #kubectl delete replicaset om-order-rs
