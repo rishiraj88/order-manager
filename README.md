@@ -354,6 +354,11 @@ show databases;
 use leasedb;
 show tables;
 </pre>
+- locally hosted Docker registry has been set up as:
+</pre>docker run -d -p 5000:5000 --restart always --name registry registry:2
+docker tag imageName localhost:5000/imageName
+$ docker push localhost:5000/imageName</pre>
+
 
 ## Contact Pointers
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>

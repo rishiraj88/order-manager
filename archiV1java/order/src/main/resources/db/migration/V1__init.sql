@@ -1,4 +1,4 @@
-CREATE TABLE `orders`
+CREATE TABLE IF NOT EXISTS `orders`
 (`id` varchar(40) NOT NULL,
 `order_number` varchar(255) DEFAULT NULL,
 `item_sku_code` varchar(255),

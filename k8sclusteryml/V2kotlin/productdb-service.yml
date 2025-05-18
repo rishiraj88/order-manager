@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: om-productdb #hostname for API, with 'port'. used in the code and config of other modules of app
+  labels:
+    app: om
+    name: om-productdb-service
+    side: backend
+spec:
+  type: ClusterIP # NodePort for being client-accessible. Elsewise for internal-only service must be ClusterIP
+  ports:
+  - targetPort: 27017 #internal app port
+    port: 27017 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
+    #nodePort: 32717 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
+  selector: #from pod definition
+    app: om
+    name: om-productdb-pod
+    side: backend
+    
+## to create a service
+# kubectl create -f productdb-service.yml
+
+## to check the service status
+#kubectl get services
+###NAME     TYPE    CLUSTER-IP  EXTERNAL-IP PORT(S) AGE headers are listed
+
+# curl http://192.168.1.2:32080
+
+#4
+#2
+
+#20250518

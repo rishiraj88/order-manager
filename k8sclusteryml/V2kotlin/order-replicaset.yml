@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: om-order-rs #shown in listing, also specified in scale command
+  labels:
+    app: om
+    name: om-order-rs
+    side: backend
+
+spec:
+  template:
+    metadata:
+      name: om-order-pod
+      labels:
+        app: om
+        name: om-order-pod
+        side: backend
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.3.0
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: bXlzcWwK
+        ports:
+          - "3306:3306"
+        volumeMounts:
+          - name: orderdb
+            mountPath: /data/orderdb
+
+      - name: om-order
+        #image: i50729/om-order
+        image: localhost:5000/om-order
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om
+      side: backend
+
+## create replica set
+#kubectl create -f order-replicaset.yml
+
+## view replica sets
+#kubectl get replicasets
+
+## view pods
+#kubectl get pods
+
+## to update replica count:
+#
+### after changing replicas count in file
+#kubectl replace -f rs-desc.yml
+#
+### directly from command line, without changing replicas count in file
+#kubectl scale --replicas=2 -f rs-desc.yml
+#kubectl scale --replicas=1 replicaset om-order-rs # replicaset is type, om-order-rs is name
+#
+## to reload replicaset declaration from file
+#kubectl replace -f replicaset-definition.yaml
+
+## delete replica set
+#kubectl delete replicaset om-order-rs
+
+#2

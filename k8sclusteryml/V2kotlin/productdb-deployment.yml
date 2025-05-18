@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: productdbpv
+spec:
+  capacity:
+    storage: 270M
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /product/data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - my-node
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: productdbpv
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 270M
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-productdb-depl #shown in listing, also specified in scale command
+  labels:
+    app: om
+    name: om-productdb-depl
+    side: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om
+      name: om-productdb-pod
+      side: backend
+  template:
+    metadata:
+      name: om-productdb-pod
+      labels:
+        app: om
+        name: om-productdb-pod
+        side: backend
+    spec:
+      containers:
+      - name: productdb
+        image: mongo:7.0.5
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: cm9vdAo=
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: cGFzc3dvcmQK
+        - name: MONGO_INITDB_DATABASE
+          value: cHJvZHVjdGRiCg==
+        ports:
+        - containerPort: 27017
+        command: ['sh', '-c', 'echo "The Product app is running!"]
+        volumeMounts:
+          - name: productdbpv
+            mountPath: "/product/data"
+      volumes:
+      - name: productdbpv
+        persistentVolumeClaim:
+          claimName: productdbpv
+
+#kubectl create -f productdb-deployment.yml
+#kubectl get deployments
+#kubectl get replicasets
+#kubectl get pods
+
+# to update container sepcs
+##kubectl apply -f productdb-deployment.yml -- after changing container name or image tag
+##kubectl set image deployment/om-productdb-depl mongodb=mongo:8.0.1
+
+#kubectl delete deployment om-productdb-depl
+
+#20250518

@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: orderdbpv
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /order/data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - my-node
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: orderdbpv
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200M
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-orderdb-depl #shown in listing, also specified in scale command
+  labels:
+    app: om
+    name: om-orderdb-depl
+    side: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om
+      name: om-orderdb-pod
+      side: backend
+  template:
+    metadata:
+      name: om-orderdb-pod
+      labels:
+        app: om
+        name: om-orderdb-pod
+        side: backend
+    spec:
+      containers:
+      - name: orderdb
+        image: mysql:8.3.0
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: bXlzcWwK
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+          - name: orderdbpv
+            mountPath: "/order/data"
+      volumes:
+      - name: orderdbpv
+        persistentVolumeClaim:
+          claimName: orderdbpv
+        
+
+
+## to create a Deployment
+# kubectl create -f orderdb-deployment.yml
+
+## to list deployments
+#kubectl get deployments
+
+## to list replica sets
+#kubectl get replicasets
+
+## to list pods
+#kubectl get pods
+
+## to update container sepcs:
+
+### after changing container name or image tag in file
+##kubectl apply -f orderdb-deployment.yml
+
+#### directly from command line, without changing container name or image tag in file
+##kubectl set image deployment/om-order-depl mysql=mysql:8.3.6 # deployment/deployment-name image-name=image-source:version
+
+## remove a deployment
+#kubectl delete deployment om-order-depl
+
+# kubectl get all
+#3
+# ms
