@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-order-depl #shown in listing, also specified in scale command
+  labels:
+    app: om
+    name: om-order-depl
+    side: backend
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om
+      name: om-order-pod
+      side: backend
+  template:
+    metadata:
+      name: om-order-pod
+      labels:
+        app: om
+        name: om-order-pod
+        side: backend
+    spec:
+      containers:
+        - name: om-order
+          #image: i50729/om-order
+          image: localhost:5000/om-order
+          ports:
+            - containerPort: 8081
+            
+## to create a Deployment
+#kubectl create -f order-deployment.yml
+
+## to list deployments
+#kubectl get deployments
+
+## to list replica sets
+#kubectl get replicasets
+
+## to list pods
+#kubectl get pods
+
+## to update container sepcs:
+
+### after changing container name or image tag in file
+##kubectl apply -f om-order-depl.yml
+
+#### directly from command line, without changing container name or image tag in file
+##kubectl set image deployment/om-order-depl mysql=mysql:8.3.6 # deployment/deployment-name image-name=image-source:version
+
+## remove a deployment
+#kubectl delete deployment om-order-depl
+
+# kubectl get all
+#3
+# ms

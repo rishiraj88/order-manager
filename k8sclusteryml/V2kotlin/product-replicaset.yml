@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: om-product-kt-rs #shown in listing, also specified in scale command
+  labels:
+    app: om-product-kt
+    side: backend
+spec:
+  template:
+    metadata:
+      name: om-product-kt-pod
+      labels:
+        app: om-product-kt
+        side: backend
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:7.0.5
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: cm9vdAo=
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: cGFzc3dvcmQK
+          - name: MONGO_INITDB_DATABASE
+            value: cHJvZHVjdGRiCg==
+        ports:
+          - containerPort: 27017
+        command: ['sh', '-c', 'echo "The Product app is running!"]
+        volumeMounts:
+          - name: productdb
+            mountPath: /data/productdb
+      - name: om-product-kt
+        image: localhost:5000/om-product-kt
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8081
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om-product-kt
+      side: backend
+#kubectl create -f product-kt-replicaset.yml
+#kubectl get replicasets
+
+# to update replica count
+##kubectl replace -f rs-desc.yml -- after changing replicas value in file
+##kubectl scale --replicas=2 -f rs-desc.yml
+##kubectl scale --replicas=3 replicaset om-product-kt-rs
+
+#kubectl delete replicaset rs-name

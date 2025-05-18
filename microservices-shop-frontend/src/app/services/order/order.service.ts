@@ -19,6 +19,6 @@ export class OrderService {
       }),
       responseType: 'text' as 'json'
     };
-    return this.httpClient.post<string>('http://localhost:9000/api/v1/orders', order, httpOptions);
+    return this.httpClient.post<string>('http://localhost:8181/api/v1/orders', order, httpOptions);
   }
 }

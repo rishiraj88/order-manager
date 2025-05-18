@@ -32,6 +32,8 @@ class OrderServiceImpl(val orderRepository: OrderRepository) : OrderService {
     }
 
     override fun createOrder(orderReq: OrderReq): OrderResp {
+        // TODO https://github.com/rishiraj88/order-manager/issues/71
+        // Invoke Delivery and Billing features when a new order is created. #71
         return orderRepository.save(Order.fromReq(orderReq)).toResp()
     }
 

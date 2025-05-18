@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: om-productdb-pod
+  labels:
+    app: om
+    name: om-productdb-pod
+    side: backend
+
+spec:
+  containers:
+    - name: productdb
+      image: mongo:7.0.5
+      env:
+      - name: MONGO_INITDB_ROOT_USERNAME
+        value: cm9vdAo=
+      - name: MONGO_INITDB_ROOT_PASSWORD
+        value: cGFzc3dvcmQK
+      - name: MONGO_INITDB_DATABASE
+        value: cHJvZHVjdGRiCg==
+      ports:
+      - containerPort: 27017
+      command: ['sh', '-c', 'echo "The Product app is running!"]
+      volumeMounts:
+        - mountPath: /data/productdb
+          name: productdb
+          
+          
+## create pod
+# kubectl apply -f productdb-pod.yml
+
+## view pods
+# kubectl get pods
+
+## view pod details
+# kubectl describe pod om-productdb-pod
+
+#1
+#1
+#ms
+
+#20250518

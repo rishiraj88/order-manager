@@ -1,0 +1,103 @@
+==pods==
+kubectl apply -f prod.pod.yml
+kubctl get pods
+kubctl describe pod prodpod
+===
+
+===replicasets==
+kubectl create -f prod-replicaset.yml [create rs]
+kubectl get replicaset
+kubectl get pods
+3
+/kubectl replace -f replicaset-def.yml
+/kubectl scale --replicas=6 -f rs.yml
+/kubectl scale --replicas=6 replicaset prod-replicaset
+kubectl delete replicaset prod-replicaset
+===
+
+===deployment===
+kubectl create -f prod-depl.yml
+kubctl get depls
+kubctl get replicasets
+kubectl get pods
+kubectl apply -f deployment.yml
+/kubectl set image deployment/app-deployment nginx-container-name=nginx:1.1.1
+===
+
+===service===
+kubectl create -f prod-service.yml
+kubectl get services
+kubectl create -f prod-webapp-service.yml
+kubectl get services
+curl http:// 192.168.1.2: 8080
+===
+
+====
+ls
+
+kctl get pods
+none
+get svc
+none
+
+kctl create -f order-pod.yml
+kctl create -f order-service.yml
+
+kctl get pods,svc
+svc is listed with nodeport number
+
+kctl service order-service --url
+http://192.168.1.2:32080
+
+==
+kctl create -f mysql-pod
+kctl create -f mysql-service
+kubeclt get pods,svc
+---
+
+==
+==
+5 pods, 4 svcs
+
+==
+minikube service order-service --url
+http://192.168.1.2:32080
+minikube service orderdb-service --url
+http://192.168.1.2:30306
+
+
+==now with deployments and services==
+stop and remove all pod and svc objects
+
+==
+kubectl create -f orderdb-deploy.yaml
+kubectl create -f orderdb-service.yaml
+kubectl create -f order-deploy.yaml
+kubectl create -f order-service.yaml
+
+kctl get deployments
+kctl get pods
+
+==
+kubectl get pods,svc
+
+==
+finally, list all deps,svc
+
+kubectl get deployments,svc
+5d, 4s
+
+==
+minikube service orderdb-service --url
+http://192.168.1.2:32080
+minikube service order-service --url
+http://192.168.1.2:30306
+
+==
+now about scaling
+kubectl scale deployment order-deploy --replicas=2
+... scaled
+kubectl get deployments order-deploy
+name  ready 3/3  uptodate 3  avail 3  age ms
+
+kctl get pods
