@@ -67,7 +67,8 @@ spec:
           value: cHJvZHVjdGRiCg==
         ports:
         - containerPort: 27017
-        command: ['sh', '-c', 'echo "The Product app is running!"]
+        command: ["echo"]
+        args: ["The Product app is running!"]
         volumeMounts:
           - name: productdbpv
             mountPath: "/product/data"
