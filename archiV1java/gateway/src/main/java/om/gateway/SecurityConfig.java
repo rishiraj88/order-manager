@@ -1,7 +1,6 @@
 package om.gateway;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -11,7 +10,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 public class SecurityConfig {
-    // list the URLs which should be allowed access without any need for authentication
+    // the URL list to be allowed without authentication
     private final String[] openUrls = {"/doc/webui", "/doc/json/**", "/gw/**", "/doc/swagger-ui/index.html", "/doc/swagger-ui/**", "/actuator/prometheus"};
 
     @Bean
@@ -27,7 +26,7 @@ public class SecurityConfig {
     }
     //  @Bean
     // CorsConfigurationSource corsConfigurationSource() {
-        /* // Kept for development purpose. Will be removed later on.
+        /* // Kept for development purpose. To be removed afterwards.
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));

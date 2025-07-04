@@ -43,7 +43,7 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> productDocumentationRoute() {
         return GatewayRouterFunctions.route("product-doc")
-                .route(RequestPredicates.path("/gw/product/v1/doc")
+                .route(RequestPredicates.path("/gw/products/v1/doc")
                         ,HandlerFunctions.http("http://localhost:8080"))
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker("productDocCircuitBreaker"
                         , URI.create("forward:/fallbackRoute")))
@@ -53,7 +53,7 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> orderDocumentationRoute() {
         return GatewayRouterFunctions.route("order-doc")
-                .route(RequestPredicates.path("/gw/order/v1/doc")
+                .route(RequestPredicates.path("/gw/orders/v1/doc")
                         ,HandlerFunctions.http("http://localhost:8081")).filter(CircuitBreakerFilterFunctions.circuitBreaker("orderDocCircuitBreaker"
                         , URI.create("forward:/fallbackRoute")))
                 .filter(FilterFunctions.setPath("/doc/json")).build();
