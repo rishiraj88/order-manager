@@ -31,7 +31,7 @@ jobs:
     
     - name: Build with Maven the app Product
       shell: bash
-      working-directory: ./product
+      working-directory: ./archiV1java/product
       run: mvn install
       
     - name: Build with Maven the app Inventory
