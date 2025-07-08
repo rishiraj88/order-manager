@@ -76,7 +76,7 @@ public class ProductController {
 
 
     @PutMapping
-    public ResponseEntity<ProductResp> udpateProductsFoundByName(@RequestParam ProductReq productReq) {
+    public ResponseEntity<ProductResp> updateProductsFoundByName(@RequestParam ProductReq productReq) {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         if (0 == new Random().nextInt(2)) {
             try {
