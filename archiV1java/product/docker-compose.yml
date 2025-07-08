@@ -13,7 +13,8 @@ services:
 
   product:
     build: .
-    container_name: product
+    #container_name: product
+    image: i50729/om-product:jib
     ports:
       - "8080:8080"
     depends_on:
