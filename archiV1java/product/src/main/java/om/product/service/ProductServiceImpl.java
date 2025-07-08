@@ -33,4 +33,17 @@ public class ProductServiceImpl implements IProductService {
     public List<ProductResp> getAllProducts() {
         return productRepository.findAll().stream().map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
+    @Override
+    public ProductResp getAnyOneProductByName(String name) {
+        return productRepository.findAll().stream().filter(prod -> prod.getName().equals(name)).map(prod -> mapToResponse(prod)).findFirst().get();
+    }
+
+    @Override
+    public ProductResp udpatePriceOfProductsFoundBySku(ProductReq productReq) {
+        Product matchingProduct = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst().get();
+        matchingProduct.setSkuCode(productReq.skuCode());
+        return mapToResponse(
+                productRepository.save(matchingProduct)
+        );
+    }
 }
