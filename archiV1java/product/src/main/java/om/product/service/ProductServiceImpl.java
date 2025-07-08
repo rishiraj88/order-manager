@@ -34,12 +34,12 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findAll().stream().map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
     @Override
-    public ProductResp getAnyOneProductByName(String name) {
-        return productRepository.findAll().stream().filter(prod -> prod.getName().equals(name)).map(prod -> mapToResponse(prod)).findFirst().get();
+    public ProductResp getAnyOneProductBySkuCode(String skuCode) {
+        return productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(skuCode)).map(prod -> mapToResponse(prod)).findFirst().get();
     }
 
     @Override
-    public ProductResp udpatePriceOfProductsFoundBySku(ProductReq productReq) {
+    public ProductResp udpatePriceOfProductFoundBySkuCode(ProductReq productReq) {
         Product matchingProduct = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst().get();
         matchingProduct.setSkuCode(productReq.skuCode());
         return mapToResponse(

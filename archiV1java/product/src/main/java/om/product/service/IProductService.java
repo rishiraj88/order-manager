@@ -8,6 +8,6 @@ import java.util.List;
 public interface IProductService {
     ProductResp addProduct(ProductReq productReq);
     List<ProductResp> getAllProducts();
-    ProductResp getAnyOneProductByName(String name);
-    ProductResp udpatePriceOfProductsFoundBySku(ProductReq productReq);
+    ProductResp getAnyOneProductBySkuCode(String name);
+    ProductResp udpatePriceOfProductFoundBySkuCode(ProductReq productReq);
 }
