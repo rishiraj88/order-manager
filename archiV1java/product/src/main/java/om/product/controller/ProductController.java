@@ -8,6 +8,7 @@ import om.product.service.IProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,34 +50,26 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResp>> getAllProducts() {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
-        if (0 == new Random().nextInt(2)) {
+        // For general application workflow, keep the below code fragment commented
+        /*if (0 == new Random().nextInt(2)) {
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }
+        }*/
         // Traditional way to add <Status Code> to Response
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @GetMapping
-    public ResponseEntity<ProductResp> getAnyOneProductByName(@RequestParam String name) {
-        //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
-        if (0 == new Random().nextInt(2)) {
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        // Traditional way to add <Status Code> to Response
-        return ResponseEntity.ok(productService.getAnyOneProductByName(name));
+    @GetMapping("/{skucode}")
+    public ResponseEntity<ProductResp> getAnyOneProductBySkuCode(@PathVariable String skucode) {
+        return ResponseEntity.ok(productService.getAnyOneProductBySkuCode(skucode));
     }
 
 
     @PutMapping
-    public ResponseEntity<ProductResp> updateProductsFoundByName(@RequestParam ProductReq productReq) {
+    public ResponseEntity<ProductResp> udpatePriceOfProductFoundBySkuCode(@RequestParam ProductReq productReq) {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         if (0 == new Random().nextInt(2)) {
             try {
@@ -86,6 +79,6 @@ public class ProductController {
             }
         }
         // Traditional way to add <Status Code> to Response
-        return ResponseEntity.ok(productService.udpatePriceOfProductsFoundBySku(productReq));
+        return ResponseEntity.ok(productService.udpatePriceOfProductFoundBySkuCode(productReq));
     }
 }
