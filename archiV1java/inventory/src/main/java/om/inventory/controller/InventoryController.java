@@ -2,7 +2,7 @@ package om.inventory.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import om.inventory.svc.IInventoryService;
+import om.inventory.svc.InventoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController @Slf4j
 @RequestMapping("/api/v1/inventory")
 public class InventoryController {
-    private final IInventoryService inventoryService;
+    private final InventoryService inventoryService;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

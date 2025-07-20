@@ -10,8 +10,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data @AllArgsConstructor @RequiredArgsConstructor
-@Entity @Table(name = "inventory")
-public class Inventory {
+@Entity @Table(name = "inventory_items")
+public class InventoryItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
