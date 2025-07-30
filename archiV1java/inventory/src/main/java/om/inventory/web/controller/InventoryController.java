@@ -1,8 +1,8 @@
-package om.inventory.controller;
+package om.inventory.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import om.inventory.svc.InventoryService;
+import om.inventory.service.InventoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
