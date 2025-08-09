@@ -26,6 +26,7 @@ The distributed platform, a technological giant, is being developed and enhanced
 - `snapshotV2kotlin`: using Kotlin with Spring Boot 3 as main development stack. It inherits the tried-and-tested tooling from *archiV1java* stream.
 
 ## This application has three main business components, implemented as Microservices:
+As three RESTful APIs, these business components interact with one another:
 - Product
 - Order
 - Inventory
