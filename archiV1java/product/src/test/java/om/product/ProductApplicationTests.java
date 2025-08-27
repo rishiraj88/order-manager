@@ -104,11 +104,12 @@ class ProductApplicationTests {
 
     @Test
     void shouldGetSpecificProduct() { // GET one
+        String skucode ="DIGI1001MPHO";
         var response = RestAssured
                 .given()
                 .queryParam("name","affordable mobile phone")
                 .when()
-                .get(endpoint)
+                .get(endpoint+"/"+skucode)
                 .then();
 
         response.log().all()
