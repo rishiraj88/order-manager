@@ -1,21 +1,21 @@
 services:
-  mongodb:
+  productdb9:
     image: mongo:7.0.5
-    container_name: mongodb
+    container_name: productdb9
     ports:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: productdb
+      MONGO_INITDB_DATABASE: productdb9
     volumes:
-      - ./data:/data/db
+      - ./db9:/data/db
 
-  product:
-    build: .
-    container_name: product
-    #image: i50729/om-product:jib
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongodb
+#  product:
+ #   build: .
+  #  #container_name: product
+   # image: i50729/om-product:jib
+    #ports:
+     # - "8080:8080"
+    #depends_on:
+     # - productdb

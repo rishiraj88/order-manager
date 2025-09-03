@@ -23,7 +23,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ProductResp addProduct(ProductReq productReq) {
-        Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItem(productReq.pricePerItem()).build();
+        Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItemUnit(productReq.pricePerItemUnit()).build();
         productRepository.save(newProduct);
         log.info("New product has been added with id: {}", newProduct.getId());
         return mapToResponse(newProduct);
@@ -31,7 +31,8 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<ProductResp> getAllProducts() {
-        return productRepository.findAll().stream().map(prod -> mapToResponse(prod)).collect(Collectors.toList());
+        return productRepository.findAll().stream()
+                .map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
     @Override
     public ProductResp getAnyOneProductBySkuCode(String skuCode) {

@@ -58,7 +58,7 @@ public class ProductController {
                 throw new RuntimeException(e);
             }
         }*/
-        // Traditional way to add <Status Code> to Response
+        // Usual practice to add <Status Code> to Response
         return ResponseEntity.ok(productService.getAllProducts());
     }
 

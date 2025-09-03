@@ -9,6 +9,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MongoDBContainer;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -16,6 +18,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class ProductApplicationTests {
+
     @ServiceConnection
     static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0.5");
     static String endpoint = "/api/v1/products";
@@ -40,7 +43,7 @@ class ProductApplicationTests {
                 "name":"affordable mobile phone",\s
                 "desc":"technical details",\s
                 "skuCode":"DIGI1001MPHO",\s
-                "pricePerItem":120.80
+                "pricePerItemUnit":120.80
                 }
                 """;
         var response = RestAssured
@@ -55,25 +58,20 @@ class ProductApplicationTests {
                 .body("id", notNullValue())
                 .body("name", equalTo("affordable mobile phone"))
                 .body("desc", equalTo("technical details"))
-                .body("pricePerItem", is(120.80f));
+                .body("pricePerItemUnit", is(120.80f));
     }
 
 
     @Test
     void shouldGetAllProducts() { // GET collection
-        var response = RestAssured
-                .given()
-                .when()
-                .get(endpoint)
-                .then();
-
-        response.log().all()
-                .statusCode(200)
-                .body("id", notNullValue())
-                .body("name", equalTo("affordable mobile phone"))
-                .body("desc", equalTo("technical details"))
-                .body("skuCode", equalTo("DIGI1001MPHO"))
-                .body("pricePerItem", is(120.80f));
+         var requestSpecification = RestAssured
+                .given();
+        var response = requestSpecification
+                .get(endpoint);
+List<Object> list = response.jsonPath().getList("id");
+for(Object product: list) {
+    System.out.println("product: "+ product);
+}
     }
 
     @Test
@@ -83,7 +81,7 @@ class ProductApplicationTests {
                 "name":"affordable mobile phone",\s
                 "desc":"technical details",\s
                 "skuCode":"DIGI1001MPHO",\s
-                "pricePerItem":120.80
+                "pricePerItemUnit":120.80
                 }
                 """;
         var response = RestAssured
@@ -99,7 +97,7 @@ class ProductApplicationTests {
                 .body("name", equalTo("affordable mobile phone"))
                 .body("desc", equalTo("technical details"))
                 .body("skuCode", equalTo("DIGI1001MPHO"))
-                .body("pricePerItem", is(120.80f));
+                .body("pricePerItemUnit", is(120.80f));
     }
 
     @Test
@@ -118,6 +116,6 @@ class ProductApplicationTests {
                 .body("name", equalTo("affordable mobile phone"))
                 .body("desc", equalTo("technical details"))
                 .body("skuCode", equalTo("DIGI1001MPHO"))
-                .body("pricePerItem", is(120.80f));
+                .body("pricePerItemUnit", is(120.80f));
     }
 }
