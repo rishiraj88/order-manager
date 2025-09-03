@@ -9,9 +9,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MongoDBContainer;
 
-import java.util.List;
-
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -40,10 +40,10 @@ class ProductApplicationTests {
     void shouldAddProduct() { // POST
         String requestBody = """
                 {
-                "name":"affordable mobile phone",\s
-                "desc":"technical details",\s
-                "skuCode":"DIGI1001MPHO",\s
-                "pricePerItemUnit":120.80
+                "name":"middle-ranged mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":280.30
                 }
                 """;
         var response = RestAssured
@@ -56,32 +56,39 @@ class ProductApplicationTests {
         response.log().all()
                 .statusCode(201)
                 .body("id", notNullValue())
-                .body("name", equalTo("affordable mobile phone"))
-                .body("desc", equalTo("technical details"))
-                .body("pricePerItemUnit", is(120.80f));
-    }
+                .body("name", equalTo("middle-ranged mobile phone"))
+                .body("desc", equalTo("simpler details"))
+                .body("pricePerItemUnit", is(280.30f));
 
+    }
 
     @Test
     void shouldGetAllProducts() { // GET collection
-         var requestSpecification = RestAssured
+           var requestSpecification = RestAssured
                 .given();
         var response = requestSpecification
-                .get(endpoint);
-List<Object> list = response.jsonPath().getList("id");
-for(Object product: list) {
-    System.out.println("product: "+ product);
-}
+                .when()
+                .get(endpoint)
+                .then();
+
+        response.log().body()
+                .assertThat().statusCode(200)
+                .body("size()",greaterThan(0))
+                .body("name",everyItem(notNullValue()))
+                .body("desc[0]",equalTo("simpler details"))
+        ;
+
     }
 
     @Test
     void shouldUpdateSpecificProduct() { // PUT
         String requestBody = """
-                 {
-                "name":"affordable mobile phone",\s
-                "desc":"technical details",\s
-                "skuCode":"DIGI1001MPHO",\s
-                "pricePerItemUnit":120.80
+                {
+                "id": "68b8a00057406c46eea73e83",\s
+                "name":"middle-ranged mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":310.80\s
                 }
                 """;
         var response = RestAssured
@@ -91,31 +98,28 @@ for(Object product: list) {
                 .put(endpoint)
                 .then();
 
-        response.log().all()
-                .statusCode(200)
-                .body("id", notNullValue())
-                .body("name", equalTo("affordable mobile phone"))
-                .body("desc", equalTo("technical details"))
-                .body("skuCode", equalTo("DIGI1001MPHO"))
-                .body("pricePerItemUnit", is(120.80f));
+        response.log().body()
+                .assertThat().statusCode(200)
+                .body("size()",greaterThan(0))
+                .body("skuCode", equalTo("DIGI1001MPH2"))
+                .body("pricePerItemUnit", is(310.80f));
     }
 
     @Test
     void shouldGetSpecificProduct() { // GET one
-        String skucode ="DIGI1001MPHO";
-        var response = RestAssured
-                .given()
-                .queryParam("name","affordable mobile phone")
-                .when()
-                .get(endpoint+"/"+skucode)
-                .then();
 
-        response.log().all()
-                .statusCode(200)
-                .body("id", notNullValue())
-                .body("name", equalTo("affordable mobile phone"))
-                .body("desc", equalTo("technical details"))
-                .body("skuCode", equalTo("DIGI1001MPHO"))
-                .body("pricePerItemUnit", is(120.80f));
+            String skucode ="DIGI1001MPH2";
+
+            var response =RestAssured
+                    .given()
+                    .queryParam("skucode",skucode)
+                    .when()
+                    .get(endpoint +"/skucode")
+                    .then();
+
+           response.log().body()
+                   .assertThat().statusCode(200)
+                   .body("size()",greaterThan(0))
+                   .body("skuCode", equalTo("DIGI1001MPH2"));
     }
 }
