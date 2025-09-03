@@ -40,7 +40,7 @@ class OrderApplicationTests {
                 {
                 "orderNumber":"DE3343INT432342342222",\s
                 "itemSkuCode":"DE342GES34233111",\s
-                "pricePerItem":130.20,
+                "pricePerItemUnit":130.20,
                 "quantity":3,
                 "userDetails":{           
                 "emailAddress":"rishiraj@emails.co",

@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     public void createOrder(OrderReq orderReq) {
         if (inventoryClient.isItemInStock(orderReq.itemSkuCode(), orderReq.quantity())) {
             // log.debug("The requested item quantity is available in inventory.");
-            var newOrder = Order.builder().id(UUID.randomUUID()).orderNumber(orderReq.orderNumber()).itemSkuCode(orderReq.itemSkuCode()).pricePerItem(orderReq.pricePerItem()).quantity(orderReq.quantity()).build();
+            var newOrder = Order.builder().id(UUID.randomUUID()).orderNumber(orderReq.orderNumber()).itemSkuCode(orderReq.itemSkuCode()).pricePerItemUnit(orderReq.pricePerItemUnit()).quantity(orderReq.quantity()).build();
             orderRepo.save(newOrder);
             // Send success message to message queue (with Kafka broker)
             /*
@@ -55,6 +55,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderResp> getOrders(Pageable pageable) {
-        return orderRepo.findAll(pageable).map(order -> new OrderResp(order.getId().toString(), order.getOrderNumber(), order.getItemSkuCode(), order.getPricePerItem(), order.getQuantity(), new UserDetails("emailAddress@domain.docom", " name")));
+        return orderRepo.findAll(pageable).map(order -> new OrderResp(order.getId().toString(), order.getOrderNumber(), order.getItemSkuCode(), order.getPricePerItemUnit(), order.getQuantity(), new UserDetails("emailAddress@domain.docom", " name")));
     }
 }

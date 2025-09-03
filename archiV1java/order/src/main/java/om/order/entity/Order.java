@@ -28,8 +28,8 @@ public class Order {
     @Column(name="item_sku_code",nullable = false)
     private String itemSkuCode;
 
-    @Column(name="price_per_item",nullable = false)
-    private BigDecimal pricePerItem;
+    @Column(name="price_per_item_unit",nullable = false)
+    private BigDecimal pricePerItemUnit;
 
     @Column(name="quantity",nullable = false)
     private Integer quantity;

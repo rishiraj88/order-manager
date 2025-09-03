@@ -27,7 +27,6 @@ public class OrderController {
     private final OrderService orderService;
 public OrderController(OrderService orderService) {this.orderService = orderService;}
 
-
     // @ResponseStatus(HttpStatus.CREATED): the modern way to write Controller Endpoints.
     // Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts() endpoint.
     @PostMapping
