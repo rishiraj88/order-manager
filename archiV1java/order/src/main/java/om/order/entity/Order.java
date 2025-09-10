@@ -41,11 +41,11 @@ public class Order {
     private Integer quantity;
 
     @Column(name="created",nullable = false)
-    @PastOrPresent(message = "Future record creation date/time is not permitted.", value = 1L)
+    @PastOrPresent(message = "Future record creation date/time is not permitted.")
     private LocalDateTime created;
 
     @Column(name="updated",nullable = false)
-    @PastOrPresent(message = "Future record modification date/time is not permitted.", value = 1L)
+    @PastOrPresent(message = "Future record modification date/time is not permitted.")
     private LocalDateTime updated;
 
 }

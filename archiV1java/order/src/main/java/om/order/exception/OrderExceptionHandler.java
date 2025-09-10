@@ -16,7 +16,7 @@ public class OrderExceptionHandler {
     public ResponseEntity<ErrorDetails> handleShortOfStockException(InventoryShortOfStockException ex, WebRequest request) {
         var errorDetails = new ErrorDetails(LocalDateTime.now()
                 ,ex.getMessage(),request.getDescription(false)
-                ,"ORD__OUT_OF_STOCK"
+                ,"ORDR__OUT_OF_STOCK"
                 );
 
         return new ResponseEntity<ErrorDetails>(errorDetails
@@ -27,7 +27,7 @@ public class OrderExceptionHandler {
     public ResponseEntity<ErrorDetails> handleOrderExceptions(Exception ex, WebRequest request){
         var errorDetails = new ErrorDetails(LocalDateTime.now()
                 ,ex.getMessage(),request.getDescription(false)
-                ,"ORD__GENERIC_ERROR");
+                ,"ORDR__GENERIC_ERROR");
 
         return new ResponseEntity<ErrorDetails>(errorDetails,HttpStatus.NOT_IMPLEMENTED);
     }
