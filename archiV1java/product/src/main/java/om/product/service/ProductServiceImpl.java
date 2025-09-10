@@ -6,6 +6,7 @@ import om.product.dao.ProductRepository;
 import om.product.dto.ProductReq;
 import om.product.dto.ProductResp;
 import om.product.entity.Product;
+import om.product.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements IProductService {
     }
     @Override
     public ProductResp getAnyOneProductBySkuCode(String skuCode) {
-        return productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(skuCode)).map(prod -> mapToResponse(prod)).findFirst().get();
+        return productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(skuCode)).map(prod -> mapToResponse(prod)).findFirst().orElseThrow(()-> new ProductNotFoundException(skuCode));
     }
 
     @Override
