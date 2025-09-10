@@ -20,7 +20,7 @@ public class ProductExceptionHandler {
                 );
 
         return new ResponseEntity<ErrorDetails>(errorDetails
-                ,  HttpStatus.PRECONDITION_FAILED);
+                ,  HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler({Exception.class})

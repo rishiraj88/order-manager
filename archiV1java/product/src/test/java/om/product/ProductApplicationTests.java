@@ -1,8 +1,10 @@
 package om.product;
 
 import io.restassured.RestAssured;
+import om.product.dto.ProductReq;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -80,9 +82,10 @@ class ProductApplicationTests {
 
     }
 
-    @Test
-    void shouldUpdateSpecificProduct() { // PUT
-        String requestBody = """
+    @ParameterizedTest(name = "productReq")
+    void shouldUpdateSpecificProduct(ProductReq productReq) { // PUT
+        //String id,String name, String desc, String skuCode, BigDecimal pricePerItemUnit
+        /*String requestBody = """
                 {
                 "id": "68b8a00057406c46eea73e83",\s
                 "name":"middle-ranged mobile phone",\s
@@ -90,10 +93,11 @@ class ProductApplicationTests {
                 "skuCode":"DIGI1001MPH2",\s
                 "pricePerItemUnit":310.80\s
                 }
-                """;
+                """;*/
         var response = RestAssured
                 .given()
-                .body(requestBody)
+                //.contentType("application/json").body(requestBody)
+                .contentType("application/json").body(productReq)
                 .when()
                 .put(endpoint)
                 .then();
@@ -105,8 +109,7 @@ class ProductApplicationTests {
                 .body("pricePerItemUnit", is(310.80f));
     }
 
-    @Test
-    void shouldGetSpecificProduct() { // GET one
+    void shouldGetSpecificProduct_success() { // GET one
 
             String skucode ="DIGI1001MPH2";
 
@@ -121,5 +124,20 @@ class ProductApplicationTests {
                    .assertThat().statusCode(200)
                    .body("size()",greaterThan(0))
                    .body("skuCode", equalTo("DIGI1001MPH2"));
+    }
+    @Test
+    void shouldGetSpecificProduct_notFound() { // GET one
+
+        String skucode ="DIGI1001MPH2x";
+
+        var response =RestAssured
+                .given()
+                .queryParam("skucode",skucode)
+                .when()
+                .get(endpoint +"/skucode")
+                .then();
+
+        response.log().body()
+                .assertThat().statusCode(404);
     }
 }
