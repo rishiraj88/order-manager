@@ -8,6 +8,7 @@ import om.product.service.IProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,7 +48,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResp>> getAllProducts() {
+    public ResponseEntity<List<ProductResp>> getAllProducts(@RequestParam(name="skuCode", required = false) String skuCode) {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         // For general application workflow, keep the below code fragment commented
         /*if (0 == new Random().nextInt(2)) {
@@ -58,17 +59,18 @@ public class ProductController {
             }
         }*/
         // Usual practice to add <Status Code> to Response
-        return ResponseEntity.ok(productService.getAllProducts());
+        return ResponseEntity.ok(productService.getAllProducts(skuCode));
     }
 
-    @GetMapping("/skucode")
-    public ResponseEntity<ProductResp> getAnyOneProductBySkuCode(@RequestParam("skucode") String skucode) {
-        return ResponseEntity.ok(productService.getAnyOneProductBySkuCode(skucode));
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResp> getProduct(@PathVariable("id") String id) {
+        return ResponseEntity.ok(productService.getProduct(id));
     }
 
 
     @PutMapping
-    public ResponseEntity<ProductResp> udpatePriceOfProductFoundBySkuCode(@RequestParam ProductReq productReq) {
+    public ResponseEntity<ProductResp> updatePriceOfProductFoundBySkuCode(@RequestBody ProductReq productReq) {
+    //public ResponseEntity<ProductResp> updatePriceOfProductFoundBySkuCode(@RequestParam String skuCode) {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         if (0 == new Random().nextInt(2)) {
             try {
@@ -78,6 +80,6 @@ public class ProductController {
             }
         }
         // Traditional way to add <Status Code> to Response
-        return ResponseEntity.ok(productService.udpatePriceOfProductFoundBySkuCode(productReq));
+        return ResponseEntity.ok(productService.updatePriceOfProductFoundBySkuCode(productReq));
     }
 }

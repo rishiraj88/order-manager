@@ -11,6 +11,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MongoDBContainer;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThan;
@@ -109,21 +111,24 @@ class ProductApplicationTests {
                 .body("pricePerItemUnit", is(310.80f));
     }
 
+    //@Test
     void shouldGetSpecificProduct_success() { // GET one
 
-            String skucode ="DIGI1001MPH2";
+            String skucode ="DIGI1001MPH2";//DIGI1001MPH2
 
             var response =RestAssured
-                    .given()
-                    .queryParam("skucode",skucode)
+                    .given().body(new ProductReq("","","", "DIGI1001MPH2", new BigDecimal("280.30")))
+                    //.queryParam("skucode",skucode)
                     .when()
-                    .get(endpoint +"/skucode")
+                    //.get(endpoint +"/skucode")
+                    .put(endpoint)
                     .then();
 
            response.log().body()
                    .assertThat().statusCode(200)
                    .body("size()",greaterThan(0))
                    .body("skuCode", equalTo("DIGI1001MPH2"));
+                   //.body("pricePerItemUnit", equalTo("280.30"));
     }
     @Test
     void shouldGetSpecificProduct_notFound() { // GET one

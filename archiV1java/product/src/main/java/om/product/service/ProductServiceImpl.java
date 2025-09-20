@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static om.product.util.MapperUtil.mapToResponse;
@@ -31,19 +32,21 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<ProductResp> getAllProducts() {
+    public List<ProductResp> getAllProducts(String skuCode) {
         return productRepository.findAll().stream()
                 .map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
     @Override
-    public ProductResp getAnyOneProductBySkuCode(String skuCode) {
-        return productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(skuCode)).map(prod -> mapToResponse(prod)).findFirst().orElseThrow(()-> new ProductNotFoundException(skuCode));
+    public ProductResp getProduct(String id) {
+        return productRepository.findAll().stream().filter(prod -> prod.getId().equals(id)).map(prod -> mapToResponse(prod)).findFirst().orElseThrow(()-> new ProductNotFoundException(id));
     }
 
     @Override
-    public ProductResp udpatePriceOfProductFoundBySkuCode(ProductReq productReq) {
-        Product matchingProduct = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst().get();
-        matchingProduct.setSkuCode(productReq.skuCode());
+    public ProductResp updatePriceOfProductFoundBySkuCode(ProductReq productReq) {
+        Optional<Product> matchingProductOpt = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst();
+        if(matchingProductOpt.isEmpty()) throw new ProductNotFoundException(productReq.skuCode());
+        Product matchingProduct = matchingProductOpt.get();
+        matchingProduct.setPricePerItemUnit(productReq.pricePerItemUnit());
         return mapToResponse(
                 productRepository.save(matchingProduct)
         );
