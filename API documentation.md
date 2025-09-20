@@ -1,5 +1,5 @@
 # API Documentation
-#todo to update the documentaion here for API versioning. The code has been updated well.
+The documentaion here is continually being updated, so some portion may reflect current status while others may not. The code, however, has been updated well.
 
 The documentation of Application Programming Interface of Order Manager is accessible at:
 - **Product API Doc (HTML format):** <http://localhost:8080/doc/webui>

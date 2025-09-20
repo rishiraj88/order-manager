@@ -1,4 +1,4 @@
-package om.order.exception;
+package om.product.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,27 +10,25 @@ import java.time.LocalDateTime;
 
 @RestControllerAdvice
 /* Optionally 'extends ResponseEntityExceptionHandler' may be added to this class declaration. */
-public class OrderExceptionHandler {
+public class ProductExceptionHandler {
 
-    @ExceptionHandler({InventoryShortOfStockException.class})
-    public ResponseEntity<ErrorDetails> handleShortOfStockException(InventoryShortOfStockException ex, WebRequest request) {
+    @ExceptionHandler({ProductNotFoundException.class})
+    public ResponseEntity<ErrorDetails> handleProductNotFoundException(ProductNotFoundException ex, WebRequest request) {
         var errorDetails = new ErrorDetails(LocalDateTime.now()
                 ,ex.getMessage(),request.getDescription(false)
-                ,"ORDR__OUT_OF_STOCK"
+                ,"PROD__PRODUCT_NOT_FOUND"
                 );
 
         return new ResponseEntity<ErrorDetails>(errorDetails
-                ,  HttpStatus.PRECONDITION_FAILED);
+                ,  HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<ErrorDetails> handleOrderExceptions(Exception ex, WebRequest request){
+    public ResponseEntity<ErrorDetails> handleProductExceptions(Exception ex, WebRequest request){
         var errorDetails = new ErrorDetails(LocalDateTime.now()
                 ,ex.getMessage(),request.getDescription(false)
-                ,"ORDR__GENERIC_ERROR");
+                ,"PROD__GENERIC_ERROR");
 
         return new ResponseEntity<ErrorDetails>(errorDetails,HttpStatus.NOT_IMPLEMENTED);
     }
-
-
 }

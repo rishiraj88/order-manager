@@ -1,7 +1,9 @@
 package om.product.entity;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,53 +12,18 @@ import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder @Data
 @Document(value = "product")
 public class Product {
     @Id
     private String id;
+
+    @NotEmpty(message="Product name is cannot be omitted.")
     private String name;
     private String desc;
-    private String skuCode; // Category may be inferred out of SKU code
-    private BigDecimal pricePerItem; //vendors, variants may be added optionally
 
-    public String getId() {
-        return id;
-    }
+    @NotEmpty(message="SKU code is mandatory.")
+    private String skuCode; // Category may be inferred from SKU code
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getSkuCode() {
-        return skuCode;
-    }
-
-    public void setSkuCode(String skuCode) {
-        this.skuCode = skuCode;
-    }
-
-    public BigDecimal getPricePerItem() {
-        return pricePerItem;
-    }
-
-    public void setPricePerItem(BigDecimal pricePerItem) {
-        this.pricePerItem = pricePerItem;
-    }
+    private BigDecimal pricePerItemUnit; //vendors and variants may be added optionally
 }

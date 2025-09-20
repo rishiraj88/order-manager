@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### mongo data files ###
-data
+db9

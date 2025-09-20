@@ -15,6 +15,8 @@ import org.testcontainers.containers.MySQLContainer;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
+// for the cals to external APIs
 @AutoConfigureWireMock(port = 0) // binds its auto-assigned value to 'wiremock.server.port' for the remote service stubbed
 class OrderApplicationTests {
 
@@ -38,9 +40,9 @@ class OrderApplicationTests {
     void shouldSubmitOrder() {
         String submitOrderJson = """
                 {
-                "orderNumber":"DE3343INT432342342222",\s
-                "itemSkuCode":"DE342GES34233111",\s
-                "pricePerItem":130.20,
+                "orderNumber":"DE3343INT432342342222",
+                "itemSkuCode":"DE342GES34233111",
+                "pricePerItemUnit":130.20,
                 "quantity":3,
                 "userDetails":{           
                 "emailAddress":"rishiraj@emails.co",
@@ -48,7 +50,7 @@ class OrderApplicationTests {
                 }
                 }""";
 
-        // Mock the dependency on Inventory API for checking the available quantity in stock
+        // Mock the dependency on Inventory API for checking the available quantity in stock (stub the API call)
         InventoryClient.stubInventoryCheck("DE342GES34233111",3);
 
         var responseBodyString = RestAssured.given()

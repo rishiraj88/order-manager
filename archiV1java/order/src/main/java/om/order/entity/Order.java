@@ -1,6 +1,9 @@
 package om.order.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,21 +26,26 @@ public class Order {
     private UUID id;
 
     @Column(name="order_number",updatable = false,nullable = false)
+    @NotEmpty(message="Order number is mandatory.")
     private String orderNumber;
 
     @Column(name="item_sku_code",nullable = false)
+    @NotEmpty(message="SKU code is mandatory.")
     private String itemSkuCode;
 
-    @Column(name="price_per_item",nullable = false)
-    private BigDecimal pricePerItem;
+    @Column(name="price_per_item_unit",nullable = false)
+    private BigDecimal pricePerItemUnit;
 
     @Column(name="quantity",nullable = false)
+    @Min(message = "Minimum quantity permitted is 1 unit.", value = 1L)
     private Integer quantity;
 
     @Column(name="created",nullable = false)
+    @PastOrPresent(message = "Future record creation date/time is not permitted.")
     private LocalDateTime created;
 
     @Column(name="updated",nullable = false)
+    @PastOrPresent(message = "Future record modification date/time is not permitted.")
     private LocalDateTime updated;
 
 }
