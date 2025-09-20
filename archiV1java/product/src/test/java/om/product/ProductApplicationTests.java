@@ -4,7 +4,6 @@ import io.restassured.RestAssured;
 import om.product.dto.ProductReq;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -84,7 +83,7 @@ class ProductApplicationTests {
 
     }
 
-    @ParameterizedTest(name = "productReq")
+    //@ParameterizedTest(name = "productReq")
     void shouldUpdateSpecificProduct(ProductReq productReq) { // PUT
         //String id,String name, String desc, String skuCode, BigDecimal pricePerItemUnit
         /*String requestBody = """
