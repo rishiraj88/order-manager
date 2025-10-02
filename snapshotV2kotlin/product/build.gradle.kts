@@ -67,9 +67,23 @@ allOpen {
 	annotation("jakarta.persistence.MappedSuperclass")
 	annotation("jakarta.persistence.Embeddable")
 }
-application {
-	mainClass.set("om.product.ProductApplication")
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.caco3.Main"
+    }
 }
+/*
+bootJar {
+	manifest {
+		attributes;		"Main-Class": "om.product.ProductApplicationKt"
+	}
+}
+*/
+/*
+application {
+	mainClass.set("om.product.ProductApplicationKt")
+}*/
 
 tasks.withType<Test> {
 	useJUnitPlatform()
