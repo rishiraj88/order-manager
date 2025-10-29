@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +26,9 @@ public class Product {
 
     @NotEmpty(message="SKU code is mandatory.")
     private String skuCode; // Category may be inferred from SKU code
-
+    private String primaryCategory;
     private BigDecimal pricePerItemUnit; //vendors and variants may be added optionally
+    private boolean inStock;
+    private LocalDate releaseDate;
+    private List<String> tags;
 }
