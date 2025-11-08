@@ -29,9 +29,14 @@ public class Order {
     @NotEmpty(message="Order number is mandatory.")
     private String orderNumber;
 
+    private LocalDateTime orderDate;
+    private String status;
+    private BigDecimal totalAmount;
+
     @Column(name="item_sku_code",nullable = false)
     @NotEmpty(message="SKU code is mandatory.")
-    private String itemSkuCode;
+    private String itemSkuCode; //TODO make it for a collection of Product
+// Product(id, name, quantity, pricePerUnit)
 
     @Column(name="price_per_item_unit",nullable = false)
     private BigDecimal pricePerItemUnit;
