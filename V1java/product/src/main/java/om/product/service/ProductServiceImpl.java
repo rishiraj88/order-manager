@@ -9,6 +9,7 @@ import om.product.entity.Product;
 import om.product.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,7 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private final ProductRepository productRepository;
 
-    @Override
+    @Override @Transactional
     public ProductResp addProduct(ProductReq productReq) {
         Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItemUnit(productReq.pricePerItemUnit()).build();
         productRepository.save(newProduct);
@@ -41,7 +42,7 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findAll().stream().filter(prod -> prod.getId().equals(id)).map(prod -> mapToResponse(prod)).findFirst().orElseThrow(()-> new ProductNotFoundException(id));
     }
 
-    @Override
+    @Override @Transactional
     public ProductResp updatePriceOfProductFoundBySkuCode(ProductReq productReq) {
         Optional<Product> matchingProductOpt = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst();
         if(matchingProductOpt.isEmpty()) throw new ProductNotFoundException(productReq.skuCode());
