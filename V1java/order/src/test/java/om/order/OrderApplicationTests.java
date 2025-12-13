@@ -44,7 +44,7 @@ class OrderApplicationTests {
                 "itemSkuCode":"DE342GES34233111",
                 "pricePerItemUnit":130.20,
                 "quantity":3,
-                "userDetails":{           
+                "userDetails":{
                 "emailAddress":"rishiraj@emails.co",
                 "name":"Rishi Raj"
                 }
@@ -64,28 +64,26 @@ class OrderApplicationTests {
                 .extract()
                 .body().asString();
 
-        assertThat(responseBodyString, Matchers.is(Constants.NEW_ORDER_PLACED_MSG));
+        assertThat(responseBodyString, Matchers.is(Constants.NEW_ORDER_PLACED__MSG));
     }
 
     @Test
     void shouldReturnAllOrders() {
-
     }
 
     @Test
     void shouldReturnOrdersByUserEmail() {
-
     }
+
     @Test
     void shouldReturnOrdersByUserName() {
-
     }
+
     @Test
     void shouldReturnOrderByOrderNumber() {
-
     }
+
     @Test
     void contextLoads() {
     }
-
 }

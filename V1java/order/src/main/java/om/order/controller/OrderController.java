@@ -1,8 +1,6 @@
 package om.order.controller;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import om.order.config.Constants;
 import om.order.dto.OrderReq;
 import om.order.dto.OrderResp;
@@ -21,20 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@RequiredArgsConstructor
 @RestController// @Slf4j
-//@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1") // A different scheme of API versioning
+//@RequestMapping(value = "/api/orders",headers = "Accept-Version=v1") // A different scheme of API versioning, available to choose
 @RequestMapping(value = "/api/v1/orders")
 public class OrderController {
     private final OrderService orderService;
-public OrderController(OrderService orderService) {this.orderService = orderService;}
+    public OrderController(OrderService orderService) {this.orderService = orderService;}
 
-    // @ResponseStatus(HttpStatus.CREATED): the modern way to write Controller Endpoints.
-    // Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts() endpoint.
+    /** @ResponseStatus(HttpStatus.CREATED): the modern way to write Controller Endpoints.
+    Older way is depicted in ResponseEntity<List<ProductResp>> ProductController.getAllProducts() endpoint.*/
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // 201
     public String createOrder(@Valid @RequestBody OrderReq orderReq) {
         orderService.createOrder(orderReq);
         //log.debug(Constants.NEW_ORDER_PLACED_MSG);
-        return Constants.NEW_ORDER_PLACED_MSG;
+        return Constants.NEW_ORDER_PLACED__MSG;
     }
 
     // getOrders()

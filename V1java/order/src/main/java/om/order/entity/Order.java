@@ -1,6 +1,11 @@
 package om.order.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PastOrPresent;
@@ -35,8 +40,7 @@ public class Order {
 
     @Column(name="item_sku_code",nullable = false)
     @NotEmpty(message="SKU code is mandatory.")
-    private String itemSkuCode; //TODO make it for a collection of Product
-// Product(id, name, quantity, pricePerUnit)
+    private String itemSkuCode;
 
     @Column(name="price_per_item_unit",nullable = false)
     private BigDecimal pricePerItemUnit;
@@ -52,5 +56,4 @@ public class Order {
     @Column(name="updated",nullable = false)
     @PastOrPresent(message = "Future record modification date/time is not permitted.")
     private LocalDateTime updated;
-
 }
