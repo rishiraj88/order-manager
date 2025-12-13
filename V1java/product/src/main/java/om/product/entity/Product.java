@@ -17,17 +17,18 @@ import java.util.List;
 @Builder @Data
 @Document(value = "product")
 public class Product {
+
     @Id
     private String id;
 
-    @NotEmpty(message="Product name is cannot be omitted.")
+    @NotEmpty(message="Product name cannot be omitted.")
     private String name;
     private String desc;
 
-    @NotEmpty(message="SKU code is mandatory.")
+    @NotEmpty(message="SKU code is cannot be omitted.")
     private String skuCode; // Category may be inferred from SKU code
     private String primaryCategory;
-    private BigDecimal pricePerItemUnit; //vendors and variants may be added optionally
+    private BigDecimal pricePerItemUnit; //vendors and variants may be added, if needed
     private boolean inStock;
     private LocalDate releaseDate;
     private List<String> tags;

@@ -28,7 +28,7 @@ public class ProductServiceImpl implements IProductService {
     public ProductResp addProduct(ProductReq productReq) {
         Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItemUnit(productReq.pricePerItemUnit()).build();
         productRepository.save(newProduct);
-        log.info("New product has been added with id: {}", newProduct.getId());
+        log.info("New product has been added with Id: {}", newProduct.getId());
         return mapToResponse(newProduct);
     }
 
@@ -39,17 +39,21 @@ public class ProductServiceImpl implements IProductService {
     }
     @Override
     public ProductResp getProduct(String id) {
-        return productRepository.findAll().stream().filter(prod -> prod.getId().equals(id)).map(prod -> mapToResponse(prod)).findFirst().orElseThrow(()-> new ProductNotFoundException(id));
+        return productRepository.findAll().stream()
+                .filter(prod -> prod.getId().equals(id))
+                .map(prod -> mapToResponse(prod)).findFirst()
+                .orElseThrow(()-> new ProductNotFoundException(id));
     }
 
     @Override @Transactional
     public ProductResp updatePriceOfProductFoundBySkuCode(ProductReq productReq) {
-        Optional<Product> matchingProductOpt = productRepository.findAll().stream().filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst();
+        Optional<Product> matchingProductOpt = productRepository.findAll().stream()
+                .filter(prod -> prod.getSkuCode().equals(productReq.skuCode())).findFirst();
+
         if(matchingProductOpt.isEmpty()) throw new ProductNotFoundException(productReq.skuCode());
+
         Product matchingProduct = matchingProductOpt.get();
         matchingProduct.setPricePerItemUnit(productReq.pricePerItemUnit());
-        return mapToResponse(
-                productRepository.save(matchingProduct)
-        );
+        return mapToResponse(productRepository.save(matchingProduct));
     }
 }
