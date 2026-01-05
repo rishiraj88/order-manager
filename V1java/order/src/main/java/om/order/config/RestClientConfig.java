@@ -20,8 +20,9 @@ public class RestClientConfig {
 
     @Bean
     public InventoryClient inventoryClient(){
-        // * RestClient from Spring 6 is used here for synchronous client with fluent API.
-        // for non-blocking, reactive client, WebClient may be used.
+
+        /** RestClient from Spring 6 is used here for synchronous client with fluent API.
+         for non-blocking, reactive client, WebClient may be used. */
         RestClient restClient = RestClient.builder()
                 .baseUrl(inventoryConnectUrl)
                 .requestFactory(getClientRequestFactory())
@@ -37,6 +38,5 @@ public class RestClientConfig {
                 .withConnectTimeout(Duration.ofSeconds(3))
                 .withReadTimeout(Duration.ofSeconds(3));
                 return ClientHttpRequestFactories.get(httpRequestFactorySettings);
-
     }
 }

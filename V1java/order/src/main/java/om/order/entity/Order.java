@@ -1,6 +1,11 @@
 package om.order.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PastOrPresent;
@@ -29,6 +34,10 @@ public class Order {
     @NotEmpty(message="Order number is mandatory.")
     private String orderNumber;
 
+    private LocalDateTime orderDate;
+    private String status;
+    private BigDecimal totalAmount;
+
     @Column(name="item_sku_code",nullable = false)
     @NotEmpty(message="SKU code is mandatory.")
     private String itemSkuCode;
@@ -47,5 +56,4 @@ public class Order {
     @Column(name="updated",nullable = false)
     @PastOrPresent(message = "Future record modification date/time is not permitted.")
     private LocalDateTime updated;
-
 }

@@ -10,5 +10,4 @@ public interface IProductService {
     List<ProductResp> getAllProducts(String skuCode);
     ProductResp getProduct(String id);
     ProductResp updatePriceOfProductFoundBySkuCode(ProductReq productReq);
-    //ProductResp updatePriceOfProductFoundBySkuCode(String skuCode);
 }

@@ -11,11 +11,11 @@
     </parent>
     <groupId>om</groupId>
     <artifactId>order</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>order</name>
     <description>order module for order management APIs</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>24</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>

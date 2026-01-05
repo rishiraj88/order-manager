@@ -49,7 +49,8 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<ProductResp>> getAllProducts(@RequestParam(name="skuCode", required = false) String skuCode) {
-        //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
+        //Dev Tools: Uncomment the following code fragment to test timeout and retry with Resilience4j tooling
+
         // For general application workflow, keep the below code fragment commented
         /*if (0 == new Random().nextInt(2)) {
             try {
@@ -58,7 +59,8 @@ public class ProductController {
                 throw new RuntimeException(e);
             }
         }*/
-        // Usual practice to add <Status Code> to Response
+
+        // Usual way to add <Status Code> to Response
         return ResponseEntity.ok(productService.getAllProducts(skuCode));
     }
 
@@ -67,10 +69,8 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProduct(id));
     }
 
-
     @PutMapping
     public ResponseEntity<ProductResp> updatePriceOfProductFoundBySkuCode(@RequestBody ProductReq productReq) {
-    //public ResponseEntity<ProductResp> updatePriceOfProductFoundBySkuCode(@RequestParam String skuCode) {
         //Dev Tools: Uncomment this code fragment to test timeout and retry with Resilience4j tooling
         if (0 == new Random().nextInt(2)) {
             try {

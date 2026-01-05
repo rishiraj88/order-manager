@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Documentation of the API of Order module (microservice) using OpenAPI Specifications (OAS)
+ * Documentation of the API of Order module (microservice) using OpenAPI Specification (OAS)
  */
 @Configuration
 public class OpenApiSpecsConfig {
@@ -23,6 +23,6 @@ public class OpenApiSpecsConfig {
                 > Inventory
 
                 Order microservice is for creating, listing, modifying and removing orders and order details. Its API has the base URI as "/api/v1/orders".
-                """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://bio.link/rishiraj49de")));
+                """).version("v1.0.0").contact(new Contact().name("Rishi Raj").url("https://www.linkedin.com/in/rishirajopenminds/")));
     }
 }
