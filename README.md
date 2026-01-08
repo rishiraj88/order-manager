@@ -163,6 +163,18 @@ The module for Product (Kotlin variant) has been set up with the following depen
 ### Testing
 
 ### Manual Testing
+
+#### Testing Screenshots [20250903]
+![Product module: adding a product](./assets/testingOn20250903/screenshot.1756887155.png)
+![Product module: adding another product](./assets/testingOn20250903/screenshot.1756887177.png)
+![Product module: listing products](./assets/testingOn20250903/screenshot.1756891751.png)
+![Product module: creating an order](./assets/testingOn20250903/screenshot.1756894133.png)
+![Product module: creating another order](./assets/testingOn20250903/screenshot.1756894156.png)
+![Product module: querying inventory status for item](./assets/testingOn20250903/screenshot.1756896799.png)
+![Product module: viewing application logs for inventory](./assets/testingOn20250903/screenshot.1756896913.png)
+
+
+
 #### Product
 ![Product module: adding first product for this day](./assets/omkt/product/add-product1-20250429.png)
 ![Product module: adding second product for this day](./assets/omkt/product/add-product2-20250429.png)
