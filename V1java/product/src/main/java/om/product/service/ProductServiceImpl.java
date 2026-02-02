@@ -1,19 +1,16 @@
 package om.product.service;
 
+import module java.base;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import om.product.dao.ProductRepository;
-import om.product.dto.ProductReq;
-import om.product.dto.ProductResp;
-import om.product.entity.Product;
 import om.product.exception.ProductNotFoundException;
+import om.product.model.dto.ProductReq;
+import om.product.model.dto.ProductResp;
+import om.product.model.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static om.product.util.MapperUtil.mapToResponse;
 

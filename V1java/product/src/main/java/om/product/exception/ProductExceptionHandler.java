@@ -1,12 +1,10 @@
 package om.product.exception;
-
+import module java.base;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
-
-import java.time.LocalDateTime;
 
 @RestControllerAdvice
 /* Optionally 'extends ResponseEntityExceptionHandler' may be added to this class declaration. */
