@@ -14,7 +14,7 @@
     <name>inventory</name>
     <description>order module for order management APIs, built with Spring Boot</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
     <dependencies>
