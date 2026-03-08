@@ -1,9 +1,10 @@
 package om.product.controller;
 
+import module java.base;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import om.product.dto.ProductReq;
-import om.product.dto.ProductResp;
+import om.product.model.dto.ProductReq;
+import om.product.model.dto.ProductResp;
 import om.product.service.IProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Random;
 
 @RequiredArgsConstructor
 @RestController

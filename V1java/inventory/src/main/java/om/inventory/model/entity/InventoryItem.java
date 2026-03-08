@@ -1,4 +1,4 @@
-package om.inventory.service.entity;
+package om.inventory.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

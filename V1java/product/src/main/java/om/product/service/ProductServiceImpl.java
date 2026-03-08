@@ -1,19 +1,17 @@
 package om.product.service;
 
+import module java.base;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import om.product.dao.ProductRepository;
-import om.product.dto.ProductReq;
-import om.product.dto.ProductResp;
-import om.product.entity.Product;
 import om.product.exception.ProductNotFoundException;
+import om.product.model.dto.ProductReq;
+import om.product.model.dto.ProductResp;
+import om.product.model.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static om.product.util.MapperUtil.mapToResponse;
 
@@ -24,6 +22,7 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private final ProductRepository productRepository;
 
+    @Async
     @Override @Transactional
     public ProductResp addProduct(ProductReq productReq) {
         Product newProduct = Product.builder().name(productReq.name()).desc(productReq.desc()).skuCode(productReq.skuCode()).pricePerItemUnit(productReq.pricePerItemUnit()).build();
@@ -32,11 +31,14 @@ public class ProductServiceImpl implements IProductService {
         return mapToResponse(newProduct);
     }
 
+    @Async
     @Override
     public List<ProductResp> getAllProducts(String skuCode) {
         return productRepository.findAll().stream()
                 .map(prod -> mapToResponse(prod)).collect(Collectors.toList());
     }
+
+    @Async
     @Override
     public ProductResp getProduct(String id) {
         return productRepository.findAll().stream()
@@ -45,6 +47,7 @@ public class ProductServiceImpl implements IProductService {
                 .orElseThrow(()-> new ProductNotFoundException(id));
     }
 
+    @Async
     @Override @Transactional
     public ProductResp updatePriceOfProductFoundBySkuCode(ProductReq productReq) {
         Optional<Product> matchingProductOpt = productRepository.findAll().stream()

@@ -1,8 +1,7 @@
-package om.product.dto;
+package om.product.model.dto;
 
+import module java.base;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public record ProductReq(String id,String name, String desc, String skuCode, BigDecimal pricePerItemUnit) {

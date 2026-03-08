@@ -1,7 +1,7 @@
 package om.product.util;
 
-import om.product.dto.ProductResp;
-import om.product.entity.Product;
+import om.product.model.dto.ProductResp;
+import om.product.model.entity.Product;
 
 public class MapperUtil {
     static public ProductResp mapToResponse(Product product) {

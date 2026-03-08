@@ -1,6 +1,6 @@
 package om.inventory.dao;
 
-import om.inventory.service.entity.InventoryItem;
+import om.inventory.model.entity.InventoryItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
