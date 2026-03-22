@@ -3,7 +3,7 @@
 
 
 - Some of the technologies and developer tools used in this project are:
-- Spring Boot 3.4, Java 21+ (Java 24)
+- Spring Boot 4, Java 25
 - Keycloak (OAuth2, OpenID Connect) for User Account management, Authorization and Authentication [*Reference Doc*](https://github.com/rishiraj88/order-manager/blob/main/gateway%20implementation%20with%20Keycloak.md)
 - Prometheus-Grafana stack for Observability (Prometheus, Loki, micrometer and Grafana  Dashboard)
 - Modern strategy for Spring Security implementation (as in Spring Boot 3, Spring 6)
