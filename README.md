@@ -1,4 +1,4 @@
-# Order Manager (a POC on Modern "Development Best Practices")
+# Order Manager (a POC on Modern "Best Practices")
 - This project showcases how the problems faced by most of the businesses today can be simply managed with a "distributed app" approach. Such a system is implemented using modern web technologies, knitted with asynchronous and synchronous communications and further empowered with Observability. Thanks for Prometheus-Grafana stack, which consists of loggging tools (Loki), Distributed Tracing tools (micrometer) and Dashboarding powerhouse (Grafana).
 
 
