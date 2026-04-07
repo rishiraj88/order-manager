@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface InventoryRepository: JpaRepository<InventoryItem,String> {
     fun existsBySkuCodeAndQuantityInStockIsGreaterThanEqual(skuCode: String, quantityToCheck: Int): Boolean
-
 }

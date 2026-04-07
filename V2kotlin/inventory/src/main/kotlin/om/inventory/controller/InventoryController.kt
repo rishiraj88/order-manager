@@ -20,5 +20,4 @@ class InventoryController(val inventoryService: InventoryService) {
             .cacheControl(CacheControl.maxAge(30_000, TimeUnit.SECONDS))
             .body(inventoryService.isItemInStock(inventoryItemReq.skuCode, inventoryItemReq.quantityToCheck))
     }
-
 }
