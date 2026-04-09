@@ -1,0 +1,38 @@
+name: Manifest Lint & Validation
+
+on:
+  push:
+    paths:
+      - 'k8sclusteryml/**'
+      - '**/Dockerfile'
+  pull_request:
+    paths:
+      - 'k8sclusteryml/**'
+      - '**/Dockerfile'
+
+jobs:
+  lint-manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Validate Kubernetes Manifests
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kubectl: 1.30.0
+          kubeval: 0.16.1
+          command: |
+            find ./k8sclusteryml -name "*.yml" -o -name "*.yaml" | xargs kubeval --ignore-missing-schemas
+
+  lint-dockerfiles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          recursive: true
+          # Don't fail the build for now, just report warnings
+          no-fail: true
+          ignore: 'DL3007,DL3018'
