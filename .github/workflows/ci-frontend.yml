@@ -1,0 +1,53 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'leightclientng/**'
+      - 'microservices-shop-frontend/**'
+      - 'om-next/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'leightclientng/**'
+      - 'microservices-shop-frontend/**'
+      - 'om-next/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [leightclientng, microservices-shop-frontend, om-next]
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: './${{ matrix.app }}/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./${{ matrix.app }}
+        run: npm ci
+
+      - name: Build
+        working-directory: ./${{ matrix.app }}
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-dist
+          path: |
+            ./${{ matrix.app }}/dist
+            ./${{ matrix.app }}/.next
+          if-no-files-found: ignore
+          retention-days: 1
+
+  # Docker jobs for frontend would go here once Dockerfiles are added to the frontend projects.
+  # For now, we validate the build as requested.

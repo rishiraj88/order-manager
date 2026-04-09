@@ -1,0 +1,30 @@
+name: Backend V1 Java CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'V1java/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'V1java/**'
+
+jobs:
+  service-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [product, order, inventory, gateway, notification]
+    uses: ./.github/workflows/_backend-service.yml
+    with:
+      service_name: v1-${{ matrix.service }}
+      service_path: ./V1java/${{ matrix.service }}
+      build_type: maven
+      docker_context: ./V1java/${{ matrix.service }}
+      docker_file: ./V1java/${{ matrix.service }}/Dockerfile
+      docker_image_name: v1-${{ matrix.service }}
+    permissions:
+      contents: read
+      packages: write
+      actions: write

@@ -1,0 +1,30 @@
+name: Backend V2 Kotlin CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'V2kotlin/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'V2kotlin/**'
+
+jobs:
+  service-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [product, order, inventory, gateway]
+    uses: ./.github/workflows/_backend-service.yml
+    with:
+      service_name: v2-${{ matrix.service }}
+      service_path: ./V2kotlin/${{ matrix.service }}
+      build_type: gradle
+      docker_context: ./V2kotlin/${{ matrix.service }}
+      docker_file: ./V2kotlin/${{ matrix.service }}/Dockerfile
+      docker_image_name: v2-${{ matrix.service }}
+    permissions:
+      contents: read
+      packages: write
+      actions: write
