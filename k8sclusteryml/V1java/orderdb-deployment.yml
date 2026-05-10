@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: om-orderdb-depl #shown in listing, also specified in scale command
+  name: om-orderdb-depl     #shown in listing, also specified in scale command
   labels:
     app: om
     name: om-orderdb-depl
@@ -35,7 +35,7 @@ spec:
             mountPath: /data/orderdb
       
 
-
+commands for Kubernetes Deployment management:
 ## to create a Deployment
 #kubectl create -f order-deployment.yml
 

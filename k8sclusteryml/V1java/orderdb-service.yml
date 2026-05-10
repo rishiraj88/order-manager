@@ -1,23 +1,24 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: om-orderdb #hostname for API, with 'port'. used in the code and config of other modules of app
+  name: om-orderdb        #hostname for API, with 'port'. used in the code and config of other modules
   labels:
     app: om
     name: om-orderdb-service
     side: backend
 
 spec:
-  type: ClusterIP # NodePort for being client-accessible. Elsewise for internal-only service must be ClusterIP
+  type: ClusterIP       # NodePort if accessible to external-client. ClusterIP for internal-only service.
   ports:
-  - targetPort: 3306 #internal app port
-    port: 3306 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
+  - targetPort: 3306    #internal port
+    port: 3306          #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory.
     #nodePort: 30306 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
-  selector: #from pod definition
+  selector:             #from pod definition
     app: om
     name: om-orderdb-pod
     side: backend
-    
+
+commands for Kubernetes service management:
 ## to create a service
 #kubectl create -f order-service.yml
 

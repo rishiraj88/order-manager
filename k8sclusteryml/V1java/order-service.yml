@@ -10,14 +10,15 @@ metadata:
 spec:
   type: NodePort # NodePort for being client-accessible. Elsewise for internal-only service must be ClusterIP
   ports:
-  - targetPort: 8080 #internal app port
-    port: 8080 #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
-    nodePort: 32080 #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
+  - targetPort: 8080        #internal app port
+    port: 8080              #port for API, with 'name' of service, similar to mysql:3306 socket; it is mandatory
+    nodePort: 32080         #only for NodePort service type, accessible to external users, curl and web browsers;range is 30000 to 32767
   selector: #from pod definition
     app: om
     name: om-order-pod
     side: backend
 
+commands for Kubernetes service management:
 ## to create a service
 #kubectl create -f order-service.yml
 

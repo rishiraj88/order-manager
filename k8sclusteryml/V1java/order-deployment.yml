@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: om-order-depl #shown in listing, also specified in scale command
+  name: om-order-depl     #shown in listing, also specified in scale command
   labels:
     app: om
     name: om-order-depl
@@ -29,6 +29,7 @@ spec:
           ports:
             - containerPort: 8081
             
+commands for Kubernetes Deployment management:
 ## to create a Deployment
 #kubectl create -f order-deployment.yml
 
