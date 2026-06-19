@@ -17,7 +17,7 @@ class ProductServiceImpl(val productRepository: ProductRepository) : ProductServ
     override fun getAllProducts(page: Int, size: Int): Iterable<ProductResp> {
         val pageable: Pageable = PageRequest.of(page, size)
         val products = productRepository.findAll(pageable).map { it.toResp() }
-        if (products.isEmpty) throw ResourceNotFoundException("No products found.")
+        if (products.isEmpty) throw ResourceNotFoundException("No products listed. You may visit again later.")
         return products
     }
 
@@ -39,7 +39,7 @@ class ProductServiceImpl(val productRepository: ProductRepository) : ProductServ
 
     override fun getProduct(id: String): ProductResp? {
         val matchingProduct = productRepository.findById(id).getOrNull()?.toResp()
-            ?: throw ResourceNotFoundException("No matching products found.")
+            ?: throw ResourceNotFoundException("Matching product not found.")
         return matchingProduct
     }
 }

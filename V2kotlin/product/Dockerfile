@@ -31,6 +31,7 @@ COPY ./gradle ./gradle/
 RUN echo ${PWD} && ls -lR
 
 RUN ./gradlew build
+RUN apk add --no-cache curl
 
 #WORKDIR /app
 #RUN mkdir target

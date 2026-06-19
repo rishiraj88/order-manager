@@ -45,9 +45,16 @@ dependencies {
 	testImplementation("org.springframework.kafka:spring-kafka-test")
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:kafka")
-	testImplementation("org.testcontainers:mongodb")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	implementation("io.rest-assured:rest-assured")
+
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    //implementation("org.testcontainers:mongodb")
+//    implementation("org.testcontainers:testcontainers")
+  //  implementation("org.testcontainers:mongodb")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.2.21")
+    //implementation("io.rest-assured:rest-assured")
+    // Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation("io.rest-assured:rest-assured:6.0.0")
 	}
 
 dependencyManagement {
