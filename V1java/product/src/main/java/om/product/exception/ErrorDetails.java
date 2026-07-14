@@ -1,5 +1,6 @@
 package om.product.exception;
-import module java.base;
+
+import java.time.LocalDateTime;
 
 public record ErrorDetails(LocalDateTime timestamp, String errMsg, String errDesc, String errCode) {
 }

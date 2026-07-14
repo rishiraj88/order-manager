@@ -1,8 +1,9 @@
 package om.product.service;
 
-import module java.base;
 import om.product.model.dto.ProductReq;
 import om.product.model.dto.ProductResp;
+
+import java.util.List;
 
 public interface IProductService {
     ProductResp addProduct(ProductReq productReq);

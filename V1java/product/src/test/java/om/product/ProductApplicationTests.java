@@ -1,7 +1,7 @@
 package om.product;
 
 import io.restassured.RestAssured;
-import om.product.dto.ProductReq;
+import om.product.model.dto.ProductReq;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -144,4 +144,171 @@ class ProductApplicationTests {
         response.log().body()
                 .assertThat().statusCode(404);
     }
+
+    @Test
+    void shouldAddProduct_missingName() { // POST with missing name
+        String requestBody = """
+                {
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":280.30
+                }
+                """;
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(400);
+    }
+
+    @Test
+    void shouldAddProduct_invalidPrice() { // POST with invalid price
+        String requestBody = """
+                {
+                "name":"mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":-50.00
+                }
+                """;
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(400);
+    }
+
+    @Test
+    void shouldAddProduct_emptyRequest() { // POST with empty request
+        String requestBody = "{}";
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(400);
+    }
+
+    @Test
+    void shouldAddProduct_invalidContentType() { // POST with invalid content type
+        String requestBody = """
+                {
+                "name":"mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":280.30
+                }
+                """;
+        var response = RestAssured
+                .given()
+                .contentType("application/xml").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(415);
+    }
+
+    @Test
+    void shouldUpdateProduct_notFound() { // PUT with non-existent product
+        String requestBody = """
+                {
+                "id":"000000000000000000000000",\s
+                "name":"non-existent product",\s
+                "desc":"details",\s
+                "skuCode":"NONEXISTENT",\s
+                "pricePerItemUnit":100.00
+                }
+                """;
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .put(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(404);
+    }
+
+    @Test
+    void shouldGetProduct_invalidSkucode() { // GET with invalid skucode
+        String skucode = "";
+
+        var response = RestAssured
+                .given()
+                .queryParam("skucode", skucode)
+                .when()
+                .get(endpoint + "/skucode")
+                .then();
+
+        response.log().body()
+                .assertThat().statusCode(400);
+    }
+
+    @Test
+    void shouldAddProduct_nullPrice() { // POST with null price
+        String requestBody = """
+                {
+                "name":"mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DIGI1001MPH2",\s
+                "pricePerItemUnit":null
+                }
+                """;
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(400);
+    }
+
+    @Test
+    void shouldAddProduct_duplicateSkuCode() { // POST with duplicate skuCode
+        // First, add a product
+        String requestBody = """
+                {
+                "name":"mobile phone",\s
+                "desc":"simpler details",\s
+                "skuCode":"DUPLICATE001",\s
+                "pricePerItemUnit":280.30
+                }
+                """;
+        RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then()
+                .statusCode(201);
+
+        // Try to add another product with same skuCode
+        var response = RestAssured
+                .given()
+                .contentType("application/json").body(requestBody)
+                .when()
+                .post(endpoint)
+                .then();
+
+        response.log().all()
+                .statusCode(409);
+    }
+
+
 }
